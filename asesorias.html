@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asesorías 1:1 — Narrar el Caos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #e9fdc4;
+    --dark: #3d2f6e;
+    --ink: #3d2f6e;
+    --accent: #9e9ded;
+    --accent-light: #b8b8f5;
+    --muted: #8e7cc3;
+    --border: rgba(142,124,195,0.25);
+    --serif: 'Playfair Display', Georgia, serif;
+    --mono: 'DM Mono', 'Courier New', monospace;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 999;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.3;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 18px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(233,253,196,0.92); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-back {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--muted);
+    text-decoration: none; display: flex; align-items: center; gap: 8px;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--dark); }
+  .nav-back::before { content: '←'; }
+  .nav-title {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--dark); }
+
+  /* BTNs */
+  .btn-dark {
+    display: inline-block; padding: 15px 36px;
+    background: var(--dark); color: var(--cream);
+    font-family: var(--mono); font-size: 12px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .btn-dark:hover { background: var(--accent); }
+  .btn-outline {
+    display: inline-block; padding: 15px 36px;
+    border: 1px solid var(--border); color: var(--muted);
+    font-family: var(--mono); font-size: 12px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--dark); color: var(--dark); }
+  .btn-wsp {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 40px;
+    background: var(--dark); color: var(--cream);
+    font-family: var(--mono); font-size: 13px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s, transform 0.2s;
+  }
+  .btn-wsp:hover { background: var(--accent); transform: translateY(-2px); }
+  .btn-wsp svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+
+  .section-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    position: relative; overflow: hidden;
+  }
+  .hero-left {
+    background: var(--dark);
+    padding: 140px 60px 80px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(233,253,196,0.4); margin-bottom: 28px;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-title {
+    font-family: var(--serif); font-weight: 900;
+    font-size: clamp(48px, 5.5vw, 82px);
+    line-height: 0.95; letter-spacing: -0.02em;
+    color: var(--cream); margin-bottom: 32px;
+    opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero-title em { font-style: italic; color: var(--accent); display: block; }
+  .hero-sub {
+    font-size: 18px; font-weight: 300; line-height: 1.7;
+    color: rgba(233,253,196,0.65); max-width: 420px; margin-bottom: 48px;
+    opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-actions {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .hero-right {
+    background: var(--cream);
+    padding: 140px 60px 80px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    position: relative;
+    opacity: 0; animation: fadeIn 1s 0.3s forwards;
+  }
+  .hero-price-block {
+    position: absolute; top: 140px; right: 60px;
+  }
+  .hero-price-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+    text-align: right;
+  }
+  .hero-price {
+    font-family: var(--serif); font-weight: 900;
+    font-size: 52px; line-height: 1; color: var(--dark);
+    text-align: right;
+  }
+  .hero-price span {
+    display: block; font-family: var(--mono); font-size: 12px;
+    font-weight: 400; color: var(--muted); letter-spacing: 0.08em;
+    margin-top: 6px; text-align: right;
+  }
+  .hero-right-quote {
+    font-family: var(--serif); font-style: italic;
+    font-size: 22px; line-height: 1.5; color: var(--dark);
+    border-top: 1px solid var(--border); padding-top: 28px; margin-top: 40px;
+  }
+  .hero-right-sub {
+    font-size: 15px; font-weight: 300; color: var(--muted);
+    line-height: 1.65; margin-top: 16px;
+  }
+
+  /* TICKER */
+  .ticker {
+    background: var(--accent); padding: 12px 0; overflow: hidden; white-space: nowrap;
+  }
+  .ticker-inner { display: inline-block; animation: ticker 24s linear infinite; }
+  .ticker-item {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--dark); margin: 0 40px;
+  }
+  .ticker-item::before { content: '◆  '; font-size: 8px; }
+
+  /* PARA QUIEN */
+  .paraquien {
+    background: var(--dark); padding: 120px 60px;
+  }
+  .paraquien-header {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    align-items: end; margin-bottom: 72px;
+    padding-bottom: 48px; border-bottom: 1px solid rgba(233,253,196,0.1);
+  }
+  .paraquien-title {
+    font-family: var(--serif); font-weight: 900;
+    font-size: clamp(40px, 4.5vw, 64px); line-height: 0.95; color: var(--cream);
+  }
+  .paraquien-title em { font-style: italic; color: var(--accent); }
+  .paraquien-sub {
+    font-size: 16px; font-weight: 300; line-height: 1.75;
+    color: rgba(233,253,196,0.5);
+  }
+  .paraquien-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    margin-bottom: 48px;
+  }
+  .paraquien-card {
+    padding: 40px 32px; border: 1px solid rgba(233,253,196,0.08);
+    transition: background 0.3s;
+  }
+  .paraquien-card:hover { background: rgba(158,157,237,0.08); }
+  .paraquien-num {
+    font-family: var(--serif); font-size: 64px; font-weight: 900;
+    color: rgba(233,253,196,0.04); line-height: 1; margin-bottom: -12px;
+  }
+  .paraquien-card-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+  }
+  .paraquien-card-title {
+    font-family: var(--serif); font-size: 22px; font-weight: 700;
+    color: var(--cream); margin-bottom: 12px; line-height: 1.2;
+  }
+  .paraquien-card-body {
+    font-size: 14px; font-weight: 300; color: rgba(233,253,196,0.5);
+    line-height: 1.7;
+  }
+  .paraquien-not {
+    padding: 32px; border: 1px solid rgba(233,253,196,0.08);
+    display: flex; gap: 32px; align-items: flex-start;
+  }
+  .paraquien-not-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: rgba(233,253,196,0.25);
+    white-space: nowrap; min-width: 120px; padding-top: 3px;
+  }
+  .paraquien-not-body {
+    font-family: var(--serif); font-style: italic; font-size: 17px;
+    line-height: 1.65; color: rgba(233,253,196,0.35);
+  }
+
+  /* PROCESO */
+  .proceso { background: var(--cream); padding: 120px 60px; }
+  .proceso-header { margin-bottom: 72px; }
+  .proceso-title {
+    font-family: var(--serif); font-weight: 900;
+    font-size: clamp(40px, 4.5vw, 64px); line-height: 0.95; color: var(--dark);
+    margin-bottom: 20px;
+  }
+  .proceso-title em { font-style: italic; color: var(--accent); }
+  .proceso-sub {
+    font-size: 17px; font-weight: 300; color: var(--muted);
+    line-height: 1.75; max-width: 580px;
+  }
+  .proceso-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+    margin-bottom: 80px;
+  }
+  .paso {
+    padding: 40px 28px; background: var(--dark);
+    position: relative; overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .paso:hover { transform: translateY(-4px); }
+  .paso::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--accent);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .paso:hover::before { transform: scaleX(1); }
+  .paso-num {
+    font-family: var(--serif); font-size: 80px; font-weight: 900;
+    color: rgba(233,253,196,0.04); line-height: 1; margin-bottom: -16px;
+  }
+  .paso-title {
+    font-family: var(--serif); font-size: 20px; font-weight: 700;
+    color: var(--cream); margin-bottom: 12px; line-height: 1.2;
+  }
+  .paso-body {
+    font-size: 13px; font-weight: 300; color: rgba(233,253,196,0.55);
+    line-height: 1.7;
+  }
+
+  /* INCLUYE */
+  .incluye-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+  }
+  .incluye-title {
+    font-family: var(--serif); font-weight: 900;
+    font-size: clamp(36px, 4vw, 52px); line-height: 1; color: var(--dark);
+    margin-bottom: 28px;
+  }
+  .incluye-title em { font-style: italic; color: var(--accent); }
+  .incluye-body {
+    font-size: 16px; font-weight: 300; color: var(--ink);
+    line-height: 1.8; margin-bottom: 18px;
+  }
+  .incluye-list {
+    list-style: none; display: flex; flex-direction: column; gap: 0;
+  }
+  .incluye-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 18px 0; border-bottom: 1px solid var(--border);
+  }
+  .incluye-item:last-child { border-bottom: none; }
+  .incluye-icon {
+    width: 32px; height: 32px; background: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .incluye-icon span { font-family: var(--mono); font-size: 11px; color: var(--dark); font-weight: 500; }
+  .incluye-item-content {}
+  .incluye-item-title {
+    font-size: 15px; font-weight: 500; color: var(--dark); margin-bottom: 4px;
+  }
+  .incluye-item-body {
+    font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.6;
+  }
+  .soporte-box {
+    background: var(--dark); padding: 48px 40px; margin-top: 8px;
+  }
+  .soporte-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .soporte-label::before {
+    content: ''; width: 6px; height: 6px; background: var(--accent);
+    border-radius: 50%; animation: pulse 2s infinite; flex-shrink: 0;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .soporte-title {
+    font-family: var(--serif); font-size: 26px; font-weight: 700;
+    color: var(--cream); margin-bottom: 14px; line-height: 1.2;
+  }
+  .soporte-body {
+    font-size: 14px; font-weight: 300; color: rgba(233,253,196,0.6);
+    line-height: 1.75; margin-bottom: 24px;
+  }
+  .soporte-items {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .soporte-item {
+    font-size: 13px; color: rgba(233,253,196,0.65);
+    padding-left: 16px; position: relative; line-height: 1.5;
+  }
+  .soporte-item::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 11px; }
+
+  /* MIRADA */
+  .mirada { background: var(--accent); padding: 100px 60px; }
+  .mirada-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .mirada-title {
+    font-family: var(--serif); font-weight: 900;
+    font-size: clamp(36px, 4vw, 56px); line-height: 1; color: var(--dark);
+    margin-bottom: 28px;
+  }
+  .mirada-title em { font-style: italic; }
+  .mirada-body {
+    font-size: 16px; font-weight: 300; color: rgba(61,47,110,0.8);
+    line-height: 1.8; margin-bottom: 18px;
+  }
+  .mirada-body strong { font-weight: 500; color: var(--dark); }
+  .mirada-right { display: flex; flex-direction: column; gap: 16px; }
+  .mirada-card {
+    background: rgba(61,47,110,0.08); padding: 24px 28px;
+    border-left: 2px solid var(--dark);
+    transition: background 0.2s;
+  }
+  .mirada-card:hover { background: rgba(61,47,110,0.13); }
+  .mirada-card-title {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--dark); margin-bottom: 8px; font-weight: 500;
+  }
+  .mirada-card-body {
+    font-size: 14px; font-weight: 300; color: rgba(61,47,110,0.7); line-height: 1.65;
+  }
+
+  /* TESTIMONIOS */
+  .testimonios { background: var(--dark); padding: 120px 60px; }
+  .testimonios-header { margin-bottom: 64px; }
+  .testimonios-title {
+    font-family: var(--serif); font-weight: 900;
+    font-size: clamp(36px, 4vw, 56px); line-height: 1.05; color: var(--cream);
+  }
+  .testimonios-title em { font-style: italic; color: var(--accent); }
+  .testimonios-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .testi {
+    padding: 36px 32px; border: 1px solid rgba(233,253,196,0.08);
+    position: relative; transition: border-color 0.3s;
+  }
+  .testi:hover { border-color: var(--accent); }
+  .testi::before {
+    content: '"'; position: absolute; top: 16px; right: 20px;
+    font-family: var(--serif); font-size: 80px;
+    color: rgba(233,253,196,0.04); line-height: 1;
+  }
+  .testi-body {
+    font-family: var(--serif); font-style: italic; font-size: 16px;
+    line-height: 1.7; color: rgba(233,253,196,0.8); margin-bottom: 24px;
+  }
+  .testi-author {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(233,253,196,0.25);
+  }
+
+  /* PRECIO + CTA */
+  .precio-cta {
+    background: var(--cream); padding: 120px 60px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .precio-left {}
+  .precio-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
+  }
+  .precio-monto {
+    font-family: var(--serif); font-size: clamp(56px, 7vw, 100px);
+    font-weight: 900; line-height: 1; color: var(--dark); margin-bottom: 8px;
+  }
+  .precio-moneda {
+    font-family: var(--mono); font-size: 14px; letter-spacing: 0.08em;
+    color: var(--muted); margin-bottom: 32px;
+  }
+  .precio-incluye-mini {
+    display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px;
+  }
+  .precio-incluye-mini-item {
+    font-size: 14px; font-weight: 300; color: var(--ink);
+    padding-left: 18px; position: relative; line-height: 1.5;
+  }
+  .precio-incluye-mini-item::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+  .precio-right {
+    background: var(--dark); padding: 56px 48px;
+  }
+  .precio-right-title {
+    font-family: var(--serif); font-size: 28px; font-weight: 700;
+    color: var(--cream); margin-bottom: 16px; line-height: 1.2;
+  }
+  .precio-right-title em { font-style: italic; color: var(--accent); }
+  .precio-right-body {
+    font-size: 15px; font-weight: 300; color: rgba(233,253,196,0.6);
+    line-height: 1.75; margin-bottom: 36px;
+  }
+  .precio-right-note {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
+    color: rgba(233,253,196,0.3); margin-top: 20px; line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark); padding: 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 20px;
+    border-top: 1px solid rgba(233,253,196,0.08);
+  }
+  .footer-brand {
+    font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--cream);
+  }
+  .footer-brand span { font-style: italic; color: var(--accent); }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-links a {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(233,253,196,0.25);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-copy { font-family: var(--mono); font-size: 10px; color: rgba(233,253,196,0.15); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+  @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .d1{transition-delay:0.1s} .d2{transition-delay:0.2s} .d3{transition-delay:0.3s}
+
+  /* MOBILE */
+  @media(max-width:768px){
+    nav{padding:16px 24px}
+    .nav-links{display:none}
+    .hero{grid-template-columns:1fr}
+    .hero-left{padding:120px 24px 60px;min-height:70vh}
+    .hero-right{padding:60px 24px;min-height:auto}
+    .hero-price-block{position:static;text-align:left;margin-bottom:32px}
+    .hero-price{font-size:40px;text-align:left}
+    .hero-price span{text-align:left}
+    .paraquien{padding:80px 24px}
+    .paraquien-header{grid-template-columns:1fr;gap:20px}
+    .paraquien-grid{grid-template-columns:1fr}
+    .paraquien-not{flex-direction:column;gap:12px}
+    .proceso{padding:80px 24px}
+    .proceso-steps{grid-template-columns:1fr 1fr}
+    .incluye-grid{grid-template-columns:1fr;gap:40px}
+    .mirada{padding:80px 24px}
+    .mirada-inner{grid-template-columns:1fr;gap:40px}
+    .testimonios{padding:80px 24px}
+    .testimonios-grid{grid-template-columns:1fr}
+    .precio-cta{grid-template-columns:1fr;padding:80px 24px;gap:40px}
+    footer{padding:40px 24px;flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-back">Narrar el Caos</a>
+  <span class="nav-title">Asesorías 1:1</span>
+  <div class="nav-links">
+    <a href="#para-quien">Para quién</a>
+    <a href="#proceso">El proceso</a>
+    <a href="#incluye">Qué incluye</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="#precio">Precio</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Narrar el Caos · Asesorías 1:1</p>
+    <h1 class="hero-title">
+      Cuando ya<br>no alcanza<br>con pensar
+      <em>sole.</em>
+    </h1>
+    <p class="hero-sub">Un proceso personalizado para ordenar lo que no cierra, nombrar lo que querés y encontrar el primer movimiento concreto.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/5491167371215?text=Hola%20Agos%2C%20quiero%20saber%20m%C3%A1s%20sobre%20las%20asesor%C3%ADas%201%3A1" target="_blank" class="btn-dark">
+        <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;display:inline;margin-right:8px;vertical-align:middle;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Escribime por WhatsApp
+      </a>
+      <a href="#proceso" class="btn-outline" style="border-color:rgba(233,253,196,0.2);color:rgba(233,253,196,0.6);">Ver cómo funciona</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-price-block">
+      <p class="hero-price-label">Inversión total</p>
+      <p class="hero-price">$180.000<span>pesos argentinos · proceso completo</span></p>
+    </div>
+    <div style="flex:1;display:flex;align-items:flex-end;">
+      <div>
+        <p class="hero-right-quote">"No es terapia. No es coaching. Es un acompañamiento desde adentro de la experiencia para que puedas empezar a narrarte distinto."</p>
+        <p class="hero-right-sub">Agos Concilio — escritore, pedagoge social, estudiante de psicología</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="ticker-item">Proceso personalizado</span>
+    <span class="ticker-item">Escritura creativa</span>
+    <span class="ticker-item">Pedagogía social</span>
+    <span class="ticker-item">3 a 4 sesiones</span>
+    <span class="ticker-item">Mes de soporte</span>
+    <span class="ticker-item">Sin fórmulas</span>
+    <span class="ticker-item">Proceso personalizado</span>
+    <span class="ticker-item">Escritura creativa</span>
+    <span class="ticker-item">Pedagogía social</span>
+    <span class="ticker-item">3 a 4 sesiones</span>
+    <span class="ticker-item">Mes de soporte</span>
+    <span class="ticker-item">Sin fórmulas</span>
+  </div>
+</div>
+
+<!-- PARA QUIÉN -->
+<section class="paraquien" id="para-quien">
+  <div class="paraquien-header reveal">
+    <h2 class="paraquien-title">¿Para<br>quién <em>es esto?</em></h2>
+    <p class="paraquien-sub">Para personas que sienten que el personaje que vienen siendo ya no las sostiene y necesitan un espacio real para ordenarse, narrarse y moverse.</p>
+  </div>
+  <div class="paraquien-grid">
+    <div class="paraquien-card reveal">
+      <div class="paraquien-num">01</div>
+      <p class="paraquien-card-label">El bloqueo</p>
+      <h3 class="paraquien-card-title">Sabés lo que querés pero no podés empezar</h3>
+      <p class="paraquien-card-body">Hay ideas, saberes, recorridos. Pero algo se interpone entre saber y poder. La energía se gasta en círculos y el movimiento no aparece.</p>
+    </div>
+    <div class="paraquien-card reveal d1">
+      <div class="paraquien-num">02</div>
+      <p class="paraquien-card-label">El quiebre</p>
+      <h3 class="paraquien-card-title">Lo que hacés ya no te representa</h3>
+      <p class="paraquien-card-body">Estás en transición, bloqueo o crisis. Las fórmulas que encontraste afuera no terminaron de cerrar. Necesitás algo más personalizado y más honesto.</p>
+    </div>
+    <div class="paraquien-card reveal d2">
+      <div class="paraquien-num">03</div>
+      <p class="paraquien-card-label">La búsqueda</p>
+      <h3 class="paraquien-card-title">Querés reescribirte pero no sabés por dónde</h3>
+      <p class="paraquien-card-body">Hay una versión más auténtica que todavía no encontró su lugar. Querés tomarte la vida como una creación propia y necesitás acompañamiento para dar el primer paso.</p>
+    </div>
+  </div>
+  <div class="paraquien-not reveal">
+    <p class="paraquien-not-label">No es para quien</p>
+    <p class="paraquien-not-body">Busca resultados inmediatos, fórmulas de éxito rápido o promesas de transformación en una sola sesión. Este proceso requiere presencia, disposición y tiempo.</p>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="proceso" id="proceso">
+  <div class="proceso-header reveal">
+    <p class="section-label">Cómo funciona</p>
+    <h2 class="proceso-title">El <em>proceso</em> paso a paso.</h2>
+    <p class="proceso-sub">Un proceso de 3 a 4 sesiones más un mes de soporte extendido. Sin manual preestablecido: cada proceso se construye según lo que aparece.</p>
+  </div>
+  <div class="proceso-steps">
+    <div class="paso reveal">
+      <div class="paso-num">1</div>
+      <h3 class="paso-title">Charla inicial gratuita</h3>
+      <p class="paso-body">Antes de arrancar, hablamos 20 minutos para entender en qué momento estás y si el proceso es lo que necesitás. Sin compromiso.</p>
+    </div>
+    <div class="paso reveal d1">
+      <div class="paso-num">2</div>
+      <h3 class="paso-title">Sesiones de trabajo</h3>
+      <p class="paso-body">Entre 3 y 4 encuentros de 90 minutos vía videollamada. Trabajamos sobre tu historia, tus bloqueos, tu deseo y lo que estás intentando armar.</p>
+    </div>
+    <div class="paso reveal d2">
+      <div class="paso-num">3</div>
+      <h3 class="paso-title">Ejercicios entre sesiones</h3>
+      <p class="paso-body">Después de cada encuentro te dejo materiales y ejercicios de escritura para seguir procesando. El trabajo no termina cuando se cierra la videollamada.</p>
+    </div>
+    <div class="paso reveal d3">
+      <div class="paso-num">4</div>
+      <h3 class="paso-title">Mes de soporte</h3>
+      <p class="paso-body">Al terminar las sesiones, un mes de acompañamiento por WhatsApp para sostener el proceso, despejar dudas y no quedarte sole con lo que surgió.</p>
+    </div>
+  </div>
+
+  <!-- QUÉ INCLUYE -->
+  <div class="incluye-grid" id="incluye">
+    <div class="incluye-left reveal">
+      <p class="section-label">Qué incluye</p>
+      <h2 class="incluye-title">Todo lo que<br><em>te llevás.</em></h2>
+      <p class="incluye-body">No hay un paquete estándar. Cada proceso se arma en función de lo que aparece. Pero hay cosas que siempre están.</p>
+    </div>
+    <div class="incluye-right reveal d1">
+      <ul class="incluye-list">
+        <li class="incluye-item">
+          <div class="incluye-icon"><span>01</span></div>
+          <div class="incluye-item-content">
+            <p class="incluye-item-title">3 a 4 sesiones 1:1 de 90 minutos</p>
+            <p class="incluye-item-body">Videollamada personalizada, sin guión predeterminado. Trabajamos desde donde estás.</p>
+          </div>
+        </li>
+        <li class="incluye-item">
+          <div class="incluye-icon"><span>02</span></div>
+          <div class="incluye-item-content">
+            <p class="incluye-item-title">Materiales y ejercicios escritos post-sesión</p>
+            <p class="incluye-item-body">Ejercicios de escritura creativa para seguir procesando entre encuentros. Adaptados a tu momento específico.</p>
+          </div>
+        </li>
+        <li class="incluye-item">
+          <div class="incluye-icon"><span>03</span></div>
+          <div class="incluye-item-content">
+            <p class="incluye-item-title">Informe escrito de cierre</p>
+            <p class="incluye-item-body">Un resumen del proceso: lo que se movió, lo que se nombró, el primer paso concreto hacia adelante.</p>
+          </div>
+        </li>
+        <li class="incluye-item">
+          <div class="incluye-icon"><span>04</span></div>
+          <div class="incluye-item-content">
+            <p class="incluye-item-title">Mes de soporte por WhatsApp</p>
+            <p class="incluye-item-body">Acompañamiento real después de las sesiones para que el proceso no se diluya.</p>
+          </div>
+        </li>
+        <li class="incluye-item">
+          <div class="incluye-icon"><span>05</span></div>
+          <div class="incluye-item-content">
+            <p class="incluye-item-title">Mirada psicoeducativa, narrativa y crítica</p>
+            <p class="incluye-item-body">No trabajo desde un solo enfoque. La psicología, la pedagogía social y la escritura se integran según lo que necesitás.</p>
+          </div>
+        </li>
+      </ul>
+      <div class="soporte-box">
+        <p class="soporte-label">El soporte extendido</p>
+        <h3 class="soporte-title">Un mes más allá de las sesiones</h3>
+        <p class="soporte-body">Porque la transformación no ocurre en la videollamada. Ocurre después, cuando te quedás sole con lo que surgió. El mes de soporte existe para que no tengas que atravesar eso sin red.</p>
+        <div class="soporte-items">
+          <p class="soporte-item">Consultas por WhatsApp en horario acordado</p>
+          <p class="soporte-item">Revisión de materiales que vayas produciendo</p>
+          <p class="soporte-item">Acompañamiento para implementar lo que surgió</p>
+          <p class="soporte-item">Una videollamada de seguimiento si se necesita</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA MIRADA -->
+<section class="mirada">
+  <div class="mirada-inner">
+    <div class="mirada-left reveal">
+      <p class="section-label" style="color:rgba(61,47,110,0.5);">Por qué es distinto</p>
+      <h2 class="mirada-title">No acompaño<br>desde <em>afuera.</em></h2>
+      <p class="mirada-body">Atravesé crisis de identidad, salida del clóset, diagnóstico de salud mental, cambios de país, de trabajo, de forma de vida. <strong>Lo que ofrezco no es teoría: es metodología nacida de la experiencia propia.</strong></p>
+      <p class="mirada-body">Trabajo entre la pedagogía social, la psicología en formación y la escritura creativa. No separo lo emocional de lo estratégico porque en la vida real tampoco están separados.</p>
+      <p class="mirada-body">Y no prometo lo que no puedo dar. Este proceso no resuelve todo ni en poco tiempo. Pero sí pone en movimiento algo que estaba trabado.</p>
+    </div>
+    <div class="mirada-right reveal d1">
+      <div class="mirada-card">
+        <p class="mirada-card-title">Pedagogía social</p>
+        <p class="mirada-card-body">No hay fórmulas universales. El proceso parte de tu historia, tu contexto y tu cuerpo. Trabajo desde donde estás, no desde donde deberías estar.</p>
+      </div>
+      <div class="mirada-card">
+        <p class="mirada-card-title">Psicología en formación</p>
+        <p class="mirada-card-body">Una mirada que integra autoconocimiento, salud mental y procesos internos sin reemplazar la terapia. Esto no es lo mismo que ir al psicólogo.</p>
+      </div>
+      <div class="mirada-card">
+        <p class="mirada-card-title">Escritura creativa como dispositivo</p>
+        <p class="mirada-card-body">La escritura como herramienta de acceso. No para producir textos bonitos, sino para que puedas nombrarte y reconocerte en lo que escribís.</p>
+      </div>
+      <div class="mirada-card">
+        <p class="mirada-card-title">Perspectiva interseccional</p>
+        <p class="mirada-card-body">Género, identidad, cuerpo, clase, salud mental: todo tiene peso en la forma en que construimos quiénes somos. Eso no se ignora en el proceso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios" id="testimonios">
+  <div class="testimonios-header reveal">
+    <p class="section-label" style="color:rgba(233,253,196,0.3);">Lo que dicen quienes pasaron por el proceso</p>
+    <h2 class="testimonios-title">El proceso<br><em>desde adentro.</em></h2>
+  </div>
+  <div class="testimonios-grid">
+    <div class="testi reveal">
+      <p class="testi-body">Lo que más me gustó fue la entrega y la predisposición de Agos. Se nota la pasión que tiene por lo que hace. En cada encuentro se percibía su energía, su compromiso y la forma en que pone todo de sí en el proceso. Eso llega, se atraviesa, y hace que una se sienta contenida y segura.</p>
+      <p class="testi-author">Participante del proceso</p>
+    </div>
+    <div class="testi reveal d1">
+      <p class="testi-body">Un antes y un después en mi forma de mirarme, de crear y de confiar en mis propios procesos.</p>
+      <p class="testi-author">Participante del proceso</p>
+    </div>
+    <div class="testi reveal d2">
+      <p class="testi-body">Con Agos sentí que podía abrirme, que podía contarle todo sin miedo. Es una persona con una luz enorme, con la que se puede construir cosas maravillosas. Tiene una manera muy especial de acompañar, con una pedagogía y una sensibilidad únicas.</p>
+      <p class="testi-author">Participante del proceso</p>
+    </div>
+    <div class="testi reveal">
+      <p class="testi-body">Me llevó la certeza de que yo tenía muchas de las cosas que buscaba, solo necesitaba mirarlas distinto. Me llevó el valor de mostrarme tal cual soy. En definitiva, me llevó una versión de mí mucho más consciente, más segura y más conectada con mi historia.</p>
+      <p class="testi-author">Participante del proceso</p>
+    </div>
+    <div class="testi reveal d1">
+      <p class="testi-body">Quería aprender a desarrollar mi perfil profesional dentro de las principales plataformas de búsqueda laboral. Agos me ayudó a ver cómo relacionar mis estudios académicos con mi historia. Fue inquietante, movilizador y abrazador.</p>
+      <p class="testi-author">Participante del proceso</p>
+    </div>
+    <div class="testi reveal d2">
+      <p class="testi-body">El acompañamiento fue hermoso. Me comprometido, inquietante, movilizador y abrazador. Gracias. Lo necesitaba.</p>
+      <p class="testi-author">Participante del proceso</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIO + CTA -->
+<section class="precio-cta" id="precio">
+  <div class="precio-left reveal">
+    <p class="precio-label">Inversión</p>
+    <p class="precio-monto">$180.000</p>
+    <p class="precio-moneda">pesos argentinos · proceso completo</p>
+    <div class="precio-incluye-mini">
+      <p class="precio-incluye-mini-item">3 a 4 sesiones de 90 minutos</p>
+      <p class="precio-incluye-mini-item">Materiales y ejercicios post-sesión</p>
+      <p class="precio-incluye-mini-item">Informe de cierre</p>
+      <p class="precio-incluye-mini-item">Mes de soporte por WhatsApp</p>
+    </div>
+    <a href="#sobre-mi" class="btn-outline">Ver quién soy →</a>
+  </div>
+  <div class="precio-right reveal d1">
+    <h3 class="precio-right-title">¿Es momento de<br><em>narrarte distinto?</em></h3>
+    <p class="precio-right-body">Antes de arrancar, hablamos. Escribime por WhatsApp y contame en dos líneas en qué momento estás. Si el proceso es lo que necesitás, lo armamos juntes.</p>
+    <a href="https://wa.me/5491167371215?text=Hola%20Agos%2C%20quiero%20saber%20m%C3%A1s%20sobre%20las%20asesor%C3%ADas%201%3A1" target="_blank" class="btn-wsp">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Escribime por WhatsApp
+    </a>
+    <p class="precio-right-note">Respondí en el horario que me sea posible. Si no hay lugar disponible en el momento, te anoto en lista de espera.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-brand">Narrar el Caos · <span>Asesorías 1:1</span></p>
+  <div class="footer-links">
+    <a href="index.html">Inicio</a>
+    <a href="antes-de-que-sea-demasiado-tarde.html">La novela</a>
+    <a href="https://www.instagram.com/narrandoelcaos/" target="_blank">Instagram</a>
+    <a href="https://wa.me/5491167371215" target="_blank">WhatsApp</a>
+  </div>
+  <p class="footer-copy">© 2026 Agos Concilio</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
