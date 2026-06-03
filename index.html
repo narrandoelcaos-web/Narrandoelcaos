@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Narrar el Caos — Agos Concilio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #e9fdc4;
+    --dark: #3d2f6e;
+    --ink: #3d2f6e;
+    --accent: #9e9ded;
+    --accent-light: #b8b8f5;
+    --lime: #9e9ded;
+    --muted: #8e7cc3;
+    --border: rgba(142,124,195,0.25);
+    --serif: 'Playfair Display', Georgia, serif;
+    --mono: 'DM Mono', 'Courier New', monospace;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.2s, height 0.2s;
+    mix-blend-mode: multiply;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out, width 0.2s, height 0.2s, opacity 0.2s;
+    opacity: 0.5;
+  }
+  body:hover .cursor { opacity: 1; }
+
+  /* Noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1000; opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    padding: 20px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 100;
+    mix-blend-mode: multiply;
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    padding: 140px 60px 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(52px, 6vw, 88px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-family: var(--sans);
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--ink);
+    max-width: 420px;
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--lime);
+    color: var(--dark);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--dark); color: var(--lime); transform: translateY(-2px); }
+
+  .btn-ghost {
+    display: inline-block;
+    padding: 14px 32px;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { background: var(--ink); color: var(--cream); }
+
+  .hero-right {
+    position: relative;
+    background: var(--dark);
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeIn 1s 0.3s forwards;
+  }
+
+  .hero-image-placeholder {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.85;
+    mix-blend-mode: luminosity;
+  }
+
+  .hero-right-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(232,50,26,0.15) 0%, transparent 60%);
+  }
+
+  .hero-right-text {
+    position: absolute;
+    bottom: 48px; left: 40px; right: 40px;
+  }
+  .hero-right-text p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--cream);
+    border-top: 1px solid rgba(245,240,232,0.3);
+    padding-top: 20px;
+  }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 40px; left: 60px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex; align-items: center; gap: 12px;
+    opacity: 0; animation: fadeUp 0.8s 1.2s forwards;
+  }
+  .hero-scroll-hint::before {
+    content: '';
+    display: block; width: 40px; height: 1px;
+    background: var(--muted);
+  }
+
+  /* TICKER */
+  .ticker {
+    background: var(--lime);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 20s linear infinite;
+  }
+  .ticker-inner span {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dark);
+    margin: 0 48px;
+  }
+  .ticker-inner span::before { content: '◆  '; }
+
+  /* SECTIONS */
+  section { position: relative; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  /* WHAT */
+  .what {
+    padding: 120px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .what-left { padding-top: 8px; }
+  .what-number {
+    font-family: var(--serif);
+    font-size: 120px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--dark);
+    opacity: 0.06;
+    margin-bottom: -40px;
+  }
+  .what-title {
+    font-family: var(--serif);
+    font-size: clamp(38px, 4vw, 58px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--dark);
+    margin-bottom: 24px;
+  }
+  .what-title em { font-style: italic; color: var(--accent); }
+
+  .what-right {}
+  .what-body {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .what-quote {
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    margin: 40px 0;
+    background: rgba(123,47,190,0.06);
+  }
+  .what-quote p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--dark);
+  }
+
+  /* FOR WHO */
+  .forwho {
+    padding: 120px 60px;
+    background: var(--dark);
+    color: var(--cream);
+  }
+  .forwho-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 80px;
+    border-bottom: 1px solid rgba(245,240,232,0.12);
+    padding-bottom: 40px;
+  }
+  .forwho-title {
+    font-family: var(--serif);
+    font-size: clamp(42px, 5vw, 72px);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--cream);
+    max-width: 600px;
+  }
+  .forwho-title em { font-style: italic; color: var(--accent); }
+  .forwho-sub {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: rgba(245,240,232,0.4);
+    max-width: 220px;
+    text-align: right;
+  }
+
+  .forwho-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .forwho-item {
+    padding: 40px 32px;
+    border: 1px solid rgba(245,240,232,0.08);
+    transition: background 0.3s;
+  }
+  .forwho-item:hover { background: rgba(200,230,60,0.07); }
+  .forwho-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .forwho-item-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .forwho-item-body {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.7;
+  }
+
+  .forwho-not {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(245,240,232,0.08);
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  .forwho-not-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.3);
+    white-space: nowrap;
+    padding-top: 4px;
+    min-width: 140px;
+  }
+  .forwho-not-text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(245,240,232,0.5);
+  }
+
+  /* SOBRE MI */
+  .about {
+    padding: 120px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .about-image-wrap {
+    position: relative;
+  }
+  .about-image-box {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--dark);
+    overflow: hidden;
+    position: relative;
+  }
+  .about-image-box img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+    mix-blend-mode: luminosity;
+  }
+  .about-image-caption {
+    position: absolute;
+    bottom: -20px; right: -20px;
+    background: var(--lime);
+    padding: 16px 20px;
+  }
+  .about-image-caption p {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dark);
+  }
+  .about-content { }
+  .about-title {
+    font-family: var(--serif);
+    font-size: clamp(38px, 4vw, 56px);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 32px;
+    color: var(--dark);
+  }
+  .about-title em { font-style: italic; color: var(--accent); }
+  .about-body {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .about-body strong { font-weight: 500; }
+  .about-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 40px;
+  }
+  .about-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .about-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* PROPUESTA */
+  .propuesta {
+    padding: 120px 60px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+  }
+  .propuesta-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .propuesta-title {
+    font-family: var(--serif);
+    font-size: clamp(44px, 5.5vw, 80px);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--dark);
+    margin-bottom: 20px;
+  }
+  .propuesta-title em { font-style: italic; color: var(--accent); }
+  .propuesta-sub {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .propuesta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 60px;
+  }
+  .propuesta-card {
+    padding: 48px 36px;
+    background: var(--dark);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .propuesta-card:hover { transform: translateY(-4px); }
+  .propuesta-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .propuesta-card:hover::before { transform: scaleX(1); }
+  .propuesta-card-num {
+    font-family: var(--serif);
+    font-size: 64px;
+    font-weight: 900;
+    color: rgba(245,240,232,0.06);
+    line-height: 1;
+    margin-bottom: -16px;
+  }
+  .propuesta-card-title {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .propuesta-card-body {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(245,240,232,0.65);
+    line-height: 1.75;
+  }
+
+  .propuesta-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 2px;
+  }
+  .propuesta-obra {
+    padding: 48px 36px;
+    border: 1px solid var(--border);
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    transition: background 0.3s;
+  }
+  .propuesta-obra:hover { background: rgba(123,47,190,0.05); }
+  .propuesta-obra-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .propuesta-obra-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .propuesta-obra-body {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .propuesta-obra-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+
+  /* TESTIMONIOS */
+  .testimonios {
+    padding: 120px 60px;
+    background: var(--dark);
+    overflow: hidden;
+  }
+  .testimonios-header {
+    margin-bottom: 64px;
+  }
+  .testimonios-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.05;
+  }
+  .testimonios-title em { font-style: italic; color: var(--accent); }
+
+  .testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .testi-card {
+    padding: 36px 32px;
+    border: 1px solid rgba(245,240,232,0.1);
+    position: relative;
+    transition: border-color 0.3s;
+  }
+  .testi-card:hover { border-color: var(--accent); }
+  .testi-card::before {
+    content: '"';
+    position: absolute; top: 20px; right: 24px;
+    font-family: var(--serif);
+    font-size: 80px;
+    color: rgba(245,240,232,0.05);
+    line-height: 1;
+  }
+  .testi-body {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(245,240,232,0.8);
+    margin-bottom: 24px;
+  }
+  .testi-author {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.3);
+  }
+
+  /* TALLER */
+  .taller {
+    padding: 120px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+  }
+  .taller-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .taller-title {
+    font-family: var(--serif);
+    font-size: clamp(40px, 4.5vw, 64px);
+    font-weight: 900;
+    line-height: 0.98;
+    color: var(--dark);
+    margin-bottom: 28px;
+  }
+  .taller-title em { font-style: italic; color: var(--accent); }
+  .taller-body {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .taller-specs {
+    margin: 40px 0;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .taller-spec {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .taller-spec:last-child { border-bottom: none; }
+  .taller-spec-key {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    min-width: 90px;
+    padding-top: 2px;
+  }
+  .taller-spec-val {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .taller-right {
+    background: var(--dark);
+    padding: 64px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .taller-right::before {
+    content: 'próximamente';
+    position: absolute; top: 32px; right: -30px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    transform: rotate(90deg);
+    transform-origin: right center;
+  }
+  .taller-right-num {
+    font-family: var(--serif);
+    font-size: 120px;
+    font-weight: 900;
+    color: rgba(245,240,232,0.04);
+    line-height: 1;
+    margin-bottom: -20px;
+  }
+  .taller-right-title {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+  .taller-right-title em { font-style: italic; color: var(--accent); }
+  .taller-right-body {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+  .taller-right-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 12px;
+    margin-bottom: 40px;
+  }
+  .taller-right-list li {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(245,240,232,0.7);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .taller-right-list li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 12px;
+  }
+  .taller-right-cta {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--lime);
+    color: var(--dark);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .taller-right-cta:hover { background: var(--cream); color: var(--dark); }
+
+
+
+  /* UNIVERSO ARTÍSTICO */
+  .universo {
+    padding: 120px 60px;
+    border-bottom: 1px solid var(--border);
+  }
+  .universo-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+    margin-bottom: 80px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .universo-title {
+    font-family: var(--serif);
+    font-size: clamp(40px, 4.5vw, 64px);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--dark);
+  }
+  .universo-title em { font-style: italic; color: var(--accent); }
+  .universo-sub {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.75;
+    align-self: end;
+  }
+
+  /* Novela */
+  .universo-novela {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 60px;
+    align-items: start;
+    margin-bottom: 4px;
+    padding: 60px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+  }
+  .universo-obra-type {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .universo-obra-title {
+    font-family: var(--serif);
+    font-size: clamp(30px, 3.5vw, 48px);
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.05;
+    margin-bottom: 24px;
+  }
+  .universo-obra-body {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .universo-novela-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .universo-novela-aside { display: flex; flex-direction: column; gap: 20px; }
+  .universo-libro-cover {
+    width: 100%;
+    aspect-ratio: 2/3;
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .universo-dato {
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+  }
+  .universo-dato-key {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .universo-dato-val {
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* Podcast */
+  .universo-podcast {
+    background: var(--dark);
+    padding: 0;
+  }
+  .universo-podcast-inner {
+    padding: 60px;
+  }
+  .universo-podcast-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
+  .universo-podcast-title {
+    font-family: var(--serif);
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1;
+  }
+  .universo-podcast-badge {
+    background: var(--accent);
+    padding: 14px 18px;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--dark);
+    line-height: 1.1;
+    flex-shrink: 0;
+  }
+  .universo-podcast-badge span {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+  .universo-podcast-temporadas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 40px;
+  }
+  .universo-temp {
+    background: rgba(158,157,237,0.07);
+    padding: 28px;
+    border: 1px solid rgba(158,157,237,0.15);
+  }
+  .universo-temp-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(233,253,196,0.4);
+    margin-bottom: 10px;
+  }
+  .universo-temp-estado {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+  .universo-temp-estado.disponible {
+    background: rgba(233,253,196,0.12);
+    color: var(--cream);
+  }
+  .universo-temp-estado.proximamente {
+    background: rgba(158,157,237,0.2);
+    color: var(--accent);
+  }
+  .universo-temp-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(233,253,196,0.55);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .universo-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .universo-link:hover { text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .universo { padding: 80px 24px; }
+    .universo-header { grid-template-columns: 1fr; gap: 20px; }
+    .universo-novela { grid-template-columns: 1fr; padding: 40px 24px; }
+    .universo-podcast-inner { padding: 40px 24px; }
+    .universo-podcast-temporadas { grid-template-columns: 1fr; }
+  }
+
+  /* CAMPAÑA */
+  .campana {
+    padding: 120px 60px;
+    background: var(--dark);
+    border-bottom: 1px solid rgba(158,157,237,0.2);
+  }
+  .campana-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .campana-title {
+    font-family: var(--serif);
+    font-size: clamp(44px, 5vw, 72px);
+    font-weight: 900;
+    line-height: 0.97;
+    color: var(--cream);
+    margin-bottom: 32px;
+  }
+  .campana-title em { font-style: italic; color: var(--accent); }
+  .campana-body {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(233,253,196,0.75);
+    margin-bottom: 18px;
+  }
+  .campana-body-em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--cream);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin: 28px 0 36px;
+    background: rgba(158,157,237,0.08);
+  }
+  .campana-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .campana-banner {
+    background: var(--cream);
+    padding: 48px 40px;
+    position: relative;
+  }
+  .campana-banner-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .campana-banner-label::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  .campana-banner-title {
+    font-family: var(--serif);
+    font-size: 30px;
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  .campana-banner-body {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 28px;
+  }
+  .campana-destino-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .campana-destino-list {
+    list-style: none;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .campana-destino-list li {
+    font-size: 13px;
+    color: var(--ink);
+    padding-left: 16px;
+    position: relative;
+  }
+  .campana-destino-list li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 11px;
+  }
+  .campana-cta {
+    display: block;
+    padding: 14px 24px;
+    background: var(--dark);
+    color: var(--cream);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.2s;
+    margin-bottom: 16px;
+  }
+  .campana-cta:hover { background: var(--accent); }
+  .campana-cta-sub {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .campana-cta-link {
+    display: block;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .campana-cta-link:hover { text-decoration: underline; }
+  @media (max-width: 768px) {
+    .campana { padding: 80px 24px; }
+    .campana-inner { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* UNIVERSO OBRAS */
+  .obras {
+    padding: 120px 60px;
+    border-bottom: 1px solid var(--border);
+  }
+  .obras-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 64px;
+  }
+  .obras-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.05;
+  }
+  .obras-title em { font-style: italic; color: var(--accent); }
+  .obras-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2px;
+  }
+  .obra-card {
+    background: var(--dark);
+    padding: 56px 48px;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .obra-card:hover { transform: scale(1.01); }
+  .obra-card-accent {
+    position: absolute; top: 0; right: 0;
+    width: 120px; height: 120px;
+    background: var(--lime);
+    opacity: 0.07;
+    border-radius: 50%;
+    transform: translate(40px, -40px);
+  }
+  .obra-type {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .obra-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+  .obra-body {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.75;
+    margin-bottom: 28px;
+  }
+  .obra-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245,240,232,0.3);
+    padding-bottom: 2px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .obra-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* CTA FINAL */
+  .cta-final {
+    padding: 160px 60px;
+    text-align: center;
+    background: var(--accent);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-final::before {
+    content: 'NARRAR';
+    position: absolute;
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 240px;
+    color: rgba(200,230,60,0.08);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .cta-title {
+    font-family: var(--serif);
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--cream);
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .cta-title em { font-style: italic; opacity: 0.7; }
+  .cta-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(245,240,232,0.8);
+    max-width: 480px;
+    margin: 0 auto 48px;
+    line-height: 1.7;
+    position: relative;
+  }
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    position: relative;
+  }
+  .cta-btn-white {
+    display: inline-block;
+    padding: 16px 40px;
+    background: var(--lime);
+    color: var(--dark);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .cta-btn-white:hover { background: var(--dark); color: var(--lime); }
+  .cta-btn-outline {
+    display: inline-block;
+    padding: 16px 40px;
+    border: 1px solid rgba(245,240,232,0.5);
+    color: var(--cream);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .cta-btn-outline:hover { background: rgba(245,240,232,0.1); }
+
+  /* FOOTER */
+  footer {
+    padding: 60px;
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: end;
+  }
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .footer-tagline {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(245,240,232,0.3);
+  }
+  .footer-links { display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-right { text-align: right; }
+  .footer-social { display: flex; justify-content: flex-end; gap: 20px; margin-bottom: 24px; }
+  .footer-social a {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(245,240,232,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-social a:hover { color: var(--accent); }
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: rgba(245,240,232,0.2);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    body { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 120px 24px 60px; }
+    .hero-right { min-height: 55vw; }
+    .hero-scroll-hint { display: none; }
+
+    .what { grid-template-columns: 1fr; padding: 80px 24px; gap: 40px; }
+    .what-number { font-size: 80px; margin-bottom: -20px; }
+
+    .forwho { padding: 80px 24px; }
+    .forwho-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .forwho-sub { text-align: left; }
+    .forwho-grid { grid-template-columns: 1fr; }
+    .forwho-not { flex-direction: column; gap: 16px; }
+    .forwho-not-label { min-width: auto; }
+
+    .about { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
+    .about-image-caption { right: 0; }
+
+    .propuesta { padding: 80px 24px; }
+    .propuesta-grid { grid-template-columns: 1fr; }
+    .propuesta-bottom { grid-template-columns: 1fr; }
+
+    .testimonios { padding: 80px 24px; }
+    .testimonios-grid { grid-template-columns: 1fr; }
+
+    .taller { grid-template-columns: 1fr; padding: 80px 24px; gap: 40px; }
+
+    .obras { padding: 80px 24px; }
+    .obras-header { flex-direction: column; gap: 20px; }
+    .obras-grid { grid-template-columns: 1fr; }
+
+    .cta-final { padding: 100px 24px; }
+    .cta-actions { flex-direction: column; align-items: center; }
+
+    footer { grid-template-columns: 1fr; padding: 60px 24px; gap: 32px; }
+    .footer-right { text-align: left; }
+    .footer-social { justify-content: flex-start; }
+
+    .hero-title { font-size: 44px; }
+    .taller-right { padding: 48px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Narrar el Caos</a>
+  <div class="nav-links">
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#propuesta">El proceso</a>
+    <a href="#taller">Taller</a>
+    <a href="#campana">La campaña</a>
+    <a href="#obras">Obras</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Escritore · Pedagoge social · Estudiante de psicología</p>
+    <h1 class="hero-title">
+      El caos<br>
+      no es el<br>
+      <em>problema.</em>
+    </h1>
+    <p class="hero-sub">
+      Es la materia prima. Lo que hacemos juntes es convertirlo en lenguaje, en claridad, en camino.
+    </p>
+    <div class="hero-actions">
+      <a href="#propuesta" class="btn-primary">Conocé el proceso</a>
+      <a href="#sobre-mi" class="btn-ghost">Quién soy</a>
+    </div>
+    <div class="hero-scroll-hint">Seguí bajando</div>
+  </div>
+  <div class="hero-right">
+    <img src="foto-agos-perfil.jpg" class="hero-image-placeholder" alt="Agos Concilio">
+    <div class="hero-right-overlay"></div>
+    <div class="hero-right-text">
+      <p>"No es que no sabés qué hacer.<br>Es que todavía no encontraste cómo narrarlo."</p>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Escritura como dispositivo</span>
+    <span>Pedagogía social</span>
+    <span>Reinvención vital</span>
+    <span>Psicología en formación</span>
+    <span>Identidad en movimiento</span>
+    <span>Narrar el caos</span>
+    <span>Escritura como dispositivo</span>
+    <span>Pedagogía social</span>
+    <span>Reinvención vital</span>
+    <span>Psicología en formación</span>
+    <span>Identidad en movimiento</span>
+    <span>Narrar el caos</span>
+  </div>
+</div>
+
+<!-- QUÉ ES -->
+<section class="what" id="propuesta">
+  <div class="what-left reveal">
+    <div class="what-number">01</div>
+    <h2 class="what-title">Tomarse la vida como una <em>creación.</em></h2>
+  </div>
+  <div class="what-right reveal reveal-delay-1">
+    <p class="section-label">Narrar el Caos — el universo</p>
+    <p class="what-body">
+      Acompaño a personas que sienten que el personaje que vienen siendo ya no las sostiene a escribir una versión más auténtica de sí mismas.
+    </p>
+    <p class="what-body">
+      Narrar el Caos es el universo donde eso sucede: un espacio de escritura, metodología y acompañamiento para quienes están en ese momento bisagra donde lo que fueron ya no alcanza y lo que serán todavía no tiene nombre.
+    </p>
+    <div class="what-quote">
+      <p>Uso la escritura como dispositivo de transformación. No como fin en sí misma, sino como herramienta para acceder a lo que somos.</p>
+    </div>
+    <p class="what-body">
+      El trabajo nació de una experiencia propia de reinvención radical: cambios de identidad, de género, de país, de rol. Lo que era caos personal se convirtió en metodología. Integra pedagogía social, psicología en formación, comunicación y escritura creativa.
+    </p>
+    <p class="what-body">
+      No trabajo con fórmulas ni promesas rápidas. Trabajo con procesos que convierten el ruido en claridad, la historia en dirección.
+    </p>
+  </div>
+</section>
+
+<!-- PARA QUIÉN -->
+<section class="forwho" id="para-quien">
+  <div class="forwho-header reveal">
+    <h2 class="forwho-title">¿Para quién<br>es <em>esto?</em></h2>
+    <p class="forwho-sub">Para quienes sienten que el personaje que vienen siendo ya no los sostiene</p>
+  </div>
+  <div class="forwho-grid">
+    <div class="forwho-item reveal">
+      <p class="forwho-num">01</p>
+      <h3 class="forwho-item-title">Quienes saben pero no pueden</h3>
+      <p class="forwho-item-body">Hay ideas, saberes, recorridos acumulados. Pero algo se interpone entre saber y poder. El movimiento no aparece y la energía se gasta en círculos.</p>
+    </div>
+    <div class="forwho-item reveal reveal-delay-1">
+      <p class="forwho-num">02</p>
+      <h3 class="forwho-item-title">Quienes ya no encajan</h3>
+      <p class="forwho-item-body">Lo que hacés ya no representa quiénes son. Están en transición, bloqueo o crisis. Y las fórmulas que encontraron afuera no terminaron de cerrar.</p>
+    </div>
+    <div class="forwho-item reveal reveal-delay-2">
+      <p class="forwho-num">03</p>
+      <h3 class="forwho-item-title">Quienes quieren reescribirse</h3>
+      <p class="forwho-item-body">Hay una versión más auténtica que todavía no encontró su lugar. Quieren tomarse la vida como una creación y no saben por dónde empezar.</p>
+    </div>
+  </div>
+  <div class="forwho-not reveal">
+    <p class="forwho-not-label">No es para quien</p>
+    <p class="forwho-not-text">Busca resultados inmediatos, fórmulas de éxito rápido, recetas de productividad o promesas mágicas. Acá trabajamos con procesos reales que requieren tiempo y presencia.</p>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="about" id="sobre-mi">
+  <div class="about-image-wrap reveal">
+    <div class="about-image-box">
+      <img src="foto-agos-perfil.jpg" alt="Agos Concilio">
+    </div>
+    <div class="about-image-caption">
+      <p>Agos Concilio</p>
+      <p style="opacity:0.6;margin-top:2px;">Escritore · Pedagoge · Copy creativa</p>
+    </div>
+  </div>
+  <div class="about-content reveal reveal-delay-1">
+    <p class="section-label">Sobre mí</p>
+    <h2 class="about-title">Soy Agos.<br><em>Acompaño a quienes
+se están reescribiendo.</em></h2>
+    <p class="about-body">
+      Siempre supe que había algo que no cerraba. En el trabajo, en la identidad, en la forma en que el mundo nombra las cosas. No lo llamaba caos: lo llamaba yo.
+    </p>
+    <p class="about-body">
+      Con el tiempo entendí que esa sensación de no encajar no era un defecto. Era una lente. Una forma de ver lo que otros no ven todavía. <strong>Y que de ahí podía nacer algo.</strong>
+    </p>
+    <p class="about-body">
+      Narrar el Caos nació de esa experiencia: de hacer de la diferencia una herramienta, del desorden una pedagogía, del corrimiento un método. Hoy uso la escritura, la psicología y la pedagogía social para acompañar a personas que están en ese mismo punto de inflexión.
+    </p>
+
+    <div class="about-tags">
+      <span class="about-tag">Pedagogía Social</span>
+      <span class="about-tag">Psicología</span>
+      <span class="about-tag">Escritura Creativa</span>
+      <span class="about-tag">Comunicación</span>
+      <span class="about-tag">Perspectiva interseccional</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROPUESTA / PROCESO -->
+<section class="propuesta">
+  <div class="propuesta-header reveal">
+    <p class="section-label">El proceso</p>
+    <h2 class="propuesta-title">Convertir el<br><em>ruido</em> en dirección.</h2>
+    <p class="propuesta-sub">Tres pilares que forman el universo y se retroalimentan entre sí</p>
+  </div>
+  <div class="propuesta-grid">
+    <div class="propuesta-card reveal">
+      <div class="propuesta-card-num">01</div>
+      <h3 class="propuesta-card-title">La escritura como dispositivo</h3>
+      <p class="propuesta-card-body">No enseño a escribir. Uso la escritura para que puedas nombrarte, reconocerte y animarte a dar el paso que ya sabés que tenés que dar. La escritura como herramienta de acceso a lo que somos.</p>
+    </div>
+    <div class="propuesta-card reveal reveal-delay-1">
+      <div class="propuesta-card-num">02</div>
+      <h3 class="propuesta-card-title">La pedagogía social como método</h3>
+      <p class="propuesta-card-body">No hay fórmulas universales. El proceso parte de tu historia, tu contexto y tu cuerpo. Trabajo entre lo emocional y lo estratégico, entre el deseo y la acción posible.</p>
+    </div>
+    <div class="propuesta-card reveal reveal-delay-2">
+      <div class="propuesta-card-num">03</div>
+      <h3 class="propuesta-card-title">La experiencia vivida como punto de partida</h3>
+      <p class="propuesta-card-body">Acompaño desde adentro de la experiencia. Recorrí transformaciones radicales de identidad, de trabajo, de vida. No es teoría. Es metodología nacida del propio caos.</p>
+    </div>
+  </div>
+  <div class="propuesta-bottom reveal">
+    <div class="propuesta-obra">
+      <span class="propuesta-obra-icon">◎</span>
+      <div>
+        <p class="propuesta-obra-label">Acompañamiento individual</p>
+        <h3 class="propuesta-obra-title">Asesorías 1:1</h3>
+        <p class="propuesta-obra-body">Para cuando ya no alcanza con pensar sole. Trabajamos sobre tu recorrido, tus bloqueos y lo que estás intentando armar. Un proceso personalizado para ordenar y traducir en algo concreto.</p>
+      </div>
+    </div>
+    <div class="propuesta-obra">
+      <span class="propuesta-obra-icon">◈</span>
+      <div>
+        <p class="propuesta-obra-label">Cartas del Entre · mensual</p>
+        <h3 class="propuesta-obra-title">Newsletter</h3>
+        <p class="propuesta-obra-body">Pensamientos en movimiento sobre identidad, deseo, crisis, trabajo y lo que aparece cuando algo deja de encajar. Una vez al mes, sin ruido. También en Substack.</p>
+        <a href="https://preview.mailerlite.io/forms/1991842/176347366729712646/share" target="_blank" style="font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--accent);text-decoration:none;margin-top:10px;display:inline-block;">Suscribirse →</a>
+      </div>
+    </div>
+    <div class="propuesta-obra" style="grid-column: 1 / -1;">
+      <span class="propuesta-obra-icon">◉</span>
+      <div>
+        <p class="propuesta-obra-label">Podcast · Temporada 2 en producción</p>
+        <h3 class="propuesta-obra-title">Entre</h3>
+        <p class="propuesta-obra-body">Un espacio para pensar en voz alta sobre existencialismos, tránsitos e identidad. La primera temporada está disponible en Spotify. La segunda temporada —con entrevistas a personas que reescribieron algo— viene pronto.</p>
+        <a href="https://open.spotify.com/show/6CCUIcvoJixNGx0GwCGNlW?si=a000850f696d4512" target="_blank" style="font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--accent);text-decoration:none;margin-top:10px;display:inline-block;">Escuchar en Spotify →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios">
+  <div class="testimonios-header reveal">
+    <p class="section-label" style="color:rgba(245,240,232,0.3);">Lo que pasa cuando te narrás</p>
+    <h2 class="testimonios-title">El proceso<br><em>desde adentro.</em></h2>
+  </div>
+  <div class="testimonios-grid">
+    <div class="testi-card reveal">
+      <p class="testi-body">Lo que más me gustó fue la entrega y la predisposición de Agos. Se nota la pasión que tiene por lo que hace. En cada encuentro se percibía su energía, su compromiso y la forma en que pone todo de sí.</p>
+      <p class="testi-author">@narrandoelcaos</p>
+    </div>
+    <div class="testi-card reveal reveal-delay-1">
+      <p class="testi-body">Un antes y un después en mi forma de mirarme, de crear y de confiar en mis propios procesos.</p>
+      <p class="testi-author">@narrandoelcaos</p>
+    </div>
+    <div class="testi-card reveal reveal-delay-2">
+      <p class="testi-body">Con Agos sentí que podía abrirme, que podía contarle todo sin miedo. Es una persona con una luz enorme, con la que se puede construir cosas maravillosas. Tiene una manera muy especial de acompañar.</p>
+      <p class="testi-author">@narrandoelcaos</p>
+    </div>
+    <div class="testi-card reveal">
+      <p class="testi-body">Me llevó la certeza de que yo tenía muchas de las cosas que buscaba, solo necesitaba mirarlas distinto. Me llevó el valor de mostrarme tal cual soy. En definitiva, me llevó una versión de mí mucho más consciente.</p>
+      <p class="testi-author">@narrandoelcaos</p>
+    </div>
+    <div class="testi-card reveal reveal-delay-1">
+      <p class="testi-body">Quería aprender a desarrollar mi perfil profesional. Agos me ayudó a ver cómo relacionar mis estudios académicos con mi historia. Fue inquietante, movilizador y abrazador.</p>
+      <p class="testi-author">@narrandoelcaos</p>
+    </div>
+    <div class="testi-card reveal reveal-delay-2">
+      <p class="testi-body">El acompañamiento fue hermoso. Me comprometido, inquietante, movilizador y abrazador. Gracias. Lo necesitaba.</p>
+      <p class="testi-author">@narrandoelcaos</p>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPAÑA ANTES DE QUE SEA DEMASIADO TARDE -->
+<section class="campana" id="campana">
+  <div class="campana-inner">
+    <div class="campana-left reveal">
+      <p class="section-label">Obra · Autoficción · Performance</p>
+      <h2 class="campana-title">Antes de que<br>sea demasiado<br><em>tarde.</em></h2>
+      <p class="campana-body">
+        Una novela sobre lo que pasa cuando una forma de amar, de pensar y de habitar el cuerpo deja de funcionar.
+      </p>
+      <p class="campana-body">
+        La primera edición fue completamente autogestionada: escritura, edición, preventa y una presentación performática con lecturas, proyecciones, audios, música y fragmentos intervenidos en el espacio.
+      </p>
+      <p class="campana-body">
+        Después del lanzamiento pasó algo que no esperaba. La gente se quedó mucho tiempo leyendo los fragmentos colgados en las paredes. Varias personas me hablaron de capítulos específicos que les quedaron resonando. Otras dijeron que la parte performática había quedado corta y que querían volver a entrar a ese universo.
+      </p>
+      <p class="campana-body-em">
+        "Creo que tienen razón. Porque en algún punto el proyecto dejó de sentirse solamente como un libro."
+      </p>
+      <div class="campana-actions">
+        <a href="https://forms.gle/c2XdHjUnEExCrHFU8" target="_blank" class="btn-primary">Comprar el libro</a>
+        <a href="antes-de-que-sea-demasiado-tarde.html" class="btn-ghost" style="border-color:var(--cream);color:var(--cream);">Conocé la novela</a>
+      </div>
+    </div>
+    <div class="campana-right reveal reveal-delay-1">
+      <div class="campana-banner">
+        <p class="campana-banner-label">Campaña activa</p>
+        <h3 class="campana-banner-title">Nueva tirada<br>+ expansión<br>performática</h3>
+        <p class="campana-banner-body">Esta campaña busca financiar una nueva tirada del libro y el desarrollo de futuras experiencias escénicas y performáticas.</p>
+        <div class="campana-destino">
+          <p class="campana-destino-label">Todo lo recaudado va a:</p>
+          <ul class="campana-destino-list">
+            <li>Impresión de nueva tirada</li>
+            <li>Producción y montaje escénico</li>
+            <li>Materiales y registro</li>
+            <li>Desarrollo de futuras activaciones</li>
+          </ul>
+        </div>
+        <a href="antes-de-que-sea-demasiado-tarde.html" class="campana-cta">Más información sobre el proyecto</a>
+        <p class="campana-cta-sub">También podés suscribirte para seguir las novedades</p>
+        <a href="https://preview.mailerlite.io/forms/1991842/176347366729712646/share" target="_blank" class="campana-cta-link">Seguir el proyecto →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final" id="contacto">
+  <h2 class="cta-title reveal">¿Es momento de<br><em>narrarte distinto?</em></h2>
+  <p class="cta-sub reveal">Contame en qué andás y vemos juntes qué forma puede tomar tu proceso.</p>
+  <div class="cta-actions reveal">
+    <a href="mailto:hola@narrarelcaos.com" class="cta-btn-white">Escribime</a>
+    <a href="https://www.instagram.com/narrandoelcaos/" target="_blank" class="cta-btn-outline">Seguir en Instagram</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <p class="footer-brand">Narrar el Caos</p>
+    <p class="footer-tagline">Escritura · Pedagogía · Reinvención</p>
+    <p class="footer-tagline" style="margin-top:4px;">Agos Concilio · Buenos Aires</p>
+  </div>
+  <div class="footer-links">
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#propuesta">El proceso</a>
+    <a href="#taller">Taller</a>
+    <a href="#campana">La campaña</a>
+    <a href="#obras">Obras</a>
+    <a href="https://forms.gle/c2XdHjUnEExCrHFU8" target="_blank">Comprar el libro</a>
+  </div>
+  <div class="footer-right">
+    <div class="footer-social">
+      <a href="https://www.instagram.com/narrandoelcaos/" target="_blank">@narrandoelcaos</a>
+      <a href="https://www.instagram.com/antesdequeseademasiadotarde/" target="_blank">@antesdeque...</a>
+    </div>
+    <p class="footer-copy">© 2025 Narrar el Caos — Agos Concilio</p>
+  </div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width = '20px';
+      cursor.style.height = '20px';
+      ring.style.width = '56px';
+      ring.style.height = '56px';
+      ring.style.opacity = '0.3';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width = '12px';
+      cursor.style.height = '12px';
+      ring.style.width = '36px';
+      ring.style.height = '36px';
+      ring.style.opacity = '0.5';
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav transparency
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.style.background = 'rgba(245,240,232,0.92)';
+      nav.style.backdropFilter = 'blur(12px)';
+      nav.style.mixBlendMode = 'normal';
+      nav.style.borderBottom = '1px solid rgba(26,26,22,0.08)';
+    } else {
+      nav.style.background = 'transparent';
+      nav.style.backdropFilter = 'none';
+      nav.style.mixBlendMode = 'multiply';
+      nav.style.borderBottom = 'none';
+    }
+  });
+</script>
+</body>
+</html>
