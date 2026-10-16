@@ -525,6 +525,47 @@
   .campana-destino::before { content: '→'; color: var(--terracota); flex-shrink: 0; }
   .campana-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; position: relative; }
 
+  /* PREVENTA */
+  .preventa-cta {
+    font-family: var(--serif); font-style: italic; font-size: 22px;
+    color: var(--verde); margin-top: 8px; position: relative;
+  }
+  .preventa-cards {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    max-width: 1040px; margin: 48px auto 28px; position: relative;
+  }
+  .preventa-card {
+    background: var(--crema); border: 1px solid var(--border);
+    padding: 32px 28px; text-align: left;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .preventa-card-name {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--terracota);
+  }
+  .preventa-card-text {
+    font-family: var(--spartan); font-weight: 300; font-size: 16px;
+    color: rgba(43,71,67,0.8); line-height: 1.6; flex: 1;
+  }
+  .preventa-card-price {
+    font-family: var(--serif); font-size: 40px; color: var(--verde); line-height: 1;
+  }
+  .preventa-card .btn-verde { align-self: flex-start; }
+  .preventa-colab {
+    font-family: var(--spartan); font-weight: 400; font-size: 15px;
+    color: rgba(43,71,67,0.75); position: relative; margin-bottom: 12px;
+  }
+  .preventa-colab a { color: var(--verde); font-weight: 700; }
+  .preventa-nota {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
+    color: rgba(43,71,67,0.6); position: relative; margin-bottom: 40px;
+  }
+  .preventa-secundarios { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; position: relative; }
+  .preventa-secundarios a {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(43,71,67,0.6);
+  }
+
   /* FOOTER */
   footer {
     background: var(--verde-oscuro); padding: 60px;
@@ -577,6 +618,7 @@
     .expansion-inner{grid-template-columns:1fr;gap:40px}
     .campana{padding:80px 24px}
     .campana-destinos{flex-direction:column;align-items:flex-start;max-width:300px;margin:36px auto 48px}
+    .preventa-cards{grid-template-columns:1fr}
     footer{padding:40px 24px;flex-direction:column;align-items:flex-start}
   }
 </style>
@@ -591,7 +633,7 @@
     <a href="#actos">Los actos</a>
     <a href="#entre">El podcast</a>
     <a href="#performance">La experiencia</a>
-    <a href="#campana">La campaña</a>
+    <a href="#campana">La preventa</a>
   </div>
 </nav>
 
@@ -603,7 +645,7 @@
     <span class="hero-title-em">demasiado tarde.</span>
     <p class="hero-sub">Una historia sobre lo que pasa cuando una forma de amar, de pensar y de habitar el cuerpo deja de funcionar.</p>
     <div class="hero-actions">
-      <a href="https://forms.gle/c2XdHjUnEExCrHFU8" target="_blank" class="btn-rosa">Comprar el libro</a>
+      <a href="#campana" class="btn-rosa">Preventa de la segunda edición</a>
       <a href="#sobre" class="btn-outline">Conocer el proyecto</a>
     </div>
   </div>
@@ -677,7 +719,7 @@
       </div>
       <div class="ficha-row">
         <span class="ficha-key">Edición</span>
-        <span class="ficha-val">Primera edición autogestionada, 2026</span>
+        <span class="ficha-val">Segunda edición revisada, 2026</span>
       </div>
       <div class="ficha-row">
         <span class="ficha-key">Lenguaje</span>
@@ -689,8 +731,8 @@
       </div>
     </div>
     <div class="comprar-box">
-      <p>Primera edición disponible.<br>Enviamos a todo el país.</p>
-      <a href="https://forms.gle/c2XdHjUnEExCrHFU8" target="_blank" class="btn-verde">Comprar el libro</a>
+      <p>Segunda edición en preventa.<br>Sale en diciembre.</p>
+      <a href="#campana" class="btn-verde">Ver la preventa</a>
     </div>
   </div>
 </section>
@@ -929,7 +971,7 @@ style="margin-top:8px;display:block;">
       <p class="expansion-body">A partir de la primera edición y el lanzamiento performático, el proyecto entró en una nueva etapa: una segunda edición revisada y ampliada de la novela, junto con el desarrollo de nuevas piezas performáticas e instalativas y la consolidación de un archivo artístico transmedia.</p>
       <p class="expansion-body">La escritura es el método y la apuesta central. Todo lo demás —la instalación, la performance, el archivo— es literatura que encontró otras formas de habitarse.</p>
       <div style="margin-top:36px;">
-        <a href="#campana" class="btn-rosa">Apoyar la campaña</a>
+        <a href="#campana" class="btn-rosa">Ver la preventa</a>
       </div>
     </div>
     <div class="expansion-right reveal d1">
@@ -957,19 +999,35 @@ style="margin-top:8px;display:block;">
 
 <!-- CAMPAÑA -->
 <section class="campana" id="campana">
-  <p class="campana-label reveal">Campaña activa · 2026</p>
-  <h2 class="campana-title reveal">Nueva tirada.<br><em>Nueva expansión.</em></h2>
-  <p class="campana-sub reveal">Si el universo te movió algo, podés ser parte de lo que viene. Esta campaña financia la segunda etapa del proyecto.</p>
-  <div class="campana-destinos reveal">
-    <div class="campana-destino">Impresión de nueva tirada</div>
-    <div class="campana-destino">Producción y montaje escénico</div>
-    <div class="campana-destino">Materiales y registro</div>
-    <div class="campana-destino">Nuevas piezas performáticas</div>
+  <p class="campana-label reveal">Preventa · Segunda edición</p>
+  <h2 class="campana-title reveal">¿Demasiado para quién?<br><em>¿Tarde para qué?</em></h2>
+  <p class="campana-sub reveal">Una segunda edición y una función performática alrededor de <em>Antes de que sea demasiado tarde</em>. El sábado 12 de diciembre en Ja Ja.</p>
+  <p class="preventa-cta reveal">Elegí por dónde entrar.</p>
+  <div class="preventa-cards reveal">
+    <div class="preventa-card">
+      <p class="preventa-card-name">Libro + envío</p>
+      <p class="preventa-card-text">La segunda edición en tu casa, en diciembre.</p>
+      <p class="preventa-card-price">$30.000</p>
+      <a href="https://preview.mailerlite.io/forms/1991842/201448093649995659/share" target="_blank" class="btn-verde">Quiero el libro</a>
+    </div>
+    <div class="preventa-card">
+      <p class="preventa-card-name">Libro + función</p>
+      <p class="preventa-card-text">La segunda edición y la función del 12/12. El libro te lo llevás esa noche.</p>
+      <p class="preventa-card-price">$38.000</p>
+      <a href="https://preview.mailerlite.io/forms/1991842/201448101394777423/share" target="_blank" class="btn-verde">Quiero las dos</a>
+    </div>
+    <div class="preventa-card">
+      <p class="preventa-card-name">Entrada</p>
+      <p class="preventa-card-text">La función del 12/12 en Ja Ja.</p>
+      <p class="preventa-card-price">$10.000</p>
+      <a href="https://preview.mailerlite.io/forms/1991842/201448102474811005/share" target="_blank" class="btn-verde">Quiero ir</a>
+    </div>
   </div>
-  <div class="campana-actions reveal">
-    <a href="https://forms.gle/V8uCSUV9foHJYHdE6" target="_blank" class="btn-verde">Apoyar el proyecto</a>
-    <a href="https://preview.mailerlite.io/forms/1991842/176347366729712646/share" target="_blank" class="btn-verde">Seguir las novedades</a>
-    <a href="https://forms.gle/c2XdHjUnEExCrHFU8" target="_blank" class="btn-verde">Comprar el libro</a>
+  <p class="preventa-colab reveal">Si no llegás, hay entradas a colaboración a $5.000. <a href="https://preview.mailerlite.io/forms/1991842/201448103631390419/share" target="_blank">Entrada a colaboración</a></p>
+  <p class="preventa-nota reveal">Lo que se compre hasta el jueves 5/11 entra en la primera tirada. Después, quedan los ejemplares que sobren.</p>
+  <div class="preventa-secundarios reveal">
+    <a href="https://forms.gle/V8uCSUV9foHJYHdE6" target="_blank">Apoyar el proyecto</a>
+    <a href="https://preview.mailerlite.io/forms/1991842/176347366729712646/share" target="_blank">Seguir las novedades</a>
   </div>
 </section>
 
