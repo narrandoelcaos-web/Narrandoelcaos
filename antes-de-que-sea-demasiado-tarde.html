@@ -846,6 +846,15 @@
     padding: 18px 26px; text-align: left;
   }
 
+  .preventa-abierta {
+    display: flex; align-items: center; gap: 18px; margin-bottom: 28px;
+    font-family: var(--spartan); font-weight: 900; font-size: clamp(40px, 5.6vw, 84px);
+    line-height: 0.9; letter-spacing: -0.01em; text-transform: uppercase; color: var(--rosa);
+  }
+  .pa-punto { width: 0.32em; height: 0.32em; border-radius: 50%; background: var(--rosa); flex-shrink: 0; animation: pulse 2s infinite; }
+  @media (prefers-reduced-motion: reduce) { .pa-punto { animation: none; } }
+  .expansion-left .expansion-title { font-size: clamp(28px, 3vw, 42px); }
+
   /* FOOTER */
   footer {
     background: var(--verde-oscuro); padding: 60px;
@@ -995,7 +1004,7 @@
   </div>
 
   <div class="sobre5-col reveal">
-    <p class="sobre-destacado">Y sin embargo, cada vez más personas viven con la sensación de <strong>llegar tarde a sí mismas.</strong></p>
+    <p class="sobre-destacado">Sin embargo, cada vez más personas viven con la sensación de <strong>llegar tarde a sí mismas.</strong></p>
     <p class="sobre-body">De ahí sale <em>Antes de que sea demasiado tarde</em>. Empieza como una historia de amor que se desarma y termina mostrando todo lo que una persona puede abandonar de sí para no sentirse abandonada.</p>
     <p class="sobre-body">Escrito desde la trinchera de una vivencia no binaria y millennial, el libro recorre los actos de una vida que se rompe y se rearma entre sesiones de terapia, listas de reproducción de Spotify, medicación y diagnósticos, y el aroma a limón de los recuerdos que se niegan a morir.</p>
     <p class="sobre-body">La escritura es fragmentaria porque nació mientras las cosas pasaban. Escenas sueltas, recuerdos que vuelven, tiempos que se pisan: así se cuenta una vida cuando entra en crisis, y así la vas armando vos, capítulo a capítulo.</p>
@@ -1057,7 +1066,7 @@
 <section class="expansion" id="preventa">
   <div class="expansion-inner">
     <div class="expansion-left reveal">
-      <p class="section-label" style="color:rgba(255,211,219,0.5)">La preventa</p>
+      <p class="preventa-abierta"><span class="pa-punto" aria-hidden="true"></span>Preventa abierta</p>
       <h2 class="expansion-title">Este libro existe<br><em>porque alguien lo elige antes.</em></h2>
       <p class="expansion-body">La segunda edición es autogestiva, como la primera: <strong>con lo que se reserva en la preventa se paga la imprenta.</strong> Los libros salen en diciembre, a tiempo para regalar (o regalarte).</p>
       <p class="expansion-body">Y la presento como presenté la primera: con un <strong>evento performático de lanzamiento</strong>, el sábado 12 de diciembre desde las 19 h en Ja Ja, vivero y centro cultural en Chacarita (Fraga 1142). Una noche para recorrer la novela, con lecturas en vivo, instalaciones, audios, proyecciones y música. Lo que pase esa noche va a ser la primera escena de una obra que sigue circulando en 2027. <a href="#performance" class="expansion-link">Mirá cómo fue la primera</a></p>
@@ -1079,7 +1088,7 @@
 
 <!-- CAMPAÑA -->
 <section class="campana" id="campana">
-  <p class="campana-label reveal">Preventa · Segunda edición</p>
+  <p class="campana-label reveal">Preventa abierta · Segunda edición</p>
   <h2 class="campana-title reveal">Elegí por dónde<br><em>entrar.</em></h2>
   <p class="campana-sub reveal">La segunda edición de <em>Antes de que sea demasiado tarde</em> y su evento performático de lanzamiento, el sábado 12 de diciembre en Ja Ja.</p>
   <div class="preventa-cards reveal">
