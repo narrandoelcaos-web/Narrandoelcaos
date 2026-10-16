@@ -699,6 +699,154 @@
     color: rgba(43,71,67,0.75); max-width: 560px; margin: 0 auto 36px;
   }
 
+
+  /* ===== v3 ===== */
+  .sobre2 { background: var(--crema); padding: 120px 60px; }
+  .sobre2-intro { max-width: 820px; }
+  .sobre2-epoca {
+    font-family: var(--serif); font-size: clamp(21px, 2.1vw, 26px); line-height: 1.5;
+    color: var(--verde-oscuro);
+  }
+  .medidas {
+    display: grid; grid-template-columns: 1fr 1fr; margin: 64px 0;
+    border-top: 2px solid var(--verde); border-bottom: 2px solid var(--verde);
+  }
+  .medida { padding: 44px 48px 44px 0; }
+  .medida + .medida { padding: 44px 0 44px 48px; border-left: 1px solid var(--border); }
+  .medida-q {
+    font-family: var(--spartan); font-weight: 900; font-size: clamp(34px, 4.2vw, 60px);
+    line-height: 0.95; color: var(--verde); margin-bottom: 22px;
+  }
+  .medida-q em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--terracota); }
+  .medida-t { font-family: var(--spartan); font-weight: 300; font-size: 18px; line-height: 1.7; color: var(--verde-oscuro); max-width: 460px; }
+  .sobre2-destacado {
+    font-family: var(--serif); font-size: clamp(28px, 3.4vw, 46px); line-height: 1.2;
+    color: var(--verde); max-width: 900px; margin-bottom: 88px;
+  }
+  .sobre2-destacado em { color: var(--terracota); }
+  .sobre2-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: start; }
+  .sobre2-cita { margin: 36px 0; padding-left: 24px; border-left: 3px solid var(--terracota); }
+  .sobre2-cita p { font-family: var(--serif); font-style: italic; font-size: 24px; line-height: 1.45; color: var(--verde); }
+  .sobre2-nota { margin-top: 16px; font-size: 14px !important; color: rgba(43,71,67,0.6) !important; font-style: italic; }
+
+  .segunda { background: var(--verde-oscuro); padding: 130px 60px; }
+  .segunda2-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 90px; align-items: start; }
+  .segunda-title {
+    font-family: var(--spartan); font-weight: 900; font-size: clamp(42px, 5.4vw, 78px);
+    line-height: 0.95; color: var(--crema); margin-bottom: 40px;
+  }
+  .segunda-title em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--rosa); }
+  .segunda-body { font-family: var(--spartan); font-weight: 300; font-size: 18px; line-height: 1.85; color: rgba(253,247,240,0.78); margin-bottom: 20px; }
+  .segunda-body strong { font-weight: 600; color: var(--crema); }
+  .segunda-firma { font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--rosa); margin-top: 8px; }
+  .segunda-firma::before { content: '— '; }
+  .segunda2-fechas { display: flex; flex-direction: column; gap: 0; padding-top: 8px; }
+  .segunda2-puente { font-family: var(--serif); font-size: clamp(22px, 2.2vw, 28px); line-height: 1.4; color: var(--crema); margin-bottom: 36px; }
+  .fecha { position: relative; border: 1px solid rgba(255,211,219,0.2); padding: 32px 32px 30px; display: flex; flex-direction: column; gap: 10px; }
+  .fecha + .fecha { margin-top: 28px; }
+  .fecha + .fecha::before {
+    content: ''; position: absolute; left: 40px; top: -29px; height: 28px; width: 1px; background: rgba(255,211,219,0.4);
+  }
+  .fecha--nueva { background: var(--rosa); border-color: var(--rosa); }
+  .fecha-mes { font-family: var(--serif); font-style: italic; font-size: 64px; line-height: 0.9; color: rgba(253,247,240,0.35); }
+  .fecha--nueva .fecha-mes { color: var(--terracota); }
+  .fecha-label { font-family: var(--spartan); font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rosa); }
+  .fecha--nueva .fecha-label { color: var(--verde); }
+  .fecha-texto { font-family: var(--serif); font-size: clamp(24px, 2.4vw, 30px); line-height: 1.2; color: rgba(253,247,240,0.7); }
+  .fecha--nueva .fecha-texto { color: var(--verde); }
+  .fecha-estado { font-family: var(--spartan); font-weight: 400; font-size: 14px; color: rgba(253,247,240,0.45); }
+  .fecha--nueva .fecha-estado { color: var(--verde); font-weight: 600; }
+  .segunda2-cta { align-self: flex-start; margin-top: 32px; }
+
+  .preventa { background: var(--rosa); padding: 130px 60px 110px; }
+  .preventa-head { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 80px; align-items: end; margin-bottom: 72px; }
+  .preventa-title {
+    font-family: var(--spartan); font-weight: 900; font-size: clamp(40px, 5.4vw, 80px);
+    line-height: 0.95; color: var(--verde);
+  }
+  .preventa-title em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--terracota); }
+  .preventa-intro { font-family: var(--spartan); font-weight: 400; font-size: 18px; line-height: 1.7; color: var(--verde-oscuro); margin-bottom: 28px; }
+  .linea { list-style: none; border-left: 2px solid var(--verde); padding-left: 0; }
+  .linea li { position: relative; padding: 0 0 18px 26px; display: flex; flex-direction: column; gap: 2px; }
+  .linea li:last-child { padding-bottom: 0; }
+  .linea li::before { content: ''; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--rosa); border: 2px solid var(--verde); }
+  .linea li:first-child::before { background: var(--verde); }
+  .linea-cuando { font-family: var(--spartan); font-weight: 800; font-size: 16px; color: var(--verde); }
+  .linea-que { font-family: var(--spartan); font-weight: 300; font-size: 15px; line-height: 1.5; color: var(--verde-oscuro); }
+
+  .ticket {
+    display: grid; grid-template-columns: 240px 1fr; background: var(--verde); color: var(--crema);
+    margin-bottom: 96px; position: relative;
+    -webkit-mask: radial-gradient(circle 16px at 240px 0, transparent 98%, #000) top / 100% 51% no-repeat,
+                  radial-gradient(circle 16px at 240px 100%, transparent 98%, #000) bottom / 100% 51% no-repeat;
+            mask: radial-gradient(circle 16px at 240px 0, transparent 98%, #000) top / 100% 51% no-repeat,
+                  radial-gradient(circle 16px at 240px 100%, transparent 98%, #000) bottom / 100% 51% no-repeat;
+  }
+  .ticket-talon {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    padding: 40px 20px; border-right: 2px dashed rgba(255,211,219,0.35);
+  }
+  .ticket-dia, .ticket-mes { font-family: var(--serif); font-style: italic; font-size: 24px; color: var(--rosa); line-height: 1; }
+  .ticket-num { font-family: var(--spartan); font-weight: 900; font-size: 112px; line-height: 0.9; color: var(--crema); }
+  .ticket-hora { margin-top: 14px; font-family: var(--spartan); font-weight: 600; font-size: 14px; color: rgba(253,247,240,0.7); }
+  .ticket-cuerpo { padding: 48px 56px; }
+  .ticket-kicker { font-family: var(--spartan); font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rosa); margin-bottom: 14px; }
+  .ticket-titulo { font-family: var(--serif); font-size: clamp(30px, 3.4vw, 46px); line-height: 1.1; color: var(--crema); margin-bottom: 18px; }
+  .ticket-texto { font-family: var(--spartan); font-weight: 300; font-size: 17px; line-height: 1.75; color: rgba(253,247,240,0.8); max-width: 620px; margin-bottom: 18px; }
+  .ticket-lugar { font-family: var(--spartan); font-weight: 300; font-size: 15px; color: rgba(253,247,240,0.75); }
+  .ticket-lugar strong { font-weight: 700; color: var(--crema); }
+  .ticket-lugar a { color: var(--rosa); font-weight: 600; margin-left: 6px; }
+
+  .opciones-titulo { font-family: var(--serif); font-style: italic; font-size: clamp(32px, 3.6vw, 48px); color: var(--verde); margin-bottom: 32px; }
+  .opciones { display: grid; grid-template-columns: 1fr 1.12fr 1fr; gap: 18px; align-items: stretch; margin-bottom: 26px; }
+  .opcion { background: var(--crema); padding: 36px 30px; display: flex; flex-direction: column; gap: 12px; }
+  .opcion--destacada { background: var(--verde); transform: translateY(-14px); padding-top: 44px; padding-bottom: 44px; }
+  .opcion-nombre { font-family: var(--spartan); font-weight: 800; font-size: 20px; color: var(--verde); }
+  .opcion--destacada .opcion-nombre { color: var(--rosa); }
+  .opcion-precio { font-family: var(--serif); font-size: 52px; line-height: 1; color: var(--verde); }
+  .opcion--destacada .opcion-precio { color: var(--crema); }
+  .opcion-texto { font-family: var(--spartan); font-weight: 300; font-size: 16px; line-height: 1.6; color: var(--verde-oscuro); flex: 1; }
+  .opcion--destacada .opcion-texto { color: rgba(253,247,240,0.85); }
+  .opcion-extra { font-family: var(--spartan); font-weight: 600; font-size: 14px; color: var(--rosa); }
+  .opcion .btn-verde, .opcion .btn-rosa { align-self: flex-start; margin-top: 6px; }
+  .preventa .preventa-colab { text-align: left; margin-bottom: 72px; }
+  .pasos { border-top: 2px solid var(--verde); padding-top: 28px; display: grid; grid-template-columns: 180px 1fr; gap: 24px; margin-bottom: 40px; }
+  .pasos-titulo { font-family: var(--spartan); font-weight: 800; font-size: 16px; color: var(--verde); }
+  .pasos-lista { list-style: none; counter-reset: paso; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .pasos-lista li { counter-increment: paso; font-family: var(--spartan); font-weight: 300; font-size: 15px; line-height: 1.5; color: var(--verde-oscuro); }
+  .pasos-lista li::before { content: counter(paso); display: block; font-family: var(--serif); font-size: 34px; line-height: 1; color: var(--terracota); margin-bottom: 8px; }
+  .preventa .preventa-secundarios { justify-content: flex-start; }
+
+  .libro { background: var(--verde); padding: 120px 60px; }
+  .libro-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 80px; align-items: start; }
+  .libro-cita { font-family: var(--serif); font-style: italic; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.3; color: var(--rosa); margin-bottom: 28px; }
+  .libro-entre { margin-top: 12px; display: inline-block; border-color: rgba(255,211,219,0.35); color: var(--rosa); }
+  .pistas-titulo { font-family: var(--spartan); font-weight: 800; font-size: 16px; color: var(--crema); margin-bottom: 16px; }
+  .pistas-titulo span { font-weight: 300; color: rgba(253,247,240,0.55); }
+  .pista { border-top: 1px solid rgba(255,211,219,0.18); }
+  .pista:last-of-type { border-bottom: 1px solid rgba(255,211,219,0.18); }
+  .pista summary {
+    list-style: none; cursor: pointer; display: grid; grid-template-columns: 54px 1fr auto; gap: 16px;
+    align-items: baseline; padding: 22px 0;
+  }
+  .pista summary::-webkit-details-marker { display: none; }
+  .pista summary:focus-visible { outline: 2px solid var(--rosa); outline-offset: 4px; }
+  .pista-num { font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--rosa); }
+  .pista-nombre { font-family: var(--spartan); font-weight: 800; font-size: clamp(20px, 2vw, 26px); color: var(--crema); text-transform: uppercase; letter-spacing: 0.02em; }
+  .pista-tema { font-family: var(--spartan); font-weight: 300; font-size: 14px; color: rgba(253,247,240,0.6); text-align: right; }
+  .pista-tema::before { content: '♪ '; color: var(--rosa); }
+  .pista[open] .pista-nombre { color: var(--rosa); }
+  .pista-desc { font-family: var(--spartan); font-weight: 300; font-size: 15px; line-height: 1.7; color: rgba(253,247,240,0.75); padding: 0 0 24px 70px; max-width: 620px; }
+  .pista-desc a { color: var(--rosa); font-weight: 600; margin-left: 4px; }
+
+  .acontecimiento { background: var(--verde-oscuro); padding: 120px 60px; }
+  .acont-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 72px; align-items: center; margin-bottom: 24px; }
+  .acont-texto .perf-quote { margin: 28px 0 36px; }
+  .acont-texto .perf-quote p { font-size: 17px; }
+  .acont-media .perf-media-grid { margin: 0; }
+  .sobre2-grid .sobre-right img { aspect-ratio: 4 / 3; object-fit: cover; object-position: center 60%; }
+  .acont-video iframe { width: 100%; aspect-ratio: 16 / 9; height: auto; display: block; border: 0; }
+
   /* FOOTER */
   footer {
     background: var(--verde-oscuro); padding: 60px;
@@ -754,6 +902,24 @@
     .preventa-cards{grid-template-columns:1fr}
     .referides{padding:80px 24px}
     .segunda{padding:80px 24px}
+    .sobre2,.preventa,.libro,.acontecimiento{padding:80px 24px}
+    .medidas,.sobre2-grid,.segunda2-grid,.preventa-head,.opciones,.libro-grid,.acont-grid,.pasos{grid-template-columns:1fr;gap:40px}
+    .medida,.medida + .medida{padding:32px 0;border-left:0}
+    .medida + .medida{border-top:1px solid var(--border)}
+    .medidas{gap:0;margin:48px 0}
+    .sobre2-destacado{margin-bottom:56px}
+    .ticket{grid-template-columns:1fr;-webkit-mask:none;mask:none;margin-bottom:64px}
+    .ticket-talon{border-right:0;border-bottom:2px dashed rgba(255,211,219,0.35);flex-direction:row;gap:12px;padding:24px;flex-wrap:wrap}
+    .ticket-num{font-size:64px}
+    .ticket-hora{margin-top:0;width:100%}
+    .ticket-cuerpo{padding:32px 24px}
+    .opcion--destacada{transform:none}
+    .opciones{gap:14px}
+    .pasos-lista{grid-template-columns:1fr 1fr}
+    .pasos{gap:16px}
+    .pista summary{grid-template-columns:40px 1fr;row-gap:4px}
+    .pista-tema{grid-column:2;text-align:left}
+    .pista-desc{padding-left:56px}
     .segunda-fechas,.segunda-grid,.segunda-preguntas{grid-template-columns:1fr;gap:40px}
     .segunda-fechas{gap:12px;margin-bottom:56px}
     .segunda-grid{margin-bottom:56px}
@@ -821,26 +987,36 @@
 </div>
 
 <!-- SOBRE LA NOVELA -->
-<section class="sobre" id="sobre">
-  <div class="sobre-left reveal">
+<section class="sobre2" id="sobre">
+  <div class="sobre2-intro reveal">
     <p class="section-label" style="color:var(--terracota)">Sobre la novela</p>
     <h2 class="sobre-title">Un libro<br>para <em>atravesar.</em></h2>
-    <p class="sobre-body">Vivimos en una época que aprendió a hablar de libertad antes que de sostén. Que romantizó el desapego. Que medicalizó el exceso de sensibilidad y convirtió el autoconocimiento en mandato. Tenemos palabras para nombrarlo todo y una medida para cada cosa: cuánto es mucho, cuándo es tarde.</p>
-    <p class="sobre-destacado">Y sin embargo, cada vez más personas viven con la sensación de <strong>llegar tarde a sí mismas.</strong></p>
-    <p class="sobre-body">De ahí sale <em>Antes de que sea demasiado tarde</em>. Empieza como una historia de amor que se desarma y termina mostrando todo lo que una persona puede abandonar de sí para que no la abandonen. Una ruptura que tira del hilo y arrastra todo lo demás: el cuerpo, la identidad, la familia, la forma de pensar, el tiempo.</p>
-    <p class="sobre-body">Escrito desde la trinchera de una vivencia no binaria y millennial, el libro recorre los actos de una vida que se rompe y se rearma entre:</p>
-    <ul class="sobre-lista">
-      <li>sesiones de terapia</li>
-      <li>listas de reproducción de Spotify</li>
-      <li>medicación y diagnósticos</li>
-      <li>el aroma a limón de los recuerdos que se niegan a morir</li>
-    </ul>
-    <p class="sobre-body">Y está escrito como se vive una crisis: <strong>en pedazos.</strong> Escenas cortas, saltos en el tiempo, recuerdos que vuelven sin pedir permiso. Se lee de un tirón y se queda dando vueltas.</p>
-    <div class="sobre-quote">
-      <p>"¿Qué parte de lo que sentimos es propia y qué parte es efecto de la época en la que vivimos?"</p>
-    </div>
-    <p class="sobre-body" style="margin-top:16px;font-size:14px;color:rgba(43,71,67,0.6);font-style:italic;">Esta obra está escrita íntegramente en lenguaje sin marcas de género: una voz que nombra el mundo por fuera del binarismo.</p>
+    <p class="sobre2-epoca">Vivimos en una época que aprendió a hablar de libertad antes que de sostén. Que romantizó el desapego. Que medicalizó el exceso de sensibilidad y convirtió el autoconocimiento en mandato. Una época que sabe nombrarlo todo y que, al mismo tiempo, no para de medir.</p>
   </div>
+
+  <div class="medidas reveal">
+    <div class="medida">
+      <h3 class="medida-q">¿Demasiado<br><em>para quién?</em></h3>
+      <p class="medida-t">Mide cuánto sentimos: demasiado intensa, demasiado sensible, demasiado pesade, como si el exceso fuera siempre un síntoma.</p>
+    </div>
+    <div class="medida">
+      <h3 class="medida-q">¿Tarde<br><em>para qué?</em></h3>
+      <p class="medida-t">Y mide cuándo llegamos: tarde para irse, tarde para quedarse, tarde para pedir ayuda, como si la vida tuviera que seguir un reloj ajeno.</p>
+    </div>
+  </div>
+
+  <p class="sobre2-destacado reveal">Y sin embargo, cada vez más personas viven con la sensación de <em>llegar tarde a sí mismas.</em></p>
+
+  <div class="sobre2-grid">
+    <div class="sobre2-texto reveal">
+      <p class="sobre-body">De ahí sale <em>Antes de que sea demasiado tarde</em>. Empieza como una historia de amor que se desarma y termina mostrando todo lo que una persona puede abandonar de sí para no sentirse abandonada.</p>
+      <p class="sobre-body">Escrito desde la trinchera de una vivencia no binaria y millennial, el libro recorre los actos de una vida que se rompe y se rearma entre sesiones de terapia, listas de reproducción de Spotify, medicación y diagnósticos, y el aroma a limón de los recuerdos que se niegan a morir.</p>
+      <p class="sobre-body">La escritura es fragmentaria porque nació mientras las cosas pasaban. Escenas sueltas, recuerdos que vuelven, tiempos que se pisan: así se cuenta una vida cuando entra en crisis, y así la vas armando vos, capítulo a capítulo.</p>
+      <blockquote class="sobre2-cita">
+        <p>“Si sigo escribiendo y registrando estas pequeñas escenas, tal vez todavía no sea del todo tarde.”</p>
+      </blockquote>
+      <p class="sobre-body sobre2-nota">Esta obra está escrita íntegramente en lenguaje sin marcas de género: una voz que nombra el mundo por fuera del binarismo.</p>
+    </div>
   <div class="sobre-right reveal d1">
     <!--
       IMÁGENES DEL LIBRO: reemplazá el div por:
@@ -883,129 +1059,107 @@
       <a href="#libro" class="btn-verde">Conocer el libro</a>
     </div>
   </div>
+</div>
 </section>
 
 <!-- SEGUNDA EDICIÓN -->
 <section class="segunda" id="segunda-edicion">
-  <div class="segunda-header reveal">
-    <p class="section-label" style="color:var(--rosa)">Segunda edición · Sale en diciembre</p>
-    <h2 class="segunda-title">Volví al libro<br><em>desde después.</em></h2>
-    <p class="segunda-lead">La primera edición se agotó. Y antes de volver a imprimirla, hice lo mismo que hace la novela: leí mi propia historia desde otro tiempo.</p>
-  </div>
-
-  <div class="segunda-fechas reveal">
-    <div class="fecha">
-      <p class="fecha-label">Primera edición</p>
-      <p class="fecha-texto">Escrita desde adentro del derrumbe.</p>
-      <p class="fecha-estado">Agotada</p>
-    </div>
-    <div class="fecha fecha--nueva">
-      <p class="fecha-label">Segunda edición</p>
-      <p class="fecha-texto">Leída desde después.</p>
-      <p class="fecha-estado">En preventa · Sale en diciembre</p>
-    </div>
-  </div>
-
-  <div class="segunda-grid">
-    <div class="segunda-left reveal">
-      <p class="segunda-body">Después de la primera edición me empezaron a llegar mensajes de lectores por capítulos que les seguían dando vueltas. La noche del lanzamiento, la gente se quedó leyendo los fragmentos colgados en las paredes y me pidió volver a entrar.</p>
-      <p class="segunda-body">Así que volví yo también. Abrí el archivo y encontré algo que no había visto: <strong>cada vez que me rompí, había una medida cerca.</strong> Alguien, o algo, o yo misme, diciéndome que era demasiado. Y un reloj marcando que ya era tarde.</p>
-      <p class="segunda-body">La historia es la misma. Cambió desde dónde la cuento.</p>
+  <div class="segunda2-grid">
+    <div class="segunda2-relato reveal">
+      <p class="section-label" style="color:var(--rosa)">Segunda edición</p>
+      <h2 class="segunda-title">Volví al libro<br><em>desde el después.</em></h2>
+      <p class="segunda-body">En mayo autopubliqué mi primer libro. La noche del lanzamiento, 45 personas nos encontramos para detenernos en el tiempo, habitar otro ritmo y hacerle una oda al dolor que se transforma en arte. Tanta fue la magia que después el libro se agotó.</p>
+      <p class="segunda-body">Con la excusa de que llegara a más bibliotecas, y por la motivación de lectores que me fueron compartiendo sus experiencias con la historia, decidí reeditarlo.</p>
+      <p class="segunda-body">Volví a abrir el archivo y lo leí desde otro lugar. Y encontré algo que no había visto: <strong>cada vez que me rompí, había una medida cerca.</strong> Alguien, o algo, o yo misme, diciéndome que era demasiado. Y un reloj marcando que ya era tarde.</p>
       <p class="segunda-firma">Agos</p>
     </div>
-    <div class="segunda-right reveal d1">
-      <div class="tapa-tipo">
-        <span class="tapa-tachado">demasiado</span>
-        <span class="tapa-tarde">tarde.</span>
-        <p class="tapa-caption">En la tapa de la primera edición, “demasiado” ya estaba tachado y “tarde” quedaba en pie. La segunda edición se mete de lleno con esas dos palabras.</p>
+    <div class="segunda2-fechas reveal d1">
+      <p class="segunda2-puente">Lo que vivimos tiene dos fechas: la de cuando pasa y la de cuando, por fin, podemos entenderlo. Este libro también.</p>
+      <div class="fecha">
+        <p class="fecha-mes">mayo</p>
+        <p class="fecha-label">Primera edición</p>
+        <p class="fecha-texto">Escrita desde adentro del derrumbe.</p>
+        <p class="fecha-estado">Agotada</p>
       </div>
-    </div>
-  </div>
-
-  <div class="segunda-preguntas reveal">
-    <div class="pregunta">
-      <h3 class="pregunta-titulo">¿Demasiado<br><em>para quién?</em></h3>
-      <p class="pregunta-texto">Demasiado intensa, demasiado sensible, demasiado pesade. ¿Quién puso la vara?</p>
-    </div>
-    <div class="pregunta">
-      <h3 class="pregunta-titulo">¿Tarde<br><em>para qué?</em></h3>
-      <p class="pregunta-texto">Para irse, para quedarse, para pedir ayuda, para cambiar de idea. ¿Según el reloj de quién?</p>
-    </div>
-  </div>
-
-  <div class="segunda-cierre reveal">
-    <p>La respuesta la pone cada quien.</p>
-    <div class="segunda-ctas">
-      <a href="#campana" class="btn-rosa">Quiero la segunda edición</a>
-      <a href="#preventa" class="btn-outline">Cómo funciona la preventa</a>
+      <div class="fecha fecha--nueva">
+        <p class="fecha-mes">diciembre</p>
+        <p class="fecha-label">Segunda edición</p>
+        <p class="fecha-texto">Leída desde el después.</p>
+        <p class="fecha-estado">En preventa</p>
+      </div>
+      <a href="#preventa" class="btn-rosa segunda2-cta">Quiero la segunda edición</a>
     </div>
   </div>
 </section>
 
-<!-- INTRO PREVENTA / SEGUNDA EDICIÓN -->
-<section class="expansion" id="preventa">
-  <div class="expansion-inner">
-    <div class="expansion-left reveal">
-      <p class="section-label" style="color:rgba(255,211,219,0.5)">La preventa</p>
-      <h2 class="expansion-title">Este libro existe<br><em>porque alguien lo elige antes.</em></h2>
-      <p class="expansion-body">La segunda edición es autogestiva, como la primera: <strong>con lo que se reserva en la preventa se paga la imprenta.</strong> Los libros salen en diciembre, a tiempo para regalar (o regalarte).</p>
-      <p class="expansion-body">Y la presento como presenté la primera: con un <strong>evento performático de lanzamiento</strong>, el sábado 12 de diciembre desde las 19 h en Ja Ja, vivero y centro cultural en Chacarita (Fraga 1142). Una noche para recorrer la novela, con lecturas en vivo, instalaciones, audios, proyecciones y música. Lo que pase esa noche va a ser la primera escena de una obra que sigue circulando en 2027. <a href="#performance" class="expansion-link">Mirá cómo fue la primera</a></p>
-      <div style="margin-top:36px;">
-        <a href="#campana" class="btn-rosa">Ver las opciones</a>
-      </div>
+<!-- PREVENTA -->
+<section class="preventa" id="preventa">
+  <div class="preventa-head">
+    <div class="reveal">
+      <p class="section-label" style="color:var(--verde)">Preventa</p>
+      <h2 class="preventa-title">Este libro existe<br><em>porque alguien lo elige antes.</em></h2>
     </div>
-    <div class="expansion-right reveal d1">
-      <p class="etapas-titulo">Cómo funciona la preventa</p>
-      <div class="expansion-etapas">
-        <div class="etapa">
-          <p class="etapa-label">1 · Elegís</p>
-          <p class="etapa-body">El libro, el libro con el evento, o solo la entrada al evento.</p>
-        </div>
-        <div class="etapa">
-          <p class="etapa-label">2 · Dejás tus datos</p>
-          <p class="etapa-body">Nombre, mail y WhatsApp en un formulario corto, para que pueda escribirte.</p>
-        </div>
-        <div class="etapa">
-          <p class="etapa-label">3 · Pagás</p>
-          <p class="etapa-body">Por Mercado Pago. Te llega un mail de reserva: respondelo con el comprobante.</p>
-        </div>
-        <div class="etapa">
-          <p class="etapa-label">4 · Listo</p>
-          <p class="etapa-body">Te confirmo por mail. El libro lo retirás el 12/12 o te lo mando en diciembre, con el envío cotizado aparte.</p>
-        </div>
-      </div>
+    <div class="reveal d1">
+      <p class="preventa-intro">La segunda edición es autogestiva, como la primera: con lo que se reserva en la preventa se paga la imprenta.</p>
+      <ol class="linea">
+        <li><span class="linea-cuando">Jueves 5/11</span><span class="linea-que">Lo que se pague hasta acá ayuda a que el libro entre a imprenta.</span></li>
+        <li><span class="linea-cuando">Noviembre</span><span class="linea-que">La preventa sigue abierta.</span></li>
+        <li><span class="linea-cuando">Diciembre</span><span class="linea-que">Salen los libros, a tiempo para regalar (o regalarte).</span></li>
+      </ol>
     </div>
   </div>
-</section>
 
-<!-- CAMPAÑA -->
-<section class="campana" id="campana">
-  <p class="campana-label reveal">Preventa · Segunda edición</p>
-  <h2 class="campana-title reveal">Elegí por dónde<br><em>entrar.</em></h2>
-  <p class="campana-sub reveal">La segunda edición de <em>Antes de que sea demasiado tarde</em> y su evento performático de lanzamiento, el sábado 12 de diciembre en Ja Ja.</p>
-  <div class="preventa-cards reveal">
-    <div class="preventa-card">
-      <p class="preventa-card-name">Libro</p>
-      <p class="preventa-card-text">La segunda edición. El envío se cotiza aparte.</p>
-      <p class="preventa-card-price">$30.000</p>
-      <a href="https://preview.mailerlite.io/forms/1991842/201448093649995659/share" target="_blank" class="btn-verde">Quiero el libro</a>
+  <div class="ticket reveal">
+    <div class="ticket-talon">
+      <span class="ticket-dia">Sábado</span>
+      <span class="ticket-num">12</span>
+      <span class="ticket-mes">diciembre</span>
+      <span class="ticket-hora">desde las 19 h</span>
     </div>
-    <div class="preventa-card">
-      <p class="preventa-card-name">Libro + evento</p>
-      <p class="preventa-card-text">La segunda edición y el evento performático de lanzamiento. El libro te lo llevás esa noche.</p>
-      <p class="preventa-card-price">$38.000</p>
-      <a href="https://preview.mailerlite.io/forms/1991842/201448101394777423/share" target="_blank" class="btn-verde">Quiero las dos</a>
-    </div>
-    <div class="preventa-card">
-      <p class="preventa-card-name">Entrada al evento</p>
-      <p class="preventa-card-text">El evento performático de lanzamiento del 12/12 en Ja Ja.</p>
-      <p class="preventa-card-price">$10.000</p>
-      <a href="https://preview.mailerlite.io/forms/1991842/201448102474811005/share" target="_blank" class="btn-verde">Quiero ir</a>
+    <div class="ticket-cuerpo">
+      <p class="ticket-kicker">Evento performático de lanzamiento</p>
+      <h3 class="ticket-titulo">Una noche para recorrer la novela.</h3>
+      <p class="ticket-texto">Lecturas en vivo, instalaciones, audios, proyecciones y música. Lo que pase esa noche va a ser la primera escena de una obra que sigue circulando en 2027.</p>
+      <p class="ticket-lugar"><strong>Ja Ja</strong>, vivero y centro cultural. Fraga 1142, Chacarita. <a href="#performance">Mirá cómo fue la primera</a></p>
     </div>
   </div>
-  <p class="preventa-colab reveal">Si no llegás, hay entradas a colaboración a $5.000. <a href="https://preview.mailerlite.io/forms/1991842/201448103631390419/share" target="_blank">Entrada a colaboración</a></p>
-  <p class="preventa-nota reveal">Lo que se pague hasta el jueves 5/11 ayuda a que el libro entre a imprenta. La preventa sigue abierta durante noviembre y los libros salen en diciembre.</p>
-  <div class="preventa-secundarios reveal">
+
+  <div id="campana">
+    <h3 class="opciones-titulo reveal">Elegí por dónde entrar.</h3>
+    <div class="opciones reveal">
+      <div class="opcion">
+        <p class="opcion-nombre">Libro</p>
+        <p class="opcion-precio">$30.000</p>
+        <p class="opcion-texto">La segunda edición. El envío se cotiza aparte.</p>
+        <a href="https://preview.mailerlite.io/forms/1991842/201448093649995659/share" target="_blank" class="btn-verde">Quiero el libro</a>
+      </div>
+      <div class="opcion opcion--destacada">
+        <p class="opcion-nombre">Libro + evento</p>
+        <p class="opcion-precio">$38.000</p>
+        <p class="opcion-texto">La segunda edición y tu lugar en el evento. El libro te lo llevás esa noche.</p>
+        <p class="opcion-extra">Por separado serían $40.000.</p>
+        <a href="https://preview.mailerlite.io/forms/1991842/201448101394777423/share" target="_blank" class="btn-rosa">Quiero las dos</a>
+      </div>
+      <div class="opcion">
+        <p class="opcion-nombre">Entrada al evento</p>
+        <p class="opcion-precio">$10.000</p>
+        <p class="opcion-texto">Tu lugar en el evento performático de lanzamiento del 12/12 en Ja Ja.</p>
+        <a href="https://preview.mailerlite.io/forms/1991842/201448102474811005/share" target="_blank" class="btn-verde">Quiero ir</a>
+      </div>
+    </div>
+    <p class="preventa-colab reveal">Si no llegás, hay entradas a colaboración a $5.000. <a href="https://preview.mailerlite.io/forms/1991842/201448103631390419/share" target="_blank">Entrada a colaboración</a></p>
+  </div>
+
+  <div class="pasos reveal">
+    <p class="pasos-titulo">Cómo funciona</p>
+    <ol class="pasos-lista">
+      <li>Elegís tu opción.</li>
+      <li>Dejás tu nombre, mail y WhatsApp.</li>
+      <li>Pagás por Mercado Pago.</li>
+      <li>Respondés el mail que te llega con el comprobante, y te confirmo.</li>
+    </ol>
+  </div>
+  <div class="preventa-secundarios">
     <a href="https://forms.gle/V8uCSUV9foHJYHdE6" target="_blank">Apoyar el proyecto</a>
     <a href="https://preview.mailerlite.io/forms/1991842/176347366729712646/share" target="_blank">Seguir las novedades</a>
   </div>
@@ -1038,163 +1192,70 @@
   </div>
 </section>
 
-<!-- EXPERIENCIA SENSORIAL -->
-<section class="sensorial" id="libro">
-  <div class="sensorial-inner">
-    <div class="sensorial-left reveal">
-      <p class="section-label" style="color:rgba(255,211,219,0.5)">Una experiencia sensorial</p>
+<!-- EL LIBRO: PELÍCULA + ACTOS -->
+<section class="libro" id="libro">
+  <div class="libro-grid">
+    <div class="libro-texto reveal">
+      <p class="section-label" style="color:rgba(255,211,219,0.6)">El libro</p>
       <h2 class="sensorial-title">Una <em>película</em><br>que se puede leer.</h2>
-      <p class="sensorial-body">El libro fue pensado desde el principio como algo más que texto: como <strong>una película que se puede leer.</strong> Cada capítulo tiene una curaduría musical propia, desde <strong>Javiera Mena y Marilina Bertoldi</strong> hasta <strong>Radiohead, Thom Yorke y boleros de Trío Los Panchos.</strong></p>
-      <p class="sensorial-body">En el interior, un código QR da acceso a la <strong>playlist oficial</strong>, para entrar en la atmósfera exacta de cada escena. Música y texto como un solo dispositivo de inmersión.</p>
-      <div style="margin-top:32px;">
-        <a href="#preventa" class="btn-rosa">Ver la preventa</a>
-      </div>
+      <p class="libro-cita">“Estás por entrar a mi peli. Y en las pelis hay música…”</p>
+      <p class="sensorial-body">Fue pensado como una película que se puede leer: cada capítulo tiene una curaduría musical propia, desde <strong>Javiera Mena y Marilina Bertoldi</strong> hasta <strong>Radiohead, Thom Yorke y boleros de Trío Los Panchos.</strong> En el interior, un código QR da acceso a la playlist oficial.</p>
+      <p class="sensorial-body">La novela está estructurada en seis actos, como una obra de teatro que también es una vida. Cada acto comparte nombre con un episodio de <em>Entre</em>, el podcast: dos formas de entrar al mismo universo.</p>
+      <a href="entre.html" class="btn-outline libro-entre">Escuchar Entre, el podcast</a>
     </div>
-    <div class="sensorial-right reveal d1">
-      <div class="sensorial-card">
-        <p class="sensorial-card-label">Curación musical</p>
-        <p class="sensorial-card-body">Cada capítulo tiene su propia playlist. El libro incluye QR para acceder a la música exacta de cada escena.</p>
-      </div>
-      <div class="sensorial-card">
-        <p class="sensorial-card-label">Lenguaje sin marcas de género</p>
-        <p class="sensorial-card-body">Una voz que nombra el mundo por fuera del binarismo, con la naturalidad de quien siempre habló así.</p>
-      </div>
-      <div class="sensorial-card">
-        <p class="sensorial-card-label">Estructura fragmentaria</p>
-        <p class="sensorial-card-body">Escenas cortas, saltos en el tiempo, recuerdos que vuelven: el libro tiene la forma de una vida que se desarma y se vuelve a armar.</p>
-      </div>
-      <div class="sensorial-card">
-        <p class="sensorial-card-label">Perspectiva queer y generacional</p>
-        <p class="sensorial-card-body">Escrito desde una vivencia no binaria y millennial que excede lo individual para revelar tensiones de época.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LOS ACTOS -->
-<section class="actos" id="actos">
-  <div class="actos-header reveal">
-    <h2 class="actos-title">Los seis<br><em>actos.</em></h2>
-    <div>
-    <p class="actos-sub">La novela está estructurada en seis actos como una obra de teatro que también es una vida. Cada acto corresponde conceptualmente a un episodio del podcast <em>Entre</em> y comparte incluso su mismo nombre. Son dos formas de entrar al mismo universo.</p>
-    <a href="entre.html" class="btn-outline actos-entre-btn">Escuchar Entre, el podcast</a>
-    </div>
-  </div>
-  <div class="actos-grid">
-    <div class="acto reveal">
-      <div class="acto-num">1</div>
-      <p class="acto-index">Acto I</p>
-      <h3 class="acto-nombre">Cambiar</h3>
-      <p class="acto-desc">El inicio del deseo, las marchas feministas y el magnetismo de un primer beso en una noche de frío invernal. El detonante de todo lo que viene.</p>
-      <a href="entre.html" class="acto-podcast">Ep. 1 del podcast</a>
-    </div>
-    <div class="acto reveal d1">
-      <div class="acto-num">2</div>
-      <p class="acto-index">Acto II</p>
-      <h3 class="acto-nombre">Ser Libres</h3>
-      <p class="acto-desc">La efervescencia de los vínculos abiertos, la "libertad" que asfixia y el efecto dominó de las decisiones compartidas.</p>
-      <a href="entre.html" class="acto-podcast">Ep. 2 del podcast</a>
-    </div>
-    <div class="acto reveal d2">
-      <div class="acto-num">3</div>
-      <p class="acto-index">Acto III</p>
-      <h3 class="acto-nombre">Despertar del Ensueño</h3>
-      <p class="acto-desc">El encuentro con la sombra, la llegada a la "edad del clona" y el diagnóstico de espectro de bipolaridad que le pone nombre al caos interno.</p>
-      <a href="entre.html" class="acto-podcast">Ep. 3 del podcast</a>
-    </div>
-    <div class="acto reveal">
-      <div class="acto-num">4</div>
-      <p class="acto-index">Acto IV</p>
-      <h3 class="acto-nombre">Asignatura Pendiente</h3>
-      <p class="acto-desc">Lo que no pudo resolverse antes y vuelve ahora con otra forma. El peso de lo no dicho, lo no vivido, lo no integrado.</p>
-      <a href="entre.html" class="acto-podcast">Ep. 4 del podcast</a>
-    </div>
-    <div class="acto reveal d1">
-      <div class="acto-num">5</div>
-      <p class="acto-index">Acto V</p>
-      <h3 class="acto-nombre">Intemperie</h3>
-      <p class="acto-desc">Sin techo, sin estructura, sin certeza. El momento donde ya no hay forma de seguir siendo lo que se era. La exposición total.</p>
-      <a href="entre.html" class="acto-podcast">Ep. 5 del podcast</a>
-    </div>
-    <div class="acto reveal d2">
-      <div class="acto-num">6</div>
-      <p class="acto-index">Acto VI</p>
-      <h3 class="acto-nombre">Resistir</h3>
-      <p class="acto-desc">La decisión de seguir, todos los días. El último acto fue también el cierre del lanzamiento: una entrevista a le autore en el evento.</p>
-      <a href="entre.html" class="acto-podcast">Ep. 6 — entrevista live</a>
+    <div class="libro-pistas reveal d1" id="actos">
+      <p class="pistas-titulo">Los seis actos <span>y la primera canción de cada uno</span></p>
+        <details class="pista">
+          <summary><span class="pista-num">I</span><span class="pista-nombre">Cambiar</span><span class="pista-tema">“Pegaso”, Javiera Mena</span></summary>
+          <p class="pista-desc">El inicio del deseo, las marchas feministas y el magnetismo de un primer beso en una noche de frío invernal. El detonante de todo lo que viene. <a href="entre.html">Ep. 1 de <em>Entre</em></a></p>
+        </details>
+        <details class="pista">
+          <summary><span class="pista-num">II</span><span class="pista-nombre">Ser libres</span><span class="pista-tema">“Presagio”, Marilina Bertoldi</span></summary>
+          <p class="pista-desc">La efervescencia de los vínculos abiertos, la "libertad" que asfixia y el efecto dominó de las decisiones compartidas. <a href="entre.html">Ep. 2 de <em>Entre</em></a></p>
+        </details>
+        <details class="pista">
+          <summary><span class="pista-num">III</span><span class="pista-nombre">Despertar del ensueño</span><span class="pista-tema">“Volver a mí”, Fito Páez</span></summary>
+          <p class="pista-desc">El encuentro con la sombra, la llegada a la "edad del clona" y el diagnóstico de espectro de bipolaridad que le pone nombre al caos interno. <a href="entre.html">Ep. 3 de <em>Entre</em></a></p>
+        </details>
+        <details class="pista">
+          <summary><span class="pista-num">IV</span><span class="pista-nombre">Asignatura pendiente</span><span class="pista-tema">“Trouble”, Coldplay</span></summary>
+          <p class="pista-desc">Lo que no pudo resolverse antes y vuelve ahora con otra forma. El peso de lo no dicho, lo no vivido, lo no integrado. <a href="entre.html">Ep. 4 de <em>Entre</em></a></p>
+        </details>
+        <details class="pista">
+          <summary><span class="pista-num">V</span><span class="pista-nombre">Intemperie</span><span class="pista-tema">“Ya no hay forma de pedir perdón”, Pedro Aznar</span></summary>
+          <p class="pista-desc">Sin techo, sin estructura, sin certeza. El momento donde ya no hay forma de seguir siendo lo que se era. La exposición total. <a href="entre.html">Ep. 5 de <em>Entre</em></a></p>
+        </details>
+        <details class="pista">
+          <summary><span class="pista-num">VI</span><span class="pista-nombre">Resistir</span><span class="pista-tema">“Sin cadenas”, Los Pericos</span></summary>
+          <p class="pista-desc">La decisión de seguir, todos los días. El último acto fue también el cierre del lanzamiento: una entrevista a le autore en el evento. <a href="entre.html">Ep. 6 de <em>Entre</em></a></p>
+        </details>
     </div>
   </div>
 </section>
 
 <!-- LA EXPERIENCIA PERFORMÁTICA -->
-<section class="performance" id="performance">
-  <div class="performance-header reveal">
-    <p class="section-label">La primera edición · El lanzamiento performático</p>
-    <h2 class="performance-title">El libro como<br><em>acontecimiento.</em></h2>
-    <p class="performance-sub">La presentación de la primera edición fue una experiencia inmersiva donde el universo de la novela se volvió espacio habitable.</p>
-  </div>
-  <div class="performance-grid">
-    <div class="perf-left reveal">
-      <p class="perf-body">La propuesta buscó transformar la presentación de un libro en una <strong>experiencia de inmersión emocional y sensorial.</strong> El texto abandonó el formato exclusivamente editorial para expandirse hacia otros soportes.</p>
+<section class="acontecimiento" id="performance">
+  <div class="acont-grid">
+    <div class="acont-texto reveal">
+      <p class="section-label" style="color:rgba(255,211,219,0.6)">La primera edición</p>
+      <h2 class="performance-title">El libro como<br><em>acontecimiento.</em></h2>
+      <p class="perf-body">La presentación de la primera edición fue una experiencia inmersiva donde el universo de la novela se volvió espacio habitable.</p>
       <p class="perf-body">Las personas <strong>entraban al interior de la historia.</strong> Podían recorrerla, detenerse, volver. Leer los fragmentos intervenidos. Escuchar los audios. Quedarse en un rincón.</p>
       <div class="perf-quote">
         <p>"La gente se quedó mucho tiempo leyendo los fragmentos colgados en las paredes. Varias personas me hablaron de capítulos específicos que les quedaron resonando. Otras dijeron que la parte performática había quedado corta y que querían volver a entrar a ese universo."</p>
       </div>
-      <p class="perf-body">A partir de esa primera materialización pública, el proyecto comenzó a consolidarse como una investigación artística más amplia. La circulación de fragmentos audiovisuales y lecturas performáticas permitió ampliar el universo hacia nuevos formatos y públicos.</p>
-
-      <!--
-        GALERÍA DE FOTOS/VIDEOS DEL EVENTO:
-        Reemplazá los divs .perf-media-item por:
-        <img src="foto-evento-1.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;" alt="">
-        O para video:
-        <video src="clip-evento.mp4" autoplay muted loop style="width:100%;"></video>
-      -->
-      <div class="perf-media-grid" style="margin-top:36px;">
+      <a href="#preventa" class="btn-rosa">Venir al evento del 12/12</a>
+    </div>
+    <div class="acont-media reveal d1">
+      <div class="perf-media-grid" >
         <img src="foto-evento-1.jpg" style="grid-row:span 2;width:100%;height:100%;object-fit:cover;display:block;" alt="Evento de lanzamiento">
         <img src="foto-evento-2.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" alt="Evento de lanzamiento">
         <img src="foto-evento-3.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" alt="Evento de lanzamiento">
       </div>
-     <iframe
-width="100%"
-height="500"
-src="https://www.youtube.com/embed/jZcGzpUIwFk"
-title="Recap evento"
-frameborder="0"
-allowfullscreen
-style="margin-top:8px;display:block;">
-</iframe>
-      <div style="margin-top:36px;">
-        <a href="#campana" class="btn-rosa">Venir al evento del 12/12</a>
-      </div>
     </div>
-    <div class="perf-right reveal d1">
-      <div class="perf-elementos">
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Lecturas en vivo</p>
-          <p class="perf-elemento-body">Fragmentos de la novela leídos en el espacio por le autore. El texto en la voz, en el cuerpo, en el aire del lugar.</p>
-        </div>
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Proyecciones intervenidas</p>
-          <p class="perf-elemento-body">Imágenes y secuencias visuales que amplían el universo sin ilustrarlo. Otra capa de sentido superpuesta al texto.</p>
-        </div>
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Instalaciones sonoras</p>
-          <p class="perf-elemento-body">Audios y paisaje sonoro que funcionan como otra entrada narrativa. El cuerpo escucha lo que los ojos no ven.</p>
-        </div>
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Fragmentos impresos e intervenidos</p>
-          <p class="perf-elemento-body">Páginas y frases del libro colgadas en el espacio, manipuladas, rotas, recompuestas. El texto como objeto físico que se puede tocar.</p>
-        </div>
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Dispositivos de archivo afectivo</p>
-          <p class="perf-elemento-body">Materiales vinculados a la memoria emocional y la percepción. Escritura colectiva, objetos, archivos personales.</p>
-        </div>
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Espacio habitable</p>
-          <p class="perf-elemento-body">Sin escenario ni platea. Un recorrido sin ruta obligatoria ni orden cronológico. Cada persona construye su propio mapa.</p>
-        </div>
-      </div>
-    </div>
+  </div>
+  <div class="acont-video reveal">
+    <iframe src="https://www.youtube.com/embed/jZcGzpUIwFk" title="Recap del primer lanzamiento" frameborder="0" allowfullscreen></iframe>
   </div>
 </section>
 
@@ -1204,7 +1265,7 @@ style="margin-top:8px;display:block;">
   <h2 class="cierre-title reveal">Cada quien tiene<br>su propio <em>demasiado</em><br>y su propio <em>tarde.</em></h2>
   <p class="cierre-sub reveal">¿Cuál es el tuyo? La segunda edición de <em>Antes de que sea demasiado tarde</em> sale en diciembre y se presenta el sábado 12/12 en&nbsp;Ja&nbsp;Ja.</p>
   <div class="segunda-ctas reveal" style="justify-content:center">
-    <a href="#campana" class="btn-verde">Quiero la segunda edición</a>
+    <a href="#preventa" class="btn-verde">Quiero la segunda edición</a>
   </div>
 </section>
 
