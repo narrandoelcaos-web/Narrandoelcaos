@@ -927,6 +927,28 @@
   .hero-right-quote { font-size: 18px; line-height: 1.55; }
   .ticker-inner { animation-duration: 40s; }
 
+
+  /* ===== mobile: ajustes finales ===== */
+  @media (max-width: 768px) {
+    .hero-left { padding: 104px 24px 48px; }
+    .hero-right { min-height: 0; padding: 0 24px 48px; }
+    .hero-right-inner { padding: 0; }
+    .hero-right-inner img { max-width: 220px !important; }
+    .hero-right-quote { font-size: 17px; max-width: 300px; }
+    .hero-actions { flex-direction: column; }
+    .hero-actions a, .preventa-card .btn-verde, .opcion .btn-verde, .referides-card .btn-verde,
+    .llevas-cta a, .final-cta a, .segunda-ctas a, .expansion-left .btn-rosa { width: 100%; text-align: center; }
+    .btn-rosa, .btn-verde, .btn-outline { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; }
+    .section-label, .campana-label, .etapas-titulo, .preventa-card-name, .referides-card-label,
+    .fecha-label, .fecha-estado, .fc-key, .acto-index, .llevas-lista-titulo, .voz cite { font-size: 12.5px !important; }
+    .nav-back, .footer-links a, .preventa-secundarios a { font-size: 12.5px; min-height: 44px; display: inline-flex; align-items: center; }
+    .acto-podcast { min-height: 44px; font-size: 14px !important; }
+    .preventa-colab a, .referides-lista a, .expansion-link { display: inline-block; padding: 10px 0; }
+    .final-lineas p { font-size: clamp(24px, 7vw, 30px); margin-bottom: 0.35em; line-height: 1.15; }
+    .final-lineas .final-vida { margin-top: 0.8em; }
+    .campana::before { display: none; }
+  }
+
   /* FOOTER */
   footer {
     background: var(--verde-oscuro); padding: 60px;
@@ -1188,7 +1210,7 @@
   <div class="datos reveal">
     <div class="dato"><span class="dato-n">Mayo 2026</span><span class="dato-t">Primera edición autopublicada y autogestionada.</span></div>
     <div class="dato"><span class="dato-n">45</span><span class="dato-t">personas en el lanzamiento performático.</span></div>
-    <div class="dato"><span class="dato-n">Agotada</span><span class="dato-t">La primera edición se agotó.</span></div>
+    <div class="dato"><span class="dato-n">Agotada</span><span class="dato-t">La primera edición se agotó en una semana.</span></div>
     <div class="dato"><span class="dato-n">+35</span><span class="dato-t">personas la compraron en preventa, antes de verla impresa.</span></div>
     <div class="dato"><span class="dato-n">+70</span><span class="dato-t">personas ya tienen el libro en su biblioteca.</span></div>
   </div>
@@ -1427,7 +1449,7 @@
 <!-- PREGUNTAS FRECUENTES -->
 <section class="preguntas" id="preguntas">
   <div class="preguntas-grid">
-    <h2 class="preguntas-title reveal">Preguntas<br><em>frecuentes.</em></h2>
+    <h2 class="preguntas-title reveal">Antes de que<br><em>preguntes.</em></h2>
     <div class="faqs reveal">
     <details class="faq">
       <summary>¿Tengo que haber leído la primera edición?</summary>
@@ -1435,7 +1457,7 @@
     </details>
     <details class="faq">
       <summary>¿Qué cambió respecto de la primera?</summary>
-      <p>La primera la escribí desde adentro del derrumbe; esta la leí y la reescribí desde el después. Las dos son verdad.</p>
+      <p>La historia es la misma; lo que cambió es desde dónde la cuento. La primera edición la escribí desde adentro del derrumbe. Para esta segunda la volví a leer y a revisar desde el después, y en esa relectura aparecieron dos preguntas que ahora atraviesan toda la obra: ¿demasiado para quién? ¿Tarde para qué?</p>
     </details>
     <details class="faq">
       <summary>¿Es un libro de autoayuda?</summary>
@@ -1443,7 +1465,7 @@
     </details>
     <details class="faq">
       <summary>¿Es una novela sobre una relación abierta? ¿Sobre salud mental?</summary>
-      <p>Empieza con un amor y una relación abierta, y atraviesa una crisis de salud mental. Pero la pregunta que la ordena es otra: qué parte de lo que sentimos es propia y qué parte es efecto de la época en la que vivimos.</p>
+      <p>Es una historia que usa el desamor como excusa para hablar de salud mental. Empieza con un amor y una relación abierta que se desarman, y desde ahí narra en primera persona lo que es atravesar un diagnóstico, empezar una medicación y aprender a convivir con las dos cosas.</p>
     </details>
     <details class="faq">
       <summary>¿Cómo es el lenguaje?</summary>
