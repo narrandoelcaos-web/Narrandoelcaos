@@ -921,6 +921,12 @@
   .final-lineas .final-vida { font-weight: 900; color: var(--verde-oscuro); margin-top: 0.6em; }
   .final-cta { margin-top: 56px; }
 
+  .hero-libro { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-bottom: 30px; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
+  .hero-libro-t { font-family: var(--spartan); font-weight: 800; font-size: clamp(22px, 2.3vw, 32px); line-height: 1.1; color: var(--crema); }
+  .hero-libro-ed { font-family: var(--spartan); font-weight: 800; font-size: clamp(13px, 1.1vw, 15px); letter-spacing: 0.1em; text-transform: uppercase; color: var(--verde-oscuro); background: var(--rosa); padding: 7px 12px; }
+  .hero-right-quote { font-size: 18px; line-height: 1.55; }
+  .ticker-inner { animation-duration: 40s; }
+
   /* FOOTER */
   footer {
     background: var(--verde-oscuro); padding: 60px;
@@ -1026,20 +1032,18 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-eyebrow">Antes de que sea demasiado tarde · Segunda edición</p>
-    <p class="hero-kicker">Una historia sobre lo que pasa cuando una forma de amar, de pensar y de habitar el cuerpo deja de funcionar.</p>
+    <p class="hero-libro"><span class="hero-libro-t">Antes de que sea demasiado tarde</span><span class="hero-libro-ed">Segunda edición</span></p>
     <h1 class="hero-title hero-title--v6">¿Demasiado para quién?<br><em>¿Tarde para qué?</em></h1>
     <p class="hero-sub">Una novela sobre las medidas con las que aprendimos a vivir: cuánto es demasiado y cuándo es tarde. Escrita desde adentro del derrumbe, reescrita desde el después.</p>
-    <p class="hero-datos"><span>Preventa abierta</span><span>Sale en diciembre</span><span>Presentación performática el sábado 12/12 en Ja Ja, Chacarita</span></p>
     <div class="hero-actions">
-      <a href="#campana" class="btn-rosa">Elegí por dónde entrar</a>
-      <a href="#sobre" class="btn-outline">De qué se trata</a>
+      <a href="#preventa" class="btn-rosa">Acceder a la preventa</a>
+      <a href="#sobre" class="btn-outline">Sobre el libro</a>
     </div>
   </div>
   <div class="hero-right">
     <div class="hero-right-inner">
       <img src="foto-libro.jpg" style="width:100%;max-width:340px;aspect-ratio:3/4;object-fit:cover;" alt="Antes de que sea demasiado tarde">
-      <p class="hero-right-quote">"Hay historias que no terminan cuando terminan. Siguen viviendo en el cuerpo."</p>
+      <p class="hero-right-quote">Una historia sobre lo que pasa cuando una forma de amar, de pensar y de habitar el cuerpo deja de funcionar.</p>
     </div>
   </div>
 </section>
@@ -1047,22 +1051,18 @@
 <!-- TICKER -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-inner">
-    <span class="ticker-item">Autoficción</span>
-    <span class="ticker-item">Identidad</span>
-    <span class="ticker-item">Salud mental</span>
-    <span class="ticker-item">Formas contemporáneas de amar</span>
-    <span class="ticker-item">Escritura fragmentaria</span>
-    <span class="ticker-item">Perspectiva queer</span>
-    <span class="ticker-item">Performance</span>
-    <span class="ticker-item">Agos Concilio</span>
-    <span class="ticker-item">Autoficción</span>
-    <span class="ticker-item">Identidad</span>
-    <span class="ticker-item">Salud mental</span>
-    <span class="ticker-item">Formas contemporáneas de amar</span>
-    <span class="ticker-item">Escritura fragmentaria</span>
-    <span class="ticker-item">Perspectiva queer</span>
-    <span class="ticker-item">Performance</span>
-    <span class="ticker-item">Agos Concilio</span>
+    <span class="ticker-item">Novela de autoficción</span>
+    <span class="ticker-item">Preventa abierta</span>
+    <span class="ticker-item">Sale en diciembre</span>
+    <span class="ticker-item">Presentación performática el sábado 12/12 en Ja Ja, Chacarita</span>
+    <span class="ticker-item">Novela de autoficción</span>
+    <span class="ticker-item">Preventa abierta</span>
+    <span class="ticker-item">Sale en diciembre</span>
+    <span class="ticker-item">Presentación performática el sábado 12/12 en Ja Ja, Chacarita</span>
+    <span class="ticker-item">Novela de autoficción</span>
+    <span class="ticker-item">Preventa abierta</span>
+    <span class="ticker-item">Sale en diciembre</span>
+    <span class="ticker-item">Presentación performática el sábado 12/12 en Ja Ja, Chacarita</span>
   </div>
 </div>
 
@@ -1117,65 +1117,6 @@
       <div class="llevas-item"><p class="llevas-item-t">Preguntas en vez de respuestas.</p><p class="llevas-item-d">No hay moraleja. Hay alguien que, al final, elige quedarse.</p></div>
     </div>
   </div>
-  <blockquote class="llevas-cita reveal">
-    <p>“No es épico. No es heroico. Es cotidiano. Es pequeño. Es ahora.”</p>
-    <cite>Del capítulo «Antes de que sea demasiado tarde»</cite>
-  </blockquote>
-  <div class="llevas-cta reveal"><a href="#campana" class="btn-verde">Elegí por dónde entrar</a></div>
-</section>
-
-<!-- CAMPAÑA -->
-<section class="campana" id="campana">
-  <p class="campana-label reveal">Preventa abierta · Segunda edición</p>
-  <h2 class="campana-title reveal">Elegí por dónde<br><em>entrar.</em></h2>
-  <p class="campana-sub reveal">La segunda edición de <em>Antes de que sea demasiado tarde</em> y su evento performático de lanzamiento, el sábado 12 de diciembre en Ja Ja.</p>
-  <div class="preventa-cards reveal">
-    <div class="preventa-card">
-      <p class="preventa-card-name">Libro</p>
-      <p class="preventa-card-text">La segunda edición. El envío se cotiza aparte.</p>
-      <p class="preventa-card-price">$30.000</p>
-      <p class="preventa-card-cuotas">Hasta 3 cuotas sin interés</p>
-      <a href="https://preview.mailerlite.io/forms/1991842/201448093649995659/share" target="_blank" class="btn-verde">Quiero el libro</a>
-    </div>
-    <div class="preventa-card">
-      <p class="preventa-card-name">Libro + evento</p>
-      <p class="preventa-card-text">La segunda edición y el evento performático de lanzamiento. El libro te lo llevás esa noche.</p>
-      <p class="preventa-card-price">$38.000</p>
-      <p class="preventa-card-cuotas">Hasta 3 cuotas sin interés</p>
-      <a href="https://preview.mailerlite.io/forms/1991842/201448101394777423/share" target="_blank" class="btn-verde">Quiero las dos</a>
-    </div>
-    <div class="preventa-card">
-      <p class="preventa-card-name">Entrada al evento</p>
-      <p class="preventa-card-text">El evento performático de lanzamiento del 12/12 en Ja Ja.</p>
-      <p class="preventa-card-price">$10.000</p>
-      <a href="https://preview.mailerlite.io/forms/1991842/201448102474811005/share" target="_blank" class="btn-verde">Quiero ir</a>
-    </div>
-  </div>
-  <p class="preventa-colab reveal">Si no llegás, hay entradas a colaboración a $5.000. <a href="https://preview.mailerlite.io/forms/1991842/201448103631390419/share" target="_blank">Entrada a colaboración</a></p>
-  <p class="preventa-nota reveal">Lo que se pague hasta el jueves 5/11 ayuda a que el libro entre a imprenta. La preventa sigue abierta durante noviembre y los libros salen en diciembre.</p>
-  <div class="preventa-secundarios reveal">
-    <a href="https://forms.gle/V8uCSUV9foHJYHdE6" target="_blank">Apoyar el proyecto</a>
-    <a href="https://preview.mailerlite.io/forms/1991842/176347366729712646/share" target="_blank">Seguir las novedades</a>
-  </div>
-</section>
-
-<!-- SOBRE LA NOVELA -->
-<section class="sobre5" id="sobre">
-  <div class="sobre5-col reveal">
-    <p class="section-label" style="color:var(--terracota)">Sobre la novela</p>
-    <h2 class="sobre-title">Un libro<br>para <em>atravesar.</em></h2>
-    <p class="sobre-body sobre-intro">Vivimos en una época que nos habla mucho de libertad y poco de cómo sostenernos. Que romantizó el desapego y nos enseñó a soltar antes que a quedarnos y habitar la incomodidad. Donde no mostrar interés es lo correcto. Donde sentir mucho se traduce en una infinidad de etiquetas médicas. Y donde el autoconocimiento se convirtió en un mandato más.</p>
-  </div>
-
-  <div class="vara reveal">
-    <p class="vara-1">Tenemos palabras para nombrarlo todo.</p>
-    <p class="vara-2">Y una vara para medirlo todo: cuánto es <strong>demasiado</strong>, cuándo es <strong>tarde</strong>.</p>
-    <div class="vara-regla" aria-hidden="true"></div>
-  </div>
-
-  <div class="sobre5-col reveal">
-    <p class="sobre-destacado">Sin embargo, cada vez más personas viven con la sensación de <strong>llegar tarde a sí mismas.</strong></p>
-  </div>
 </section>
 
 <!-- SEGUNDA EDICIÓN -->
@@ -1228,6 +1169,64 @@
   </div>
 </section>
 
+<!-- LO QUE YA PASÓ -->
+<section class="paso" id="lo-que-ya-paso">
+  <h2 class="sobre-title reveal">Lo que<br><em>ya pasó.</em></h2>
+  <div class="datos reveal">
+    <div class="dato"><span class="dato-n">Mayo 2026</span><span class="dato-t">Primera edición autopublicada y autogestionada.</span></div>
+    <div class="dato"><span class="dato-n">45</span><span class="dato-t">personas en el lanzamiento performático.</span></div>
+    <div class="dato"><span class="dato-n">Agotada</span><span class="dato-t">La primera edición se agotó.</span></div>
+    <div class="dato"><span class="dato-n">+35</span><span class="dato-t">personas la compraron en preventa, antes de verla impresa.</span></div>
+    <div class="dato"><span class="dato-n">+70</span><span class="dato-t">personas ya tienen el libro en su biblioteca.</span></div>
+  </div>
+  <div class="lectores reveal">
+    <img src="lectores-cafe.jpg" alt="El libro sobre una mesa de café, junto a un capuchino" loading="lazy">
+    <img src="lectores-nieve.jpg" alt="El libro frente a una ventana con árboles nevados" loading="lazy">
+    <img src="lectores-mano.jpg" alt="Una mano sostiene el libro" loading="lazy">
+    <img src="lectores-cafe-2.jpg" alt="El libro con una lapicera roja, junto a un café y medialunas" loading="lazy">
+  </div>
+  <div class="voces reveal">
+    <blockquote class="voz"><p>“Alargué la lectura desde mayo para transitar el proceso que narrabas a su tiempo, para darle tiempo.”</p><cite>Lectora de la primera edición</cite></blockquote>
+    <blockquote class="voz"><p>“Leerte y encontrarme en tus escenas me hace sentipensar que hay otras historias posibles a la espera de que las escribamos.”</p><cite>Lectora de la primera edición</cite></blockquote>
+    <blockquote class="voz"><p>“Apenas lo empecé y wooooow. Qué manera de transmitir. Terminándolo se lo prestaré a una amiga.”</p><cite>Lectora de la primera edición</cite></blockquote>
+  </div>
+</section>
+
+<!-- CAMPAÑA -->
+<section class="campana" id="campana">
+  <p class="campana-label reveal">Preventa abierta · Segunda edición</p>
+  <h2 class="campana-title reveal">Elegí por dónde<br><em>entrar.</em></h2>
+  <p class="campana-sub reveal">La segunda edición de <em>Antes de que sea demasiado tarde</em> y su evento performático de lanzamiento, el sábado 12 de diciembre en Ja Ja.</p>
+  <div class="preventa-cards reveal">
+    <div class="preventa-card">
+      <p class="preventa-card-name">Libro</p>
+      <p class="preventa-card-text">La segunda edición. El envío se cotiza aparte.</p>
+      <p class="preventa-card-price">$30.000</p>
+      <p class="preventa-card-cuotas">Hasta 3 cuotas sin interés</p>
+      <a href="https://preview.mailerlite.io/forms/1991842/201448093649995659/share" target="_blank" class="btn-verde">Quiero el libro</a>
+    </div>
+    <div class="preventa-card">
+      <p class="preventa-card-name">Libro + evento</p>
+      <p class="preventa-card-text">La segunda edición y el evento performático de lanzamiento. El libro te lo llevás esa noche.</p>
+      <p class="preventa-card-price">$38.000</p>
+      <p class="preventa-card-cuotas">Hasta 3 cuotas sin interés</p>
+      <a href="https://preview.mailerlite.io/forms/1991842/201448101394777423/share" target="_blank" class="btn-verde">Quiero las dos</a>
+    </div>
+    <div class="preventa-card">
+      <p class="preventa-card-name">Entrada al evento</p>
+      <p class="preventa-card-text">El evento performático de lanzamiento del 12/12 en Ja Ja.</p>
+      <p class="preventa-card-price">$10.000</p>
+      <a href="https://preview.mailerlite.io/forms/1991842/201448102474811005/share" target="_blank" class="btn-verde">Quiero ir</a>
+    </div>
+  </div>
+  <p class="preventa-colab reveal">Si no llegás, hay entradas a colaboración a $5.000. <a href="https://preview.mailerlite.io/forms/1991842/201448103631390419/share" target="_blank">Entrada a colaboración</a></p>
+  <p class="preventa-nota reveal">Lo que se pague hasta el jueves 5/11 ayuda a que el libro entre a imprenta. La preventa sigue abierta durante noviembre y los libros salen en diciembre.</p>
+  <div class="preventa-secundarios reveal">
+    <a href="https://forms.gle/V8uCSUV9foHJYHdE6" target="_blank">Apoyar el proyecto</a>
+    <a href="https://preview.mailerlite.io/forms/1991842/176347366729712646/share" target="_blank">Seguir las novedades</a>
+  </div>
+</section>
+
 <!-- PROGRAMA DE REFERIDES -->
 <section class="referides" id="de-mano-en-mano">
   <div class="referides-inner">
@@ -1253,6 +1252,25 @@
         <a href="https://preview.mailerlite.io/forms/1991842/201448104823621427/share" target="_blank" class="btn-verde">Entrar por invitación</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- SOBRE LA NOVELA -->
+<section class="sobre5" id="sobre">
+  <div class="sobre5-col reveal">
+    <p class="section-label" style="color:var(--terracota)">Sobre la novela</p>
+    <h2 class="sobre-title">Un libro<br>para <em>atravesar.</em></h2>
+    <p class="sobre-body sobre-intro">Vivimos en una época que nos habla mucho de libertad y poco de cómo sostenernos. Que romantizó el desapego y nos enseñó a soltar antes que a quedarnos y habitar la incomodidad. Donde no mostrar interés es lo correcto. Donde sentir mucho se traduce en una infinidad de etiquetas médicas. Y donde el autoconocimiento se convirtió en un mandato más.</p>
+  </div>
+
+  <div class="vara reveal">
+    <p class="vara-1">Tenemos palabras para nombrarlo todo.</p>
+    <p class="vara-2">Y una vara para medirlo todo: cuánto es <strong>demasiado</strong>, cuándo es <strong>tarde</strong>.</p>
+    <div class="vara-regla" aria-hidden="true"></div>
+  </div>
+
+  <div class="sobre5-col reveal">
+    <p class="sobre-destacado">Sin embargo, cada vez más personas viven con la sensación de <strong>llegar tarde a sí mismas.</strong></p>
   </div>
 </section>
 
@@ -1403,29 +1421,6 @@
   </div>
   <div class="perf-video reveal">
     <iframe src="https://www.youtube.com/embed/jZcGzpUIwFk" title="Recap del primer lanzamiento" frameborder="0" allowfullscreen></iframe>
-  </div>
-</section>
-
-<!-- LO QUE YA PASÓ -->
-<section class="paso" id="lo-que-ya-paso">
-  <h2 class="sobre-title reveal">Lo que<br><em>ya pasó.</em></h2>
-  <div class="datos reveal">
-    <div class="dato"><span class="dato-n">Mayo 2026</span><span class="dato-t">Primera edición autopublicada y autogestionada.</span></div>
-    <div class="dato"><span class="dato-n">45</span><span class="dato-t">personas en el lanzamiento performático.</span></div>
-    <div class="dato"><span class="dato-n">Agotada</span><span class="dato-t">La primera edición se agotó.</span></div>
-    <div class="dato"><span class="dato-n">+35</span><span class="dato-t">personas la compraron en preventa, antes de verla impresa.</span></div>
-    <div class="dato"><span class="dato-n">+70</span><span class="dato-t">personas ya tienen el libro en su biblioteca.</span></div>
-  </div>
-  <div class="lectores reveal">
-    <img src="lectores-cafe.jpg" alt="El libro sobre una mesa de café, junto a un capuchino" loading="lazy">
-    <img src="lectores-nieve.jpg" alt="El libro frente a una ventana con árboles nevados" loading="lazy">
-    <img src="lectores-mano.jpg" alt="Una mano sostiene el libro" loading="lazy">
-    <img src="lectores-cafe-2.jpg" alt="El libro con una lapicera roja, junto a un café y medialunas" loading="lazy">
-  </div>
-  <div class="voces reveal">
-    <blockquote class="voz"><p>“Alargué la lectura desde mayo para transitar el proceso que narrabas a su tiempo, para darle tiempo.”</p><cite>Lectora de la primera edición</cite></blockquote>
-    <blockquote class="voz"><p>“Leerte y encontrarme en tus escenas me hace sentipensar que hay otras historias posibles a la espera de que las escribamos.”</p><cite>Lectora de la primera edición</cite></blockquote>
-    <blockquote class="voz"><p>“Apenas lo empecé y wooooow. Qué manera de transmitir. Terminándolo se lo prestaré a una amiga.”</p><cite>Lectora de la primera edición</cite></blockquote>
   </div>
 </section>
 
