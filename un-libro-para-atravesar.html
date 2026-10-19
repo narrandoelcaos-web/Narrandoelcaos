@@ -1094,12 +1094,33 @@
     .ficha-libro { padding: 60px 24px; }
     .comprar-links { flex-direction: column; align-items: center; gap: 16px; }
   }
+
+  /* ===== menú desplegable celular ===== */
+  .nav-toggle { display: none; }
+  @media (max-width: 768px) {
+    nav .nav-title { display: none; }
+    .nav-toggle { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 0 0 12px; background: none; border: 0; cursor: pointer; font-family: var(--spartan); font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crema); }
+    .nav-toggle-icon { position: relative; width: 22px; height: 14px; display: inline-block; }
+    .nav-toggle-icon span { position: absolute; left: 0; right: 0; height: 2px; background: var(--rosa); transition: transform .25s, opacity .2s, top .25s; }
+    .nav-toggle-icon span:nth-child(1) { top: 0; }
+    .nav-toggle-icon span:nth-child(2) { top: 6px; }
+    .nav-toggle-icon span:nth-child(3) { top: 12px; }
+    nav.menu-abierto .nav-toggle-icon span:nth-child(1) { top: 6px; transform: rotate(45deg); }
+    nav.menu-abierto .nav-toggle-icon span:nth-child(2) { opacity: 0; }
+    nav.menu-abierto .nav-toggle-icon span:nth-child(3) { top: 6px; transform: rotate(-45deg); }
+    nav.menu-abierto { background: var(--verde-oscuro); }
+    nav.menu-abierto .nav-links { display: flex; flex-direction: column; gap: 0; position: absolute; top: 100%; left: 0; right: 0; background: var(--verde-oscuro); padding: 8px 24px 28px; border-bottom: 2px solid var(--rosa); box-shadow: 0 24px 40px rgba(0,0,0,0.35); }
+    nav.menu-abierto .nav-links a { display: flex; align-items: center; min-height: 56px; font-size: 16px; letter-spacing: 0.08em; color: var(--crema); border-bottom: 1px solid rgba(255,211,219,0.12); }
+    nav.menu-abierto .nav-links a:last-child { border-bottom: 0; }
+    nav.menu-abierto .nav-links a.activo { color: var(--rosa); }
+  }
 </style>
 </head>
 <body>
 
 <nav>
 <a href="antes-de-que-sea-demasiado-tarde.html" class="nav-back">Antes de que sea demasiado tarde</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Abrir menú">Menú <span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span></button>
   <div class="nav-links">
     <a href="antes-de-que-sea-demasiado-tarde.html#segunda-edicion">Segunda edición</a>
     <a href="preventa-antes-de-que-sea-demasiado-tarde.html">Preventa</a>
@@ -1272,6 +1293,24 @@
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
   }, { threshold: 0.1 });
   reveals.forEach(el => obs.observe(el));
+</script>
+<script>
+  (function(){
+    var nav = document.querySelector('nav'), btn = nav && nav.querySelector('.nav-toggle');
+    if (!btn) return;
+    function cerrar(){ nav.classList.remove('menu-abierto'); btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','Abrir menú'); }
+    btn.addEventListener('click', function(){
+      var abierto = nav.classList.toggle('menu-abierto');
+      btn.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+      btn.setAttribute('aria-label', abierto ? 'Cerrar menú' : 'Abrir menú');
+    });
+    nav.querySelectorAll('.nav-links a').forEach(function(a){
+      a.addEventListener('click', cerrar);
+      var f = (a.getAttribute('href')||'').split('#')[0];
+      if (f && location.pathname.split('/').pop() === f) a.classList.add('activo');
+    });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') cerrar(); });
+  })();
 </script>
 </body>
 </html>
