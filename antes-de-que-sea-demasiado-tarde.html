@@ -1033,6 +1033,50 @@
     .referides-inner{grid-template-columns:1fr;gap:48px}
     footer{padding:40px 24px;flex-direction:column;align-items:flex-start}
   }
+
+  /* ===== tres páginas ===== */
+  .novela-links { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .quien { background: var(--crema); color: var(--verde-oscuro); padding: 120px 60px; }
+  .quien-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 72px; align-items: center; }
+  .quien-foto { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 20%; display: block; filter: grayscale(1); }
+  .quien .sobre-body { color: var(--verde); font-size: 20px; max-width: 560px; }
+  .noches { display: grid; grid-template-columns: 1fr 1fr; }
+  .noche { padding: 110px 60px; display: flex; flex-direction: column; gap: 24px; }
+  .noche--primera { background: var(--crema); color: var(--verde-oscuro); }
+  .noche--segunda { background: var(--verde); color: var(--crema); }
+  .noche-title { font-family: var(--spartan); font-weight: 800; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.05; letter-spacing: -0.01em; }
+  .noche-title em { font-style: normal; color: var(--terracota); }
+  .noche--segunda .noche-title em { color: var(--rosa); }
+  .datos--noche { grid-template-columns: repeat(3, minmax(0,1fr)); margin: 8px 0 0; }
+  .noche-fotos { display: grid; grid-template-columns: 1.2fr 1fr; gap: 10px; }
+  .noche-fotos img { width: 100%; height: 280px; object-fit: cover; display: block; }
+  .noche .voz { background: var(--verde); }
+  .noche-link { font-weight: 700; color: var(--verde); text-decoration: underline; text-underline-offset: 4px; align-self: flex-start; }
+  .noche-fecha { font-weight: 800; font-size: 24px; line-height: 1.3; color: var(--rosa); }
+  .noche-body { font-size: 18px; font-weight: 300; line-height: 1.7; color: rgba(253,247,240,0.88); }
+  .noche-body strong { font-weight: 700; color: var(--crema); }
+  .noche-beneficio { margin-top: auto; border: 2px solid var(--rosa); padding: 28px; display: flex; flex-direction: column; gap: 10px; }
+  .noche-beneficio .preventa-card-name, .noche-beneficio .preventa-card-price { color: var(--rosa); }
+  .noche-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+  .comprar-links { margin-top: 40px; display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; }
+  .comprar-links a { font-weight: 700; color: var(--verde); text-decoration: underline; text-underline-offset: 4px; }
+  .pagina-head { padding: 150px 60px 40px; max-width: 1100px; margin: 0 auto; }
+  .pagina-volver { font-weight: 700; color: var(--rosa); text-decoration: none; font-size: 15px; }
+  .ficha-libro { background: var(--verde-oscuro); padding: 90px 60px; }
+  .ficha-libro .segunda-ficha { max-width: 1100px; margin: 0 auto; }
+  @media (max-width: 768px) {
+    .quien { padding: 80px 24px; }
+    .quien-inner { grid-template-columns: 1fr; gap: 32px; }
+    .noches { grid-template-columns: 1fr; }
+    .noche { padding: 80px 24px; }
+    .noche-fotos img { height: 200px; }
+    .datos--noche { grid-template-columns: 1fr; }
+    .datos--noche .dato + .dato { padding-left: 0; border-left: 0; border-top: 1px solid var(--border); }
+    .novela-links a, .noche-ctas a { width: 100%; text-align: center; }
+    .pagina-head { padding: 120px 24px 24px; }
+    .ficha-libro { padding: 60px 24px; }
+    .comprar-links { flex-direction: column; align-items: center; gap: 16px; }
+  }
 </style>
 </head>
 <body>
@@ -1041,12 +1085,11 @@
 <a href="index.html" class="nav-back">Narrar el Caos</a>
   <span class="nav-title">Antes de que sea demasiado tarde</span>
   <div class="nav-links">
-    <a href="#sobre">La novela</a>
     <a href="#segunda-edicion">Segunda edición</a>
-    <a href="#preventa">La preventa</a>
-    <a href="#libro">El libro</a>
-    <a href="#performance">La primera edición</a>
-    <a href="#preguntas">Preguntas</a>
+    <a href="#sobre">La novela</a>
+    <a href="#quien">Quién escribe</a>
+    <a href="#noches">Los eventos</a>
+    <a href="#campana">La preventa</a>
     <a href="entre.html">El podcast</a>
   </div>
 </nav>
@@ -1058,7 +1101,7 @@
     <h1 class="hero-title hero-title--v6">¿Demasiado para quién?<br><em>¿Tarde para qué?</em></h1>
     <p class="hero-sub">Una novela sobre las medidas con las que aprendimos a vivir: cuánto es demasiado y cuándo es tarde. Escrita desde adentro del derrumbe, reescrita desde el después.</p>
     <div class="hero-actions">
-      <a href="#preventa" class="btn-rosa">Acceder a la preventa</a>
+      <a href="#campana" class="btn-rosa">Acceder a la preventa</a>
       <a href="#sobre" class="btn-outline">Sobre el libro</a>
     </div>
   </div>
@@ -1098,135 +1141,6 @@
   </div>
 </section>
 
-<!-- INTRO PREVENTA / SEGUNDA EDICIÓN -->
-<section class="expansion" id="preventa">
-  <div class="expansion-inner">
-    <div class="expansion-left reveal">
-      <p class="preventa-abierta"><span class="pa-punto" aria-hidden="true"></span>Preventa abierta</p>
-      <h2 class="expansion-title">Este libro existe<br><em>porque alguien lo elige antes.</em></h2>
-      <p class="expansion-body">La segunda edición es autogestiva, como la primera: <strong>con lo que se reserva en la preventa se paga la imprenta.</strong> Los libros salen en diciembre, a tiempo para regalar (o regalarte).</p>
-      <p class="expansion-body">Y la presento como presenté la primera: con un <strong>evento performático de lanzamiento</strong>, el sábado 12 de diciembre desde las 19 h en Ja Ja, vivero y centro cultural en Chacarita, CABA. Una noche para recorrer la novela, con lecturas en vivo, instalaciones, audios, proyecciones y música. Lo que pase esa noche va a ser la primera escena de una obra que sigue circulando en 2027. <a href="#performance" class="expansion-link">Mirá cómo fue la primera</a></p>
-      <div style="margin-top:36px;">
-        <a href="#campana" class="btn-rosa">Ver las opciones</a>
-      </div>
-    </div>
-    <div class="expansion-right reveal d1">
-      <p class="etapas-titulo">Cómo funciona la preventa</p>
-      <ol class="pasos-lista">
-        <li>Elegís tu opción.</li>
-        <li>Dejás tu nombre, mail y WhatsApp.</li>
-        <li>Pagás por Mercado Pago.</li>
-        <li>Respondés el mail que te llega con el comprobante, y te confirmo.</li>
-      </ol>
-    </div>
-  </div>
-</section>
-
-<!-- QUÉ TE LLEVÁS -->
-<section class="llevas" id="que-te-llevas">
-  <div class="llevas-grid">
-    <div class="llevas-texto reveal">
-      <h2 class="sobre-title">Qué te<br><em>llevás.</em></h2>
-      <p class="sobre-body"><em>Antes de que sea demasiado tarde</em> empieza como una historia de amor que se desarma y termina mostrando todo lo que una persona puede abandonar de sí para no sentirse abandonada.</p>
-      <p class="sobre-body">Escrito desde la trinchera de una vivencia no binaria y millennial, el libro recorre los actos de una vida que se rompe y se rearma entre sesiones de terapia, listas de reproducción de Spotify, medicación y diagnósticos, y el aroma a limón de los recuerdos que se niegan a morir.</p>
-      <p class="sobre-body">La escritura es fragmentaria porque nació mientras las cosas pasaban. Escenas sueltas, recuerdos que vuelven, tiempos que se pisan: así se cuenta una vida cuando entra en crisis, y así la vas armando vos, capítulo a capítulo.</p>
-    </div>
-    <div class="llevas-lista reveal d1">
-      <p class="llevas-lista-titulo">Lo que te llevás</p>
-      <div class="llevas-item"><p class="llevas-item-t">Una novela de autoficción en seis actos y 60 capítulos.</p><p class="llevas-item-d">Muchos son breves: se pueden leer de corrido o de a un fragmento.</p></div>
-      <div class="llevas-item"><p class="llevas-item-t">Una banda sonora.</p><p class="llevas-item-d">Cada capítulo tiene su curaduría musical y el libro trae un QR a la playlist oficial: de Javiera Mena y Marilina Bertoldi a Radiohead y Trío Los Panchos.</p></div>
-      <div class="llevas-item"><p class="llevas-item-t">Una voz millennial y rioplatense,</p><p class="llevas-item-d">con humor al borde del dolor. Escrita en lenguaje sin marcas de género.</p></div>
-      <div class="llevas-item"><p class="llevas-item-t">Preguntas en vez de respuestas.</p><p class="llevas-item-d">No hay moraleja. Hay alguien que, al final, elige quedarse.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- CAMPAÑA -->
-<section class="campana" id="campana">
-  <p class="campana-label reveal">Preventa abierta · Segunda edición</p>
-  <h2 class="campana-title reveal">Elegí por dónde<br><em>entrar.</em></h2>
-  <p class="campana-sub reveal">La segunda edición de <em>Antes de que sea demasiado tarde</em> y su evento performático de lanzamiento, el sábado 12 de diciembre en Ja Ja.</p>
-  <div class="preventa-cards reveal">
-    <div class="preventa-card">
-      <p class="preventa-card-name">Libro</p>
-      <p class="preventa-card-text">La segunda edición. El envío se cotiza aparte.</p>
-      <p class="preventa-card-price">$30.000</p>
-      <p class="preventa-card-cuotas">Hasta 3 cuotas sin interés</p>
-      <a href="https://preview.mailerlite.io/forms/1991842/201448093649995659/share" target="_blank" class="btn-verde">Quiero el libro</a>
-    </div>
-    <div class="preventa-card">
-      <p class="preventa-card-name">Libro + evento</p>
-      <p class="preventa-card-text">La segunda edición y el evento performático de lanzamiento. El libro te lo llevás esa noche.</p>
-      <p class="preventa-card-price">$38.000</p>
-      <p class="preventa-card-cuotas">Hasta 3 cuotas sin interés</p>
-      <a href="https://preview.mailerlite.io/forms/1991842/201448101394777423/share" target="_blank" class="btn-verde">Quiero las dos</a>
-    </div>
-    <div class="preventa-card">
-      <p class="preventa-card-name">Entrada al evento</p>
-      <p class="preventa-card-text">El evento performático de lanzamiento del 12/12 en Ja Ja.</p>
-      <p class="preventa-card-price">$10.000</p>
-      <a href="https://preview.mailerlite.io/forms/1991842/201448102474811005/share" target="_blank" class="btn-verde">Quiero ir</a>
-    </div>
-  </div>
-  <p class="preventa-colab reveal">Si no llegás, hay entradas a colaboración a $5.000. <a href="https://preview.mailerlite.io/forms/1991842/201448103631390419/share" target="_blank">Entrada a colaboración</a></p>
-  <p class="preventa-nota reveal">Lo que se pague hasta el jueves 5/11 ayuda a que el libro entre a imprenta. La preventa sigue abierta durante noviembre y los libros salen en diciembre.</p>
-  <div class="preventa-secundarios reveal">
-    <a href="https://forms.gle/V8uCSUV9foHJYHdE6" target="_blank">Apoyar el proyecto</a>
-    <a href="https://preview.mailerlite.io/forms/1991842/176347366729712646/share" target="_blank">Seguir las novedades</a>
-  </div>
-</section>
-
-<!-- PROGRAMA DE REFERIDES -->
-<section class="referides" id="de-mano-en-mano">
-  <div class="referides-inner">
-    <div class="referides-left reveal">
-      <p class="section-label">Programa de referides</p>
-      <h2 class="referides-title">¿Tenés la<br><em>primera edición?</em></h2>
-      <p class="referides-sub">¿A quién no querés que le llegue tarde?</p>
-      <p class="referides-body">La primera edición la sostuvieron personas que compraron el libro antes de verlo impreso. La segunda busca llegar a gente nueva a través de ellas.</p>
-      <p class="referides-body">Quien ya leyó la novela elige a alguien que esté atravesando algo parecido, o que necesite una pregunta en vez de un consejo. Esa persona entra al libro y al evento con una puerta propia, y vienen juntes.</p>
-    </div>
-    <div class="referides-right reveal d1">
-      <div class="referides-card">
-        <p class="referides-card-label">Si tenés la primera edición</p>
-        <ul class="referides-lista">
-          <li><strong>Tu lugar en el evento, gratis.</strong> Solo confirmá que venís. <a href="https://preview.mailerlite.io/forms/1991842/201448106175235244/share" target="_blank">Confirmar mi lugar</a></li>
-          <li><strong>La segunda edición con 20% de descuento.</strong> <a href="https://preview.mailerlite.io/forms/1991842/201448107161945350/share" target="_blank">Quiero la mía</a></li>
-          <li><strong>Invitar a alguien.</strong> Mandale <a href="#de-mano-en-mano">el link de esta sección</a>: si compra la segunda edición, tiene su entrada al evento incluida y vienen juntes.</li>
-        </ul>
-      </div>
-      <div class="referides-card referides-card--invitade">
-        <p class="referides-card-label">Si alguien te invitó</p>
-        <p class="referides-card-body">Tenés la segunda edición a <strong>$30.000 con la entrada al evento incluida</strong> (al público, libro + evento sale $38.000). En el formulario contame quién te invitó.</p>
-        <a href="https://preview.mailerlite.io/forms/1991842/201448104823621427/share" target="_blank" class="btn-verde">Entrar por invitación</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LO QUE YA PASÓ -->
-<section class="paso" id="lo-que-ya-paso">
-  <h2 class="sobre-title reveal">Lo que<br><em>ya pasó.</em></h2>
-  <div class="datos reveal">
-    <div class="dato"><span class="dato-n">Mayo 2026</span><span class="dato-t">Primera edición autopublicada y autogestionada.</span></div>
-    <div class="dato"><span class="dato-n">45</span><span class="dato-t">personas en el lanzamiento performático.</span></div>
-    <div class="dato"><span class="dato-n">Agotada</span><span class="dato-t">La primera edición se agotó en una semana.</span></div>
-    <div class="dato"><span class="dato-n">+35</span><span class="dato-t">personas la compraron en preventa, antes de verla impresa.</span></div>
-    <div class="dato"><span class="dato-n">+70</span><span class="dato-t">personas ya tienen el libro en su biblioteca.</span></div>
-  </div>
-  <div class="lectores reveal">
-    <img src="lectores-cafe.jpg" alt="El libro sobre una mesa de café, junto a un capuchino" loading="lazy">
-    <img src="lectores-nieve.jpg" alt="El libro frente a una ventana con árboles nevados" loading="lazy">
-    <img src="lectores-mano.jpg" alt="Una mano sostiene el libro" loading="lazy">
-    <img src="lectores-cafe-2.jpg" alt="El libro con una lapicera roja, junto a un café y medialunas" loading="lazy">
-  </div>
-  <div class="voces reveal">
-    <blockquote class="voz"><p>“Alargué la lectura desde mayo para transitar el proceso que narrabas a su tiempo, para darle tiempo.”</p><cite>Lectora de la primera edición</cite></blockquote>
-    <blockquote class="voz"><p>“Leerte y encontrarme en tus escenas me hace sentipensar que hay otras historias posibles a la espera de que las escribamos.”</p><cite>Lectora de la primera edición</cite></blockquote>
-    <blockquote class="voz"><p>“Apenas lo empecé y wooooow. Qué manera de transmitir. Terminándolo se lo prestaré a una amiga.”</p><cite>Lectora de la primera edición</cite></blockquote>
-  </div>
-</section>
-
 <!-- SEGUNDA EDICIÓN -->
 <section class="segunda" id="segunda-edicion">
   <div class="segunda-header reveal">
@@ -1252,60 +1166,22 @@
     <p class="segunda-body">Volví a abrir el archivo y lo leí desde otro lugar. Y encontré algo que no había visto: <strong>cada vez que me rompí, había una medida cerca.</strong> Alguien, o algo, o yo misme, diciéndome que era demasiado. Y un reloj marcando que ya era tarde.</p>
     <p class="segunda-firma">Agos</p>
   </div>
-  <p class="segunda-dospreg reveal">En esta segunda edición, la novela se lee a través de dos preguntas: <strong>¿demasiado para quién? ¿Tarde para qué?</strong></p>
-  <blockquote class="segunda-cita reveal"><p>"¿Qué parte de lo que sentimos es propia y qué parte es efecto de la época en la que vivimos?"</p></blockquote>
-  <div class="segunda-ctas reveal">
-    <a href="#preventa" class="btn-rosa">Quiero la segunda edición</a>
-  </div>
-  <div class="segunda-ficha reveal">
-    <div class="sf-quien">
-      <p class="fc-key">Quién escribe</p>
-      <p class="sf-quien-t">Agos Concilio es escritore, educadore social y estudiante de Psicología. Desde Narrar el Caos trabaja con una idea: el caos no es el problema, es la materia prima. Esta novela es de donde sale esa premisa.</p>
-    </div>
-    <div class="sf-datos">
-      <p class="fc-key">Ficha técnica</p>
-      <div class="fc-grid">
-        <div class="fc-item"><span class="fc-key">Autore</span><span class="fc-val">Agos Concilio</span></div>
-        <div class="fc-item"><span class="fc-key">Género</span><span class="fc-val">Autoficción / Narrativa contemporánea</span></div>
-        <div class="fc-item"><span class="fc-key">Perspectiva</span><span class="fc-val">Queer, no binarie, generacional</span></div>
-        <div class="fc-item"><span class="fc-key">Estructura</span><span class="fc-val">6 actos, fragmentaria</span></div>
-        <div class="fc-item"><span class="fc-key">Edición</span><span class="fc-val">Segunda edición revisada, 2026</span></div>
-        <div class="fc-item"><span class="fc-key">Lenguaje</span><span class="fc-val">Sin marcas de género</span></div>
-        <div class="fc-item"><span class="fc-key">Extra</span><span class="fc-val">QR con playlist oficial incluido</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+    <p class="segunda-dospreg reveal">En esta segunda edición, la novela se lee a través de dos preguntas: <strong>¿demasiado para quién? ¿Tarde para qué?</strong></p>
+  </section>
 
-<!-- SOBRE LA NOVELA -->
-<section class="sobre5" id="sobre">
-  <div class="sobre5-col reveal">
-    <p class="section-label" style="color:var(--terracota)">Sobre la novela</p>
-    <h2 class="sobre-title">Un libro<br>para <em>atravesar.</em></h2>
-    <p class="sobre-body sobre-intro">Vivimos en una época que nos habla mucho de libertad y poco de cómo sostenernos. Que romantizó el desapego y nos enseñó a soltar antes que a quedarnos y habitar la incomodidad. Donde no mostrar interés es lo correcto. Donde sentir mucho se traduce en una infinidad de etiquetas médicas. Y donde el autoconocimiento se convirtió en un mandato más.</p>
-  </div>
-
-  <div class="vara reveal">
-    <p class="vara-1">Tenemos palabras para nombrarlo todo.</p>
-    <p class="vara-2">Y una vara para medirlo todo: cuánto es <strong>demasiado</strong>, cuándo es <strong>tarde</strong>.</p>
-    <div class="vara-regla" aria-hidden="true"></div>
-  </div>
-
-  <div class="sobre5-col reveal">
-    <p class="sobre-destacado">Sin embargo, cada vez más personas viven con la sensación de <strong>llegar tarde a sí mismas.</strong></p>
-  </div>
-</section>
-
-<!-- EXPERIENCIA SENSORIAL -->
-<section class="sensorial sensorial--v4" id="libro">
+<!-- LA NOVELA -->
+<section class="sensorial sensorial--v4" id="sobre">
   <div class="sensorial-inner">
     <div class="sensorial-left reveal">
       <p class="section-label" style="color:rgba(255,211,219,0.5)">Una experiencia sensorial</p>
       <h2 class="sensorial-title">Una <em>película</em><br>que se puede leer.</h2>
+      <p class="sensorial-body"><em>Antes de que sea demasiado tarde</em> empieza como una historia de amor que se desarma y termina mostrando todo lo que una persona puede abandonar de sí para no sentirse abandonada.</p>
       <p class="sensorial-body">El libro fue pensado desde el principio como algo más que texto: como <strong>una película que se puede leer.</strong> Cada capítulo tiene una curaduría musical propia, desde <strong>Javiera Mena y Marilina Bertoldi</strong> hasta <strong>Radiohead, Thom Yorke y boleros de Trío Los Panchos.</strong></p>
       <p class="sensorial-body">En el interior, un código QR da acceso a la <strong>playlist oficial</strong>, para entrar en la atmósfera exacta de cada escena. Música y texto como un solo dispositivo de inmersión.</p>
-      <div style="margin-top:32px;">
-        <a href="#preventa" class="btn-rosa">Ver la preventa</a>
+      <p class="sensorial-body">La novela está estructurada en seis actos como una obra de teatro que también es una vida. Cada acto corresponde conceptualmente a un episodio del podcast <em>Entre</em> y comparte incluso su mismo nombre. Son dos formas de entrar al mismo universo.</p>
+      <div class="novela-links">
+        <a href="un-libro-para-atravesar.html" class="btn-rosa">Seguir leyendo</a>
+        <a href="entre.html" class="btn-outline">Escuchar Entre, el podcast</a>
       </div>
     </div>
     <div class="sensorial-right reveal d1">
@@ -1329,177 +1205,81 @@
   </div>
 </section>
 
-<!-- LOS ACTOS -->
-<section class="actos actos--v4" id="actos">
-  <div class="actos-header reveal">
-    <h2 class="actos-title">Los seis<br><em>actos.</em></h2>
-    <div>
-    <p class="actos-sub">La novela está estructurada en seis actos como una obra de teatro que también es una vida. Cada acto corresponde conceptualmente a un episodio del podcast <em>Entre</em> y comparte incluso su mismo nombre. Son dos formas de entrar al mismo universo.</p>
-    <a href="entre.html" class="btn-outline actos-entre-btn">Escuchar Entre, el podcast</a>
-    </div>
-  </div>
-  <div class="actos-grid">
-    <div class="acto reveal">
-      <div class="acto-num">1</div>
-      <p class="acto-index">Acto I</p>
-      <h3 class="acto-nombre">Cambiar</h3>
-      <p class="acto-desc">El inicio del deseo, las marchas feministas y el magnetismo de un primer beso en una noche de frío invernal. El detonante de todo lo que viene.</p>
-      <a href="entre.html" class="acto-podcast">Ep. 1 del podcast</a>
-    </div>
-    <div class="acto reveal d1">
-      <div class="acto-num">2</div>
-      <p class="acto-index">Acto II</p>
-      <h3 class="acto-nombre">Ser Libres</h3>
-      <p class="acto-desc">La efervescencia de los vínculos abiertos, la "libertad" que asfixia y el efecto dominó de las decisiones compartidas.</p>
-      <a href="entre.html" class="acto-podcast">Ep. 2 del podcast</a>
-    </div>
-    <div class="acto reveal d2">
-      <div class="acto-num">3</div>
-      <p class="acto-index">Acto III</p>
-      <h3 class="acto-nombre">Despertar del Ensueño</h3>
-      <p class="acto-desc">El encuentro con la sombra, la llegada a la "edad del clona" y el diagnóstico de espectro de bipolaridad que le pone nombre al caos interno.</p>
-      <a href="entre.html" class="acto-podcast">Ep. 3 del podcast</a>
-    </div>
-    <div class="acto reveal">
-      <div class="acto-num">4</div>
-      <p class="acto-index">Acto IV</p>
-      <h3 class="acto-nombre">Asignatura Pendiente</h3>
-      <p class="acto-desc">Lo que no pudo resolverse antes y vuelve ahora con otra forma. El peso de lo no dicho, lo no vivido, lo no integrado.</p>
-      <a href="entre.html" class="acto-podcast">Ep. 4 del podcast</a>
-    </div>
-    <div class="acto reveal d1">
-      <div class="acto-num">5</div>
-      <p class="acto-index">Acto V</p>
-      <h3 class="acto-nombre">Intemperie</h3>
-      <p class="acto-desc">Sin techo, sin estructura, sin certeza. El momento donde ya no hay forma de seguir siendo lo que se era. La exposición total.</p>
-      <a href="entre.html" class="acto-podcast">Ep. 5 del podcast</a>
-    </div>
-    <div class="acto reveal d2">
-      <div class="acto-num">6</div>
-      <p class="acto-index">Acto VI</p>
-      <h3 class="acto-nombre">Resistir</h3>
-      <p class="acto-desc">La decisión de seguir, todos los días. El último acto fue también el cierre del lanzamiento: una entrevista a le autore en el evento.</p>
-      <a href="entre.html" class="acto-podcast">Ep. 6 — entrevista live</a>
+<!-- QUIÉN ESCRIBE -->
+<section class="quien" id="quien">
+  <div class="quien-inner">
+    <img src="foto-agos-quien.jpg" alt="Agos Concilio" class="quien-foto reveal">
+    <div class="quien-texto reveal d1">
+      <p class="section-label" style="color:var(--terracota)">Quién escribe</p>
+      <h2 class="sobre-title">Agos<br><em>Concilio.</em></h2>
+      <p class="sobre-body">Agos Concilio es escritore, educadore social y estudiante de Psicología. Desde Narrar el Caos trabaja con una idea: el caos no es el problema, es la materia prima. Esta novela es de donde sale esa premisa.</p>
     </div>
   </div>
 </section>
 
-<!-- LA EXPERIENCIA PERFORMÁTICA -->
-<section class="performance performance--v4" id="performance">
-  <div class="performance-header reveal">
-    <p class="section-label">La primera edición · El lanzamiento performático</p>
-    <h2 class="performance-title">El libro como<br><em>acontecimiento.</em></h2>
-    <p class="performance-sub">La presentación de la primera edición fue una experiencia inmersiva donde el universo de la novela se volvió espacio habitable.</p>
+<!-- LAS DOS NOCHES -->
+<section class="noches" id="noches">
+  <div class="noche noche--primera reveal">
+    <p class="section-label" style="color:var(--terracota)">Primera edición</p>
+    <h2 class="noche-title">Así fue el evento de la <em>primera edición.</em></h2>
+    <div class="datos datos--noche">
+      <div class="dato"><span class="dato-n">Mayo 2026</span><span class="dato-t">Primera edición autopublicada y autogestionada.</span></div>
+      <div class="dato"><span class="dato-n">45</span><span class="dato-t">personas en el lanzamiento performático.</span></div>
+      <div class="dato"><span class="dato-n">Agotada</span><span class="dato-t">La primera edición se agotó en una semana.</span></div>
+    </div>
+    <div class="noche-fotos">
+      <img src="foto-evento-1.jpg" alt="Evento de lanzamiento de la primera edición">
+      <img src="foto-evento-3.jpg" alt="Fragmentos de la novela colgados en el espacio">
+    </div>
+    <blockquote class="voz"><p>“Leerte y encontrarme en tus escenas me hace sentipensar que hay otras historias posibles a la espera de que las escribamos.”</p><cite>Lectora de la primera edición</cite></blockquote>
+    <a href="un-libro-para-atravesar.html#performance" class="noche-link">Ver cómo fue</a>
   </div>
-  <div class="perf-galeria reveal">
-    <div class="perf-media-grid">
-        <img src="foto-evento-1.jpg" style="grid-row:span 2;width:100%;height:100%;object-fit:cover;display:block;" alt="Evento de lanzamiento">
-        <img src="foto-evento-2.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" alt="Evento de lanzamiento">
-        <img src="foto-evento-3.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" alt="Evento de lanzamiento">
-      </div>
-  </div>
-  <div class="performance-grid">
-    <div class="perf-left reveal">
-      <p class="perf-body">La propuesta buscó transformar la presentación de un libro en una <strong>experiencia de inmersión emocional y sensorial.</strong> El texto abandonó el formato exclusivamente editorial para expandirse hacia otros soportes.</p>
-      <p class="perf-body">Las personas <strong>entraban al interior de la historia.</strong> Podían recorrerla, detenerse, volver. Leer los fragmentos intervenidos. Escuchar los audios. Quedarse en un rincón.</p>
-      <div class="perf-quote">
-        <p>"La gente se quedó mucho tiempo leyendo los fragmentos colgados en las paredes. Varias personas me hablaron de capítulos específicos que les quedaron resonando. Otras dijeron que la parte performática había quedado corta y que querían volver a entrar a ese universo."</p>
-      </div>
-      <p class="perf-body">A partir de esa primera materialización pública, el proyecto comenzó a consolidarse como una investigación artística más amplia. La circulación de fragmentos audiovisuales y lecturas performáticas permitió ampliar el universo hacia nuevos formatos y públicos.</p>
-
-
-      <div style="margin-top:36px;">
-        <a href="#campana" class="btn-rosa">Venir al evento del 12/12</a>
+  <div class="noche noche--segunda reveal d1">
+    <p class="section-label" style="color:var(--rosa)">Segunda edición</p>
+    <h2 class="noche-title">El evento de la <em>segunda edición.</em></h2>
+    <p class="noche-body">Y la presento como presenté la primera: con un <strong>evento performático de lanzamiento</strong>, el sábado 12 de diciembre desde las 19 h en Ja Ja, vivero y centro cultural en Chacarita, CABA. Una noche para recorrer la novela, con lecturas en vivo, instalaciones, audios, proyecciones y música. Lo que pase esa noche va a ser la primera escena de una obra que sigue circulando en 2027. </p>
+    <div class="noche-beneficio">
+      <p class="preventa-card-name">Libro + evento</p>
+      <p class="noche-body">La segunda edición y el evento performático de lanzamiento. El libro te lo llevás esa noche.</p>
+      <p class="preventa-card-price">$38.000</p>
+      <div class="noche-ctas">
+        <a href="https://preview.mailerlite.io/forms/1991842/201448101394777423/share" target="_blank" class="btn-rosa">Quiero las dos</a>
+        <a href="https://preview.mailerlite.io/forms/1991842/201448102474811005/share" target="_blank" class="btn-outline">Solo el evento · $10.000</a>
       </div>
     </div>
-    <div class="perf-right reveal d1">
-      <div class="perf-elementos">
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Lecturas en vivo</p>
-          <p class="perf-elemento-body">Fragmentos de la novela leídos en el espacio por le autore. El texto en la voz, en el cuerpo, en el aire del lugar.</p>
-        </div>
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Proyecciones intervenidas</p>
-          <p class="perf-elemento-body">Imágenes y secuencias visuales que amplían el universo sin ilustrarlo. Otra capa de sentido superpuesta al texto.</p>
-        </div>
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Instalaciones sonoras</p>
-          <p class="perf-elemento-body">Audios y paisaje sonoro que funcionan como otra entrada narrativa. El cuerpo escucha lo que los ojos no ven.</p>
-        </div>
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Fragmentos impresos e intervenidos</p>
-          <p class="perf-elemento-body">Páginas y frases del libro colgadas en el espacio, manipuladas, rotas, recompuestas. El texto como objeto físico que se puede tocar.</p>
-        </div>
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Dispositivos de archivo afectivo</p>
-          <p class="perf-elemento-body">Materiales vinculados a la memoria emocional y la percepción. Escritura colectiva, objetos, archivos personales.</p>
-        </div>
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Espacio habitable</p>
-          <p class="perf-elemento-body">Sin escenario ni platea. Un recorrido sin ruta obligatoria ni orden cronológico. Cada persona construye su propio mapa.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="perf-video reveal">
-    <iframe src="https://www.youtube.com/embed/jZcGzpUIwFk" title="Recap del primer lanzamiento" frameborder="0" allowfullscreen></iframe>
   </div>
 </section>
 
-<!-- PREGUNTAS FRECUENTES -->
-<section class="preguntas" id="preguntas">
-  <div class="preguntas-grid">
-    <h2 class="preguntas-title reveal">Antes de que<br><em>preguntes.</em></h2>
-    <div class="faqs reveal">
-    <details class="faq">
-      <summary>¿Tengo que haber leído la primera edición?</summary>
-      <p>No. La segunda edición se lee sola. Si ya leíste la primera, vas a encontrar la misma historia contada desde otro momento.</p>
-    </details>
-    <details class="faq">
-      <summary>¿Qué cambió respecto de la primera?</summary>
-      <p>La historia es la misma; lo que cambió es desde dónde la cuento. La primera edición la escribí desde adentro del derrumbe. Para esta segunda la volví a leer y a revisar desde el después, y en esa relectura aparecieron dos preguntas que ahora atraviesan toda la obra: ¿demasiado para quién? ¿Tarde para qué?</p>
-    </details>
-    <details class="faq">
-      <summary>¿Es un libro de autoayuda?</summary>
-      <p>No. Es una novela de autoficción. No tiene pasos ni consejos: tiene escenas, preguntas y una voz que cuenta lo que le pasó mientras le pasaba.</p>
-    </details>
-    <details class="faq">
-      <summary>¿Es una novela sobre una relación abierta? ¿Sobre salud mental?</summary>
-      <p>Es una historia que usa el desamor como excusa para hablar de salud mental. Empieza con un amor y una relación abierta que se desarman, y desde ahí narra en primera persona lo que es atravesar un diagnóstico, empezar una medicación y aprender a convivir con las dos cosas.</p>
-    </details>
-    <details class="faq">
-      <summary>¿Cómo es el lenguaje?</summary>
-      <p>Está escrita en lenguaje sin marcas de género, con terminación en -e. No es un adorno ni una consigna: es la voz de la narradora. Si no es tu forma habitual de leer, dale unas páginas.</p>
-    </details>
-    <details class="faq">
-      <summary>¿Cuándo me llega?</summary>
-      <p>Los libros salen en diciembre. Si elegiste libro + evento, lo retirás la noche del 12/12. Si elegiste solo el libro, el envío se cotiza aparte.</p>
-    </details>
-    <details class="faq">
-      <summary>¿Cómo pago? ¿Hay cuotas?</summary>
-      <p>Con Mercado Pago. El libro y el combo libro + evento se pueden pagar en hasta 3 cuotas sin interés.</p>
-    </details>
-    <details class="faq">
-      <summary>¿Qué pasa en el evento?</summary>
-      <p>Es la presentación performática de la segunda edición: lecturas en vivo, instalaciones con fragmentos del libro, audios, proyecciones y música. No hay escenario y platea; la noche se recorre. Empieza a las 19 h en Ja Ja, vivero y centro cultural en Chacarita, CABA.</p>
-    </details>
-    <details class="faq">
-      <summary>¿Puedo ir al evento sin comprar el libro?</summary>
-      <p>Sí. La entrada sola cuesta $10.000. Si no llegás, hay entradas a colaboración a $5.000.</p>
-    </details>
-    <details class="faq">
-      <summary>Tengo la primera edición, ¿hay algo para mí?</summary>
-      <p>Sí: tu lugar en el evento es gratis y tenés la segunda edición con 20% de descuento. Además, podés invitar a alguien. Está todo en la sección <a href="#de-mano-en-mano">«¿Tenés la primera edición?»</a>.</p>
-    </details>
-    <details class="faq">
-      <summary>¿Lo puedo regalar?</summary>
-      <p>Sí. Elegí tu opción y, en el formulario, dejá la dirección de quien lo va a recibir. Si querés, respondé el mail de reserva contándome que es un regalo.</p>
-    </details>
-    <details class="faq">
-      <summary>Tengo otra duda.</summary>
-      <p>Escribime por Instagram a <a href="https://www.instagram.com/antesdequeseademasiadotarde/" target="_blank">@antesdequeseademasiadotarde</a> o a <a href="https://www.instagram.com/narrandoelcaos/" target="_blank">@narrandoelcaos</a>, o por mail a <a href="mailto:narrandoelcaos@gmail.com">narrandoelcaos@gmail.com</a>.</p>
-    </details>
+<!-- DÓNDE LO COMPRO -->
+<section class="campana" id="campana">
+  <p class="campana-label reveal">Preventa abierta · Segunda edición</p>
+  <h2 class="campana-title reveal">Elegí por dónde<br><em>entrar.</em></h2>
+  <div class="preventa-cards reveal">
+    <div class="preventa-card">
+      <p class="preventa-card-name">Libro</p>
+      <p class="preventa-card-text">La segunda edición. El envío se cotiza aparte.</p>
+      <p class="preventa-card-price">$30.000</p>
+      <p class="preventa-card-cuotas">Hasta 3 cuotas sin interés</p>
+      <a href="https://preview.mailerlite.io/forms/1991842/201448093649995659/share" target="_blank" class="btn-verde">Quiero el libro</a>
     </div>
+    <div class="preventa-card">
+      <p class="preventa-card-name">Libro + evento</p>
+      <p class="preventa-card-text">La segunda edición y el evento performático de lanzamiento. El libro te lo llevás esa noche.</p>
+      <p class="preventa-card-price">$38.000</p>
+      <p class="preventa-card-cuotas">Hasta 3 cuotas sin interés</p>
+      <a href="https://preview.mailerlite.io/forms/1991842/201448101394777423/share" target="_blank" class="btn-verde">Quiero las dos</a>
+    </div>
+    <div class="preventa-card">
+      <p class="preventa-card-name">Entrada al evento</p>
+      <p class="preventa-card-text">El evento performático de lanzamiento del 12/12 en Ja Ja.</p>
+      <p class="preventa-card-price">$10.000</p>
+      <a href="https://preview.mailerlite.io/forms/1991842/201448102474811005/share" target="_blank" class="btn-verde">Quiero ir</a>
+    </div>
+  </div>
+  <div class="comprar-links reveal">
+    <a href="preventa-antes-de-que-sea-demasiado-tarde.html">Cómo funciona la preventa</a>
+    <a href="preventa-antes-de-que-sea-demasiado-tarde.html#de-mano-en-mano">¿Tenés la primera edición?</a>
+    <a href="preventa-antes-de-que-sea-demasiado-tarde.html#preguntas">Preguntas frecuentes</a>
   </div>
 </section>
 
@@ -1528,6 +1308,14 @@
   <p class="footer-copy">© 2026 Agos Concilio</p>
 </footer>
 
+<script>
+  (function(){
+    var h = location.hash.replace('#','');
+    var map = {'de-mano-en-mano':'preventa-antes-de-que-sea-demasiado-tarde.html#de-mano-en-mano','preguntas':'preventa-antes-de-que-sea-demasiado-tarde.html#preguntas','performance':'un-libro-para-atravesar.html#performance','actos':'un-libro-para-atravesar.html#actos','libro':'#sobre','preventa':'#campana','segunda-edicion':'#segunda-edicion'};
+    if (map[h] && map[h].charAt(0) !== '#') location.replace(map[h]);
+    else if (map[h] && map[h] !== '#'+h) location.hash = map[h];
+  })();
+</script>
 <script>
   const reveals = document.querySelectorAll('.reveal');
   const obs = new IntersectionObserver(entries => {
