@@ -1058,6 +1058,8 @@
   .historia-lead em { font-style: normal; font-weight: 800; }
   .historia .sobre-body { color: var(--verde); max-width: 680px; }
   .noche-item { font-weight: 700; font-size: 17px; color: var(--crema); padding-left: 18px; position: relative; }
+  .oferta-fila { display: flex; flex-direction: column; gap: 4px; padding: 14px 0; border-top: 1px solid rgba(255,211,219,0.18); }
+  .oferta-dato { font-size: 16px; font-weight: 400; color: var(--rosa); line-height: 1.45; padding-left: 18px; }
   .noche-item::before { content: '◆'; position: absolute; left: 0; top: 4px; font-size: 9px; color: var(--rosa); }
   .sensorial-voz { font-family: var(--spartan); font-weight: 400; font-size: clamp(22px, 2.4vw, 32px); color: var(--rosa); margin: 16px 0 28px; }
   .historia-cta { margin-top: 36px; }
@@ -1222,9 +1224,9 @@
     <div class="reveal d1">
       <div class="noche-beneficio">
         <p class="preventa-card-name">En la preventa</p>
-        <p class="noche-item">Libro + evento</p>
-        <p class="noche-item">Si tenés la primera edición</p>
-        <p class="noche-item">Si te invitó alguien que la tiene</p>
+        <div class="oferta-fila"><p class="noche-item">Libro + evento</p><p class="oferta-dato">$38.000. El libro te lo llevás esa noche.</p></div>
+        <div class="oferta-fila"><p class="noche-item">Si tenés la primera edición</p><p class="oferta-dato">Entrada gratis y 20% off en la segunda.</p></div>
+        <div class="oferta-fila"><p class="noche-item">Si te invitó alguien que la tiene</p><p class="oferta-dato">Libro + evento a $30.000.</p></div>
       </div>
       <div class="noche-ctas"><a href="preventa-antes-de-que-sea-demasiado-tarde.html" class="btn-rosa">Conocé más</a></div>
     </div>
