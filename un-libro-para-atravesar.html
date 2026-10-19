@@ -1052,6 +1052,16 @@
   .noche-fotos img { width: 100%; height: 280px; object-fit: cover; display: block; }
   .noche .voz { background: var(--verde); }
   .noche-link { font-weight: 700; color: var(--verde); text-decoration: underline; text-underline-offset: 4px; align-self: flex-start; }
+  .hibrida { background: var(--terracota); padding: 120px 60px; }
+  .hibrida-texto { max-width: 1100px; margin: 0 auto; font-family: var(--spartan); font-weight: 500; font-size: clamp(28px, 3.6vw, 52px); line-height: 1.2; letter-spacing: -0.01em; color: var(--verde-oscuro); }
+  .hibrida-texto strong { font-weight: 800; }
+  .hibrida-texto a { color: var(--crema); font-weight: 800; text-decoration: none; background-image: linear-gradient(var(--crema), var(--crema)); background-size: 100% 3px; background-position: 0 92%; background-repeat: no-repeat; transition: color .2s, background-size .2s; }
+  .hibrida-texto a:hover { color: var(--verde-oscuro); background-image: linear-gradient(var(--rosa), var(--rosa)); background-size: 100% 100%; }
+  .evento-nuevo { background: var(--verde-oscuro); color: var(--crema); padding: 120px 60px; }
+  .evento-nuevo-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .evento-nuevo-inner > div { display: flex; flex-direction: column; gap: 24px; }
+  .evento-nuevo .noche-title em { color: var(--rosa); }
+  .segunda-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
   .segunda-hibrida { font-size: clamp(20px, 2vw, 26px); font-weight: 400; line-height: 1.45; color: var(--rosa); max-width: 760px; margin: -8px 0 48px; }
   .noche--primera .noche-body { color: var(--verde); }
   .noche-beneficio .noche-body { font-size: 16px; }
@@ -1069,6 +1079,10 @@
   .ficha-libro .segunda-ficha { max-width: 1100px; margin: 0 auto; }
   @media (max-width: 768px) {
     .quien { padding: 80px 24px; }
+    .hibrida { padding: 80px 24px; }
+    .evento-nuevo { padding: 80px 24px; }
+    .evento-nuevo-inner { grid-template-columns: 1fr; gap: 40px; }
+    .segunda-ctas a, .evento-nuevo .noche-ctas a { width: 100%; text-align: center; }
     .quien-inner { grid-template-columns: 1fr; gap: 32px; }
     .noches { grid-template-columns: 1fr; }
     .noche { padding: 80px 24px; }
@@ -1086,13 +1100,12 @@
 
 <nav>
 <a href="antes-de-que-sea-demasiado-tarde.html" class="nav-back">Antes de que sea demasiado tarde</a>
-  <span class="nav-title">Antes de que sea demasiado tarde</span>
   <div class="nav-links">
-    <a href="#sobre">La novela</a>
-    <a href="#libro">Experiencia sensorial</a>
-    <a href="#actos">Los actos</a>
-    <a href="#performance">La primera edición</a>
-    <a href="antes-de-que-sea-demasiado-tarde.html">Volver</a>
+    <a href="antes-de-que-sea-demasiado-tarde.html#segunda-edicion">Segunda edición</a>
+    <a href="preventa-antes-de-que-sea-demasiado-tarde.html">Preventa</a>
+    <a href="un-libro-para-atravesar.html">La novela</a>
+    <a href="experiencia-sensorial.html">Experiencia sensorial</a>
+    <a href="entre.html">Entre: el podcast</a>
   </div>
 </nav>
 
@@ -1124,7 +1137,7 @@
       <p class="sensorial-body">El libro fue pensado desde el principio como algo más que texto: como <strong>una película que se puede leer.</strong> Cada capítulo tiene una curaduría musical propia, desde <strong>Javiera Mena y Marilina Bertoldi</strong> hasta <strong>Radiohead, Thom Yorke y boleros de Trío Los Panchos.</strong></p>
       <p class="sensorial-body">En el interior, un código QR da acceso a la <strong>playlist oficial</strong>, para entrar en la atmósfera exacta de cada escena. Música y texto como un solo dispositivo de inmersión.</p>
       <div style="margin-top:32px;">
-        <a href="antes-de-que-sea-demasiado-tarde.html#campana" class="btn-rosa">Ver la preventa</a>
+        <a href="preventa-antes-de-que-sea-demasiado-tarde.html" class="btn-rosa">Ver la preventa</a>
       </div>
     </div>
     <div class="sensorial-right reveal d1">
@@ -1203,68 +1216,6 @@
   </div>
 </section>
 
-<!-- LA EXPERIENCIA PERFORMÁTICA -->
-<section class="performance performance--v4" id="performance">
-  <div class="performance-header reveal">
-    <p class="section-label">La primera edición · El lanzamiento performático</p>
-    <h2 class="performance-title">El libro como<br><em>acontecimiento.</em></h2>
-    <p class="performance-sub">La presentación de la primera edición fue una experiencia inmersiva donde el universo de la novela se volvió espacio habitable.</p>
-  </div>
-  <div class="perf-galeria reveal">
-    <div class="perf-media-grid">
-        <img src="foto-evento-1.jpg" style="grid-row:span 2;width:100%;height:100%;object-fit:cover;display:block;" alt="Evento de lanzamiento">
-        <img src="foto-evento-2.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" alt="Evento de lanzamiento">
-        <img src="foto-evento-3.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" alt="Evento de lanzamiento">
-      </div>
-  </div>
-  <div class="performance-grid">
-    <div class="perf-left reveal">
-      <p class="perf-body">La propuesta buscó transformar la presentación de un libro en una <strong>experiencia de inmersión emocional y sensorial.</strong> El texto abandonó el formato exclusivamente editorial para expandirse hacia otros soportes.</p>
-      <p class="perf-body">Las personas <strong>entraban al interior de la historia.</strong> Podían recorrerla, detenerse, volver. Leer los fragmentos intervenidos. Escuchar los audios. Quedarse en un rincón.</p>
-      <div class="perf-quote">
-        <p>"La gente se quedó mucho tiempo leyendo los fragmentos colgados en las paredes. Varias personas me hablaron de capítulos específicos que les quedaron resonando. Otras dijeron que la parte performática había quedado corta y que querían volver a entrar a ese universo."</p>
-      </div>
-      <p class="perf-body">A partir de esa primera materialización pública, el proyecto comenzó a consolidarse como una investigación artística más amplia. La circulación de fragmentos audiovisuales y lecturas performáticas permitió ampliar el universo hacia nuevos formatos y públicos.</p>
-
-
-      <div style="margin-top:36px;">
-        <a href="antes-de-que-sea-demasiado-tarde.html#noches" class="btn-rosa">Venir al evento del 12/12</a>
-      </div>
-    </div>
-    <div class="perf-right reveal d1">
-      <div class="perf-elementos">
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Lecturas en vivo</p>
-          <p class="perf-elemento-body">Fragmentos de la novela leídos en el espacio por le autore. El texto en la voz, en el cuerpo, en el aire del lugar.</p>
-        </div>
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Proyecciones intervenidas</p>
-          <p class="perf-elemento-body">Imágenes y secuencias visuales que amplían el universo sin ilustrarlo. Otra capa de sentido superpuesta al texto.</p>
-        </div>
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Instalaciones sonoras</p>
-          <p class="perf-elemento-body">Audios y paisaje sonoro que funcionan como otra entrada narrativa. El cuerpo escucha lo que los ojos no ven.</p>
-        </div>
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Fragmentos impresos e intervenidos</p>
-          <p class="perf-elemento-body">Páginas y frases del libro colgadas en el espacio, manipuladas, rotas, recompuestas. El texto como objeto físico que se puede tocar.</p>
-        </div>
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Dispositivos de archivo afectivo</p>
-          <p class="perf-elemento-body">Materiales vinculados a la memoria emocional y la percepción. Escritura colectiva, objetos, archivos personales.</p>
-        </div>
-        <div class="perf-elemento">
-          <p class="perf-elemento-label">Espacio habitable</p>
-          <p class="perf-elemento-body">Sin escenario ni platea. Un recorrido sin ruta obligatoria ni orden cronológico. Cada persona construye su propio mapa.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="perf-video reveal">
-    <iframe src="https://www.youtube.com/embed/jZcGzpUIwFk" title="Recap del primer lanzamiento" frameborder="0" allowfullscreen></iframe>
-  </div>
-</section>
-
 <!-- FICHA -->
 <section class="ficha-libro" id="ficha">
   <blockquote class="segunda-cita reveal"><p>"¿Qué parte de lo que sentimos es propia y qué parte es efecto de la época en la que vivimos?"</p></blockquote>
@@ -1300,7 +1251,7 @@
     <p>El dolor no desaparece.</p>
     <p class="final-vida">Y sin embargo hay vida.</p>
   </div>
-  <div class="final-cta reveal"><a href="antes-de-que-sea-demasiado-tarde.html#campana" class="btn-verde">Elegí por dónde entrar</a></div>
+  <div class="final-cta reveal"><a href="preventa-antes-de-que-sea-demasiado-tarde.html#campana" class="btn-verde">Elegí por dónde entrar</a></div>
 </section>
 
 <!-- FOOTER -->

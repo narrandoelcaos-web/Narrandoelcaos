@@ -1052,6 +1052,16 @@
   .noche-fotos img { width: 100%; height: 280px; object-fit: cover; display: block; }
   .noche .voz { background: var(--verde); }
   .noche-link { font-weight: 700; color: var(--verde); text-decoration: underline; text-underline-offset: 4px; align-self: flex-start; }
+  .hibrida { background: var(--terracota); padding: 120px 60px; }
+  .hibrida-texto { max-width: 1100px; margin: 0 auto; font-family: var(--spartan); font-weight: 500; font-size: clamp(28px, 3.6vw, 52px); line-height: 1.2; letter-spacing: -0.01em; color: var(--verde-oscuro); }
+  .hibrida-texto strong { font-weight: 800; }
+  .hibrida-texto a { color: var(--crema); font-weight: 800; text-decoration: none; background-image: linear-gradient(var(--crema), var(--crema)); background-size: 100% 3px; background-position: 0 92%; background-repeat: no-repeat; transition: color .2s, background-size .2s; }
+  .hibrida-texto a:hover { color: var(--verde-oscuro); background-image: linear-gradient(var(--rosa), var(--rosa)); background-size: 100% 100%; }
+  .evento-nuevo { background: var(--verde-oscuro); color: var(--crema); padding: 120px 60px; }
+  .evento-nuevo-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .evento-nuevo-inner > div { display: flex; flex-direction: column; gap: 24px; }
+  .evento-nuevo .noche-title em { color: var(--rosa); }
+  .segunda-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
   .segunda-hibrida { font-size: clamp(20px, 2vw, 26px); font-weight: 400; line-height: 1.45; color: var(--rosa); max-width: 760px; margin: -8px 0 48px; }
   .noche--primera .noche-body { color: var(--verde); }
   .noche-beneficio .noche-body { font-size: 16px; }
@@ -1069,6 +1079,10 @@
   .ficha-libro .segunda-ficha { max-width: 1100px; margin: 0 auto; }
   @media (max-width: 768px) {
     .quien { padding: 80px 24px; }
+    .hibrida { padding: 80px 24px; }
+    .evento-nuevo { padding: 80px 24px; }
+    .evento-nuevo-inner { grid-template-columns: 1fr; gap: 40px; }
+    .segunda-ctas a, .evento-nuevo .noche-ctas a { width: 100%; text-align: center; }
     .quien-inner { grid-template-columns: 1fr; gap: 32px; }
     .noches { grid-template-columns: 1fr; }
     .noche { padding: 80px 24px; }
@@ -1089,11 +1103,10 @@
   <span class="nav-title">Antes de que sea demasiado tarde</span>
   <div class="nav-links">
     <a href="#segunda-edicion">Segunda edición</a>
-    <a href="#quien">Quién escribe</a>
-    <a href="#lo-que-ya-paso">Los eventos</a>
+    <a href="preventa-antes-de-que-sea-demasiado-tarde.html">Preventa</a>
     <a href="un-libro-para-atravesar.html">La novela</a>
-    <a href="#campana">La preventa</a>
-    <a href="entre.html">El podcast</a>
+    <a href="experiencia-sensorial.html">Experiencia sensorial</a>
+    <a href="entre.html">Entre: el podcast</a>
   </div>
 </nav>
 
@@ -1105,7 +1118,7 @@
     <p class="hero-sub">Una novela sobre las medidas con las que aprendimos a vivir: cuánto es demasiado y cuándo es tarde. Escrita desde adentro del derrumbe, reescrita desde el después.</p>
     <div class="hero-actions">
       <a href="#campana" class="btn-rosa">Acceder a la preventa</a>
-      <a href="#sobre" class="btn-outline">Sobre el libro</a>
+      <a href="un-libro-para-atravesar.html" class="btn-outline">Sobre el libro</a>
     </div>
   </div>
   <div class="hero-right">
@@ -1144,13 +1157,17 @@
   </div>
 </section>
 
+<!-- NOVELA HÍBRIDA -->
+<section class="hibrida">
+  <p class="hibrida-texto reveal">Una novela de <strong>autoficción híbrida</strong> que también se escucha y se recorre: cada capítulo tiene su <a href="un-libro-para-atravesar.html#libro">banda sonora</a>, cada acto su <a href="entre.html">episodio de podcast</a> y cada presentación es una <a href="experiencia-sensorial.html">experiencia sensorial</a>.</p>
+</section>
+
 <!-- SEGUNDA EDICIÓN -->
 <section class="segunda" id="segunda-edicion">
   <div class="segunda-header reveal">
     <p class="section-label" style="color:var(--rosa)">Segunda edición</p>
     <h2 class="segunda-title">Volví a la novela<br><em>desde el después.</em></h2>
   </div>
-  <p class="segunda-hibrida reveal">Una novela de autoficción híbrida que también se escucha y se recorre: cada capítulo tiene su banda sonora, cada acto su episodio de podcast y cada presentación es una experiencia sensorial.</p>
   <div class="segunda-fechas reveal">
     <div class="fecha">
       <p class="fecha-label">Primera edición</p>
@@ -1169,6 +1186,7 @@
     <p class="segunda-firma">Agos</p>
   </div>
   <div class="segunda-ctas reveal">
+    <a href="preventa-antes-de-que-sea-demasiado-tarde.html" class="btn-rosa">Acceder a la preventa</a>
     <a href="un-libro-para-atravesar.html" class="btn-outline">Conocer más sobre la novela</a>
   </div>
 </section>
@@ -1218,7 +1236,7 @@
       <img src="foto-evento-1.jpg" alt="Evento de lanzamiento de la primera edición">
       <img src="foto-evento-3.jpg" alt="Fragmentos de la novela colgados en el espacio">
     </div>
-    <div class="noche-ctas"><a href="un-libro-para-atravesar.html#performance" class="btn-verde">Conocer más sobre el primer evento</a></div>
+    <div class="noche-ctas"><a href="experiencia-sensorial.html" class="btn-verde">Conocer más sobre el primer evento</a></div>
   </div>
   <div class="noche noche--segunda reveal d1">
     <p class="section-label" style="color:var(--rosa)">Segunda edición · Sumate</p>
@@ -1296,7 +1314,7 @@
 <script>
   (function(){
     var h = location.hash.replace('#','');
-    var map = {'de-mano-en-mano':'preventa-antes-de-que-sea-demasiado-tarde.html#de-mano-en-mano','preguntas':'preventa-antes-de-que-sea-demasiado-tarde.html#preguntas','performance':'un-libro-para-atravesar.html#performance','actos':'un-libro-para-atravesar.html#actos','libro':'un-libro-para-atravesar.html#libro','sobre':'un-libro-para-atravesar.html#sobre','preventa':'#campana','segunda-edicion':'#segunda-edicion'};
+    var map = {'de-mano-en-mano':'preventa-antes-de-que-sea-demasiado-tarde.html#de-mano-en-mano','preguntas':'preventa-antes-de-que-sea-demasiado-tarde.html#preguntas','performance':'experiencia-sensorial.html','noche':'experiencia-sensorial.html#evento-12-12','actos':'un-libro-para-atravesar.html#actos','libro':'un-libro-para-atravesar.html#libro','sobre':'un-libro-para-atravesar.html#sobre','preventa':'#campana','segunda-edicion':'#segunda-edicion'};
     if (map[h] && map[h].charAt(0) !== '#') location.replace(map[h]);
     else if (map[h] && map[h] !== '#'+h) location.hash = map[h];
   })();

@@ -1052,6 +1052,16 @@
   .noche-fotos img { width: 100%; height: 280px; object-fit: cover; display: block; }
   .noche .voz { background: var(--verde); }
   .noche-link { font-weight: 700; color: var(--verde); text-decoration: underline; text-underline-offset: 4px; align-self: flex-start; }
+  .hibrida { background: var(--terracota); padding: 120px 60px; }
+  .hibrida-texto { max-width: 1100px; margin: 0 auto; font-family: var(--spartan); font-weight: 500; font-size: clamp(28px, 3.6vw, 52px); line-height: 1.2; letter-spacing: -0.01em; color: var(--verde-oscuro); }
+  .hibrida-texto strong { font-weight: 800; }
+  .hibrida-texto a { color: var(--crema); font-weight: 800; text-decoration: none; background-image: linear-gradient(var(--crema), var(--crema)); background-size: 100% 3px; background-position: 0 92%; background-repeat: no-repeat; transition: color .2s, background-size .2s; }
+  .hibrida-texto a:hover { color: var(--verde-oscuro); background-image: linear-gradient(var(--rosa), var(--rosa)); background-size: 100% 100%; }
+  .evento-nuevo { background: var(--verde-oscuro); color: var(--crema); padding: 120px 60px; }
+  .evento-nuevo-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .evento-nuevo-inner > div { display: flex; flex-direction: column; gap: 24px; }
+  .evento-nuevo .noche-title em { color: var(--rosa); }
+  .segunda-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
   .segunda-hibrida { font-size: clamp(20px, 2vw, 26px); font-weight: 400; line-height: 1.45; color: var(--rosa); max-width: 760px; margin: -8px 0 48px; }
   .noche--primera .noche-body { color: var(--verde); }
   .noche-beneficio .noche-body { font-size: 16px; }
@@ -1069,6 +1079,10 @@
   .ficha-libro .segunda-ficha { max-width: 1100px; margin: 0 auto; }
   @media (max-width: 768px) {
     .quien { padding: 80px 24px; }
+    .hibrida { padding: 80px 24px; }
+    .evento-nuevo { padding: 80px 24px; }
+    .evento-nuevo-inner { grid-template-columns: 1fr; gap: 40px; }
+    .segunda-ctas a, .evento-nuevo .noche-ctas a { width: 100%; text-align: center; }
     .quien-inner { grid-template-columns: 1fr; gap: 32px; }
     .noches { grid-template-columns: 1fr; }
     .noche { padding: 80px 24px; }
@@ -1086,13 +1100,12 @@
 
 <nav>
 <a href="antes-de-que-sea-demasiado-tarde.html" class="nav-back">Antes de que sea demasiado tarde</a>
-  <span class="nav-title">Antes de que sea demasiado tarde</span>
   <div class="nav-links">
-    <a href="#que-te-llevas">Qué te llevás</a>
-    <a href="#campana">Opciones</a>
-    <a href="#de-mano-en-mano">Primera edición</a>
-    <a href="#preguntas">Preguntas</a>
-    <a href="antes-de-que-sea-demasiado-tarde.html">Volver</a>
+    <a href="antes-de-que-sea-demasiado-tarde.html#segunda-edicion">Segunda edición</a>
+    <a href="preventa-antes-de-que-sea-demasiado-tarde.html">Preventa</a>
+    <a href="un-libro-para-atravesar.html">La novela</a>
+    <a href="experiencia-sensorial.html">Experiencia sensorial</a>
+    <a href="entre.html">Entre: el podcast</a>
   </div>
 </nav>
 
@@ -1103,7 +1116,7 @@
       <p class="preventa-abierta"><span class="pa-punto" aria-hidden="true"></span>Preventa abierta</p>
       <h2 class="expansion-title">Este libro existe<br><em>porque alguien lo elige antes.</em></h2>
       <p class="expansion-body">La segunda edición es autogestiva, como la primera: <strong>con lo que se reserva en la preventa se paga la imprenta.</strong> Los libros salen en diciembre, a tiempo para regalar (o regalarte).</p>
-      <p class="expansion-body">Y la presento como presenté la primera: con un <strong>evento performático de lanzamiento</strong>, el sábado 12 de diciembre desde las 19 h en Ja Ja, vivero y centro cultural en Chacarita, CABA. Una noche para recorrer la novela, con lecturas en vivo, instalaciones, audios, proyecciones y música. Lo que pase esa noche va a ser la primera escena de una obra que sigue circulando en 2027. <a href="un-libro-para-atravesar.html#performance" class="expansion-link">Mirá cómo fue la primera</a></p>
+      <p class="expansion-body">Y la presento como presenté la primera: con un <strong>evento performático de lanzamiento</strong>, el sábado 12 de diciembre desde las 19 h en Ja Ja, vivero y centro cultural en Chacarita, CABA. Una noche para recorrer la novela, con lecturas en vivo, instalaciones, audios, proyecciones y música. Lo que pase esa noche va a ser la primera escena de una obra que sigue circulando en 2027. <a href="experiencia-sensorial.html" class="expansion-link">Mirá cómo fue la primera</a></p>
       <div style="margin-top:36px;">
         <a href="#campana" class="btn-rosa">Ver las opciones</a>
       </div>
