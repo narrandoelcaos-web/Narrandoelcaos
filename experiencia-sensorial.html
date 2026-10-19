@@ -1060,6 +1060,12 @@
   .noche-item { font-weight: 700; font-size: 17px; color: var(--crema); padding-left: 18px; position: relative; }
   .noche-item::before { content: '◆'; position: absolute; left: 0; top: 4px; font-size: 9px; color: var(--rosa); }
   .sensorial-voz { font-family: var(--spartan); font-weight: 400; font-size: clamp(22px, 2.4vw, 32px); color: var(--rosa); margin: 16px 0 28px; }
+  .historia-cta { margin-top: 36px; }
+  .colab-box { max-width: 1100px; margin: 24px auto 0; border: 2px solid var(--verde); background: var(--crema); padding: 22px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .colab-box p { font-size: 17px; font-weight: 500; color: var(--verde-oscuro); }
+  .btn-outline-verde { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px; border: 1.5px solid var(--verde); color: var(--verde); font-family: var(--spartan); font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: background .2s, color .2s; }
+  .btn-outline-verde:hover { background: var(--verde); color: var(--crema); }
+  .perf-video-link { display: inline-block; margin-top: 14px; font-weight: 700; color: var(--rosa); text-decoration: underline; text-underline-offset: 4px; }
   .hibrida { background: var(--terracota); padding: 120px 60px; }
   .hibrida-texto { max-width: 1100px; margin: 0 auto; font-family: var(--spartan); font-weight: 500; font-size: clamp(28px, 3.6vw, 52px); line-height: 1.2; letter-spacing: -0.01em; color: var(--verde-oscuro); }
   .hibrida-texto strong { font-weight: 800; }
@@ -1089,6 +1095,8 @@
     .quien { padding: 80px 24px; }
     .hibrida { padding: 80px 24px; }
     .historia { padding: 80px 24px; }
+    .historia-cta a, .colab-box a { width: 100%; text-align: center; }
+    .colab-box { padding: 22px 20px; }
     .historia-inner { grid-template-columns: 1fr; gap: 16px; }
     .evento-nuevo { padding: 80px 24px; }
     .evento-nuevo-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -1143,9 +1151,9 @@
 <!-- LA EXPERIENCIA PERFORMÁTICA -->
 <section class="performance performance--v4" id="performance" style="padding-top:150px">
   <div class="performance-header reveal">
-    <p class="section-label">La primera edición · El lanzamiento performático</p>
+    <p class="section-label">Experiencia sensorial · El lanzamiento performático</p>
     <h2 class="performance-title">El libro como<br><em>acontecimiento.</em></h2>
-    <p class="performance-sub">La presentación de la primera edición fue una experiencia inmersiva donde el universo de la novela se volvió espacio habitable.</p>
+    <p class="performance-sub">Cada presentación del libro es una experiencia inmersiva donde el universo de la novela se vuelve espacio habitable.</p>
   </div>
   <div class="perf-galeria reveal">
     <div class="perf-media-grid">
@@ -1156,12 +1164,12 @@
   </div>
   <div class="performance-grid">
     <div class="perf-left reveal">
-      <p class="perf-body">La propuesta buscó transformar la presentación de un libro en una <strong>experiencia de inmersión emocional y sensorial.</strong> El texto abandonó el formato exclusivamente editorial para expandirse hacia otros soportes.</p>
-      <p class="perf-body">Las personas <strong>entraban al interior de la historia.</strong> Podían recorrerla, detenerse, volver. Leer los fragmentos intervenidos. Escuchar los audios. Quedarse en un rincón.</p>
+      <p class="perf-body">La propuesta busca transformar la presentación de un libro en una <strong>experiencia de inmersión emocional y sensorial.</strong> El texto abandona el formato exclusivamente editorial para expandirse hacia otros soportes.</p>
+      <p class="perf-body">Las personas <strong>entran al interior de la historia.</strong> Pueden recorrerla, detenerse, volver. Leer los fragmentos intervenidos. Escuchar los audios. Quedarse en un rincón.</p>
       <div class="perf-quote">
         <p>"La gente se quedó mucho tiempo leyendo los fragmentos colgados en las paredes. Varias personas me hablaron de capítulos específicos que les quedaron resonando. Otras dijeron que la parte performática había quedado corta y que querían volver a entrar a ese universo."</p>
       </div>
-      <p class="perf-body">A partir de esa primera materialización pública, el proyecto comenzó a consolidarse como una investigación artística más amplia. La circulación de fragmentos audiovisuales y lecturas performáticas permitió ampliar el universo hacia nuevos formatos y públicos.</p>
+      <p class="perf-body">Desde su primera materialización pública, el proyecto se consolida como una investigación artística más amplia. La circulación de fragmentos audiovisuales y lecturas performáticas amplía el universo hacia nuevos formatos y públicos.</p>
 
 
       <div style="margin-top:36px;">
@@ -1198,7 +1206,7 @@
     </div>
   </div>
   <div class="perf-video reveal">
-    <iframe src="https://www.youtube.com/embed/jZcGzpUIwFk" title="Recap del primer lanzamiento" frameborder="0" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/jZcGzpUIwFk" title="Recap del primer lanzamiento" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\n    <a href="https://www.youtube.com/watch?v=jZcGzpUIwFk" target="_blank" class="perf-video-link">Ver el video en YouTube</a>
   </div>
 </section>
 

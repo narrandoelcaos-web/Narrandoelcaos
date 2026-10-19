@@ -1060,6 +1060,12 @@
   .noche-item { font-weight: 700; font-size: 17px; color: var(--crema); padding-left: 18px; position: relative; }
   .noche-item::before { content: '◆'; position: absolute; left: 0; top: 4px; font-size: 9px; color: var(--rosa); }
   .sensorial-voz { font-family: var(--spartan); font-weight: 400; font-size: clamp(22px, 2.4vw, 32px); color: var(--rosa); margin: 16px 0 28px; }
+  .historia-cta { margin-top: 36px; }
+  .colab-box { max-width: 1100px; margin: 24px auto 0; border: 2px solid var(--verde); background: var(--crema); padding: 22px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .colab-box p { font-size: 17px; font-weight: 500; color: var(--verde-oscuro); }
+  .btn-outline-verde { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px; border: 1.5px solid var(--verde); color: var(--verde); font-family: var(--spartan); font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: background .2s, color .2s; }
+  .btn-outline-verde:hover { background: var(--verde); color: var(--crema); }
+  .perf-video-link { display: inline-block; margin-top: 14px; font-weight: 700; color: var(--rosa); text-decoration: underline; text-underline-offset: 4px; }
   .hibrida { background: var(--terracota); padding: 120px 60px; }
   .hibrida-texto { max-width: 1100px; margin: 0 auto; font-family: var(--spartan); font-weight: 500; font-size: clamp(28px, 3.6vw, 52px); line-height: 1.2; letter-spacing: -0.01em; color: var(--verde-oscuro); }
   .hibrida-texto strong { font-weight: 800; }
@@ -1089,6 +1095,8 @@
     .quien { padding: 80px 24px; }
     .hibrida { padding: 80px 24px; }
     .historia { padding: 80px 24px; }
+    .historia-cta a, .colab-box a { width: 100%; text-align: center; }
+    .colab-box { padding: 22px 20px; }
     .historia-inner { grid-template-columns: 1fr; gap: 16px; }
     .evento-nuevo { padding: 80px 24px; }
     .evento-nuevo-inner { grid-template-columns: 1fr; gap: 40px; }

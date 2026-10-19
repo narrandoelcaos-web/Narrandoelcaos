@@ -1060,6 +1060,12 @@
   .noche-item { font-weight: 700; font-size: 17px; color: var(--crema); padding-left: 18px; position: relative; }
   .noche-item::before { content: '◆'; position: absolute; left: 0; top: 4px; font-size: 9px; color: var(--rosa); }
   .sensorial-voz { font-family: var(--spartan); font-weight: 400; font-size: clamp(22px, 2.4vw, 32px); color: var(--rosa); margin: 16px 0 28px; }
+  .historia-cta { margin-top: 36px; }
+  .colab-box { max-width: 1100px; margin: 24px auto 0; border: 2px solid var(--verde); background: var(--crema); padding: 22px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .colab-box p { font-size: 17px; font-weight: 500; color: var(--verde-oscuro); }
+  .btn-outline-verde { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px; border: 1.5px solid var(--verde); color: var(--verde); font-family: var(--spartan); font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: background .2s, color .2s; }
+  .btn-outline-verde:hover { background: var(--verde); color: var(--crema); }
+  .perf-video-link { display: inline-block; margin-top: 14px; font-weight: 700; color: var(--rosa); text-decoration: underline; text-underline-offset: 4px; }
   .hibrida { background: var(--terracota); padding: 120px 60px; }
   .hibrida-texto { max-width: 1100px; margin: 0 auto; font-family: var(--spartan); font-weight: 500; font-size: clamp(28px, 3.6vw, 52px); line-height: 1.2; letter-spacing: -0.01em; color: var(--verde-oscuro); }
   .hibrida-texto strong { font-weight: 800; }
@@ -1089,6 +1095,8 @@
     .quien { padding: 80px 24px; }
     .hibrida { padding: 80px 24px; }
     .historia { padding: 80px 24px; }
+    .historia-cta a, .colab-box a { width: 100%; text-align: center; }
+    .colab-box { padding: 22px 20px; }
     .historia-inner { grid-template-columns: 1fr; gap: 16px; }
     .evento-nuevo { padding: 80px 24px; }
     .evento-nuevo-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -1201,6 +1209,7 @@
       <p class="historia-lead"><em>Antes de que sea demasiado tarde</em> empieza como una historia de amor que se desarma y termina mostrando todo lo que una persona puede abandonar de sí para no sentirse abandonada.</p>
       <p class="sobre-body">Escrito desde la trinchera de una vivencia no binaria y millennial, el libro recorre los actos de una vida que se rompe y se rearma entre sesiones de terapia, listas de reproducción de Spotify, medicación y diagnósticos, y el aroma a limón de los recuerdos que se niegan a morir.</p>
       <p class="sobre-body">La escritura es fragmentaria porque nació mientras las cosas pasaban. Escenas sueltas, recuerdos que vuelven, tiempos que se pisan: así se cuenta una vida cuando entra en crisis, y así la vas armando vos, capítulo a capítulo.</p>
+      <div class="historia-cta"><a href="un-libro-para-atravesar.html" class="btn-verde">Conocer más sobre la novela</a></div>
     </div>
   </div>
 </section>
@@ -1230,19 +1239,6 @@
   </div>
   <div class="segunda-ctas reveal">
     <a href="preventa-antes-de-que-sea-demasiado-tarde.html" class="btn-rosa">Acceder a la preventa</a>
-    <a href="un-libro-para-atravesar.html" class="btn-outline">Conocer más sobre la novela</a>
-  </div>
-</section>
-
-<!-- QUIÉN ESCRIBE -->
-<section class="quien" id="quien">
-  <div class="quien-inner">
-    <img src="foto-agos-quien.jpg" alt="Agos Concilio" class="quien-foto reveal">
-    <div class="quien-texto reveal d1">
-      <p class="section-label" style="color:var(--terracota)">Quién escribe</p>
-      <h2 class="sobre-title">Agos<br><em>Concilio.</em></h2>
-      <p class="sobre-body">Agos Concilio es escritore, educadore social y estudiante de Psicología. Desde Narrar el Caos trabaja con una idea: el caos no es el problema, es la materia prima. Esta novela es de donde sale esa premisa.</p>
-    </div>
   </div>
 </section>
 
@@ -1266,33 +1262,6 @@
     <blockquote class="voz"><p>“Alargué la lectura desde mayo para transitar el proceso que narrabas a su tiempo, para darle tiempo.”</p><cite>Lectora de la primera edición</cite></blockquote>
     <blockquote class="voz"><p>“Leerte y encontrarme en tus escenas me hace sentipensar que hay otras historias posibles a la espera de que las escribamos.”</p><cite>Lectora de la primera edición</cite></blockquote>
     <blockquote class="voz"><p>“Apenas lo empecé y wooooow. Qué manera de transmitir. Terminándolo se lo prestaré a una amiga.”</p><cite>Lectora de la primera edición</cite></blockquote>
-  </div>
-</section>
-
-<!-- LOS DOS EVENTOS -->
-<section class="noches" id="noches">
-  <div class="noche noche--primera reveal">
-    <p class="section-label" style="color:var(--terracota)">Primera edición</p>
-    <h2 class="noche-title">Así fue el evento de la <em>primera edición.</em></h2>
-    <p class="noche-body noche-body--oscuro">La presentación de la primera edición fue una experiencia inmersiva donde el universo de la novela se volvió espacio habitable.</p>
-    <div class="noche-fotos">
-      <img src="foto-evento-1.jpg" alt="Evento de lanzamiento de la primera edición">
-      <img src="foto-evento-3.jpg" alt="Fragmentos de la novela colgados en el espacio">
-    </div>
-    <div class="noche-ctas"><a href="experiencia-sensorial.html" class="btn-verde">Conocer más sobre el primer evento</a></div>
-  </div>
-  <div class="noche noche--segunda reveal d1">
-    <p class="section-label" style="color:var(--rosa)">Segunda edición · Sumate</p>
-    <h2 class="noche-title">El evento de la <em>segunda edición.</em></h2>
-    <p class="noche-fecha">Sábado 12 de diciembre · 19 h<br>Ja Ja, vivero y centro cultural · Chacarita</p>
-    <p class="noche-body">Una noche para recorrer la novela, con lecturas en vivo, instalaciones, audios, proyecciones y música.</p>
-    <div class="noche-beneficio">
-      <p class="preventa-card-name">En la preventa</p>
-      <p class="noche-item">Libro + evento</p>
-      <p class="noche-item">Si tenés la primera edición</p>
-      <p class="noche-item">Si te invitó alguien que la tiene</p>
-    </div>
-    <div class="noche-ctas"><a href="preventa-antes-de-que-sea-demasiado-tarde.html" class="btn-rosa">Conocé más</a></div>
   </div>
 </section>
 
@@ -1322,10 +1291,53 @@
       <a href="https://preview.mailerlite.io/forms/1991842/201448102474811005/share" target="_blank" class="btn-verde">Quiero ir</a>
     </div>
   </div>
+  <div class="colab-box reveal">
+    <p>Si no llegás, hay entradas a colaboración a $5.000.</p>
+    <a href="https://preview.mailerlite.io/forms/1991842/201448103631390419/share" target="_blank" class="btn-outline-verde">Entrada a colaboración</a>
+  </div>
   <div class="comprar-links reveal">
     <a href="preventa-antes-de-que-sea-demasiado-tarde.html">Cómo funciona la preventa</a>
     <a href="preventa-antes-de-que-sea-demasiado-tarde.html#de-mano-en-mano">¿Tenés la primera edición?</a>
     <a href="preventa-antes-de-que-sea-demasiado-tarde.html#preguntas">Preguntas frecuentes</a>
+  </div>
+</section>
+
+<!-- QUIÉN ESCRIBE -->
+<section class="quien" id="quien">
+  <div class="quien-inner">
+    <img src="foto-agos-quien.jpg" alt="Agos Concilio" class="quien-foto reveal">
+    <div class="quien-texto reveal d1">
+      <p class="section-label" style="color:var(--terracota)">Quién escribe</p>
+      <h2 class="sobre-title">Agos<br><em>Concilio.</em></h2>
+      <p class="sobre-body">Agos Concilio es escritore, educadore social y estudiante de Psicología. Desde Narrar el Caos trabaja con una idea: el caos no es el problema, es la materia prima. Esta novela es de donde sale esa premisa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOS DOS EVENTOS -->
+<section class="noches" id="noches">
+  <div class="noche noche--primera reveal">
+    <p class="section-label" style="color:var(--terracota)">Primera edición</p>
+    <h2 class="noche-title">Así fue el evento de la <em>primera edición.</em></h2>
+    <p class="noche-body noche-body--oscuro">La presentación de la primera edición fue una experiencia inmersiva donde el universo de la novela se volvió espacio habitable.</p>
+    <div class="noche-fotos">
+      <img src="foto-evento-1.jpg" alt="Evento de lanzamiento de la primera edición">
+      <img src="foto-evento-3.jpg" alt="Fragmentos de la novela colgados en el espacio">
+    </div>
+    <div class="noche-ctas"><a href="experiencia-sensorial.html" class="btn-verde">Conocer más sobre el primer evento</a></div>
+  </div>
+  <div class="noche noche--segunda reveal d1">
+    <p class="section-label" style="color:var(--rosa)">Segunda edición · Sumate</p>
+    <h2 class="noche-title">El evento de la <em>segunda edición.</em></h2>
+    <p class="noche-fecha">Sábado 12 de diciembre · 19 h<br>Ja Ja, vivero y centro cultural · Chacarita</p>
+    <p class="noche-body">Una noche para recorrer la novela, con lecturas en vivo, instalaciones, audios, proyecciones y música.</p>
+    <div class="noche-beneficio">
+      <p class="preventa-card-name">En la preventa</p>
+      <p class="noche-item">Libro + evento</p>
+      <p class="noche-item">Si tenés la primera edición</p>
+      <p class="noche-item">Si te invitó alguien que la tiene</p>
+    </div>
+    <div class="noche-ctas"><a href="preventa-antes-de-que-sea-demasiado-tarde.html" class="btn-rosa">Conocé más</a></div>
   </div>
 </section>
 
