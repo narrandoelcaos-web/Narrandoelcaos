@@ -1052,6 +1052,14 @@
   .noche-fotos img { width: 100%; height: 280px; object-fit: cover; display: block; }
   .noche .voz { background: var(--verde); }
   .noche-link { font-weight: 700; color: var(--verde); text-decoration: underline; text-underline-offset: 4px; align-self: flex-start; }
+  .historia { background: var(--crema); padding: 110px 60px; }
+  .historia-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 0.35fr 1fr; gap: 48px; }
+  .historia-lead { font-family: var(--spartan); font-weight: 500; font-size: clamp(22px, 2.3vw, 30px); line-height: 1.35; color: var(--verde-oscuro); margin-bottom: 28px; }
+  .historia-lead em { font-style: normal; font-weight: 800; }
+  .historia .sobre-body { color: var(--verde); max-width: 680px; }
+  .noche-item { font-weight: 700; font-size: 17px; color: var(--crema); padding-left: 18px; position: relative; }
+  .noche-item::before { content: '◆'; position: absolute; left: 0; top: 4px; font-size: 9px; color: var(--rosa); }
+  .sensorial-voz { font-family: var(--spartan); font-weight: 400; font-size: clamp(22px, 2.4vw, 32px); color: var(--rosa); margin: 16px 0 28px; }
   .hibrida { background: var(--terracota); padding: 120px 60px; }
   .hibrida-texto { max-width: 1100px; margin: 0 auto; font-family: var(--spartan); font-weight: 500; font-size: clamp(28px, 3.6vw, 52px); line-height: 1.2; letter-spacing: -0.01em; color: var(--verde-oscuro); }
   .hibrida-texto strong { font-weight: 800; }
@@ -1080,6 +1088,8 @@
   @media (max-width: 768px) {
     .quien { padding: 80px 24px; }
     .hibrida { padding: 80px 24px; }
+    .historia { padding: 80px 24px; }
+    .historia-inner { grid-template-columns: 1fr; gap: 16px; }
     .evento-nuevo { padding: 80px 24px; }
     .evento-nuevo-inner { grid-template-columns: 1fr; gap: 40px; }
     .segunda-ctas a, .evento-nuevo .noche-ctas a { width: 100%; text-align: center; }
@@ -1154,8 +1164,9 @@
   <div class="sensorial-inner">
     <div class="sensorial-left reveal">
       <p class="section-label" style="color:rgba(255,211,219,0.5)">Una experiencia sensorial</p>
-      <h2 class="sensorial-title">Una <em>película</em><br>que se puede leer.</h2>
-      <p class="sensorial-body">El libro fue pensado desde el principio como algo más que texto: como <strong>una película que se puede leer.</strong> Cada capítulo tiene una curaduría musical propia, desde <strong>Javiera Mena y Marilina Bertoldi</strong> hasta <strong>Radiohead, Thom Yorke y boleros de Trío Los Panchos.</strong></p>
+      <h2 class="sensorial-title">Estás por entrar<br>a <em>mi peli.</em></h2>
+      <p class="sensorial-voz">Y en las pelis hay música…</p>
+      <p class="sensorial-body">Cada capítulo tiene una curaduría musical propia, desde <strong>Javiera Mena y Marilina Bertoldi</strong> hasta <strong>Radiohead, Thom Yorke y boleros de Trío Los Panchos.</strong></p>
       <p class="sensorial-body">En el interior, un código QR da acceso a la <strong>playlist oficial</strong>, para entrar en la atmósfera exacta de cada escena. Música y texto como un solo dispositivo de inmersión.</p>
       <div style="margin-top:32px;">
         <a href="preventa-antes-de-que-sea-demasiado-tarde.html" class="btn-rosa">Ver la preventa</a>
@@ -1272,7 +1283,6 @@
     <p>El dolor no desaparece.</p>
     <p class="final-vida">Y sin embargo hay vida.</p>
   </div>
-  <div class="final-cta reveal"><a href="preventa-antes-de-que-sea-demasiado-tarde.html#campana" class="btn-verde">Elegí por dónde entrar</a></div>
 </section>
 
 <!-- FOOTER -->

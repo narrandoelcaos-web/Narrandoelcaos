@@ -1052,6 +1052,14 @@
   .noche-fotos img { width: 100%; height: 280px; object-fit: cover; display: block; }
   .noche .voz { background: var(--verde); }
   .noche-link { font-weight: 700; color: var(--verde); text-decoration: underline; text-underline-offset: 4px; align-self: flex-start; }
+  .historia { background: var(--crema); padding: 110px 60px; }
+  .historia-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 0.35fr 1fr; gap: 48px; }
+  .historia-lead { font-family: var(--spartan); font-weight: 500; font-size: clamp(22px, 2.3vw, 30px); line-height: 1.35; color: var(--verde-oscuro); margin-bottom: 28px; }
+  .historia-lead em { font-style: normal; font-weight: 800; }
+  .historia .sobre-body { color: var(--verde); max-width: 680px; }
+  .noche-item { font-weight: 700; font-size: 17px; color: var(--crema); padding-left: 18px; position: relative; }
+  .noche-item::before { content: '◆'; position: absolute; left: 0; top: 4px; font-size: 9px; color: var(--rosa); }
+  .sensorial-voz { font-family: var(--spartan); font-weight: 400; font-size: clamp(22px, 2.4vw, 32px); color: var(--rosa); margin: 16px 0 28px; }
   .hibrida { background: var(--terracota); padding: 120px 60px; }
   .hibrida-texto { max-width: 1100px; margin: 0 auto; font-family: var(--spartan); font-weight: 500; font-size: clamp(28px, 3.6vw, 52px); line-height: 1.2; letter-spacing: -0.01em; color: var(--verde-oscuro); }
   .hibrida-texto strong { font-weight: 800; }
@@ -1080,6 +1088,8 @@
   @media (max-width: 768px) {
     .quien { padding: 80px 24px; }
     .hibrida { padding: 80px 24px; }
+    .historia { padding: 80px 24px; }
+    .historia-inner { grid-template-columns: 1fr; gap: 16px; }
     .evento-nuevo { padding: 80px 24px; }
     .evento-nuevo-inner { grid-template-columns: 1fr; gap: 40px; }
     .segunda-ctas a, .evento-nuevo .noche-ctas a { width: 100%; text-align: center; }
@@ -1150,25 +1160,6 @@
         <li>Pagás por Mercado Pago.</li>
         <li>Respondés el mail que te llega con el comprobante, y te confirmo.</li>
       </ol>
-    </div>
-  </div>
-</section>
-
-<!-- QUÉ TE LLEVÁS -->
-<section class="llevas" id="que-te-llevas">
-  <div class="llevas-grid">
-    <div class="llevas-texto reveal">
-      <h2 class="sobre-title">Qué te<br><em>llevás.</em></h2>
-      <p class="sobre-body"><em>Antes de que sea demasiado tarde</em> empieza como una historia de amor que se desarma y termina mostrando todo lo que una persona puede abandonar de sí para no sentirse abandonada.</p>
-      <p class="sobre-body">Escrito desde la trinchera de una vivencia no binaria y millennial, el libro recorre los actos de una vida que se rompe y se rearma entre sesiones de terapia, listas de reproducción de Spotify, medicación y diagnósticos, y el aroma a limón de los recuerdos que se niegan a morir.</p>
-      <p class="sobre-body">La escritura es fragmentaria porque nació mientras las cosas pasaban. Escenas sueltas, recuerdos que vuelven, tiempos que se pisan: así se cuenta una vida cuando entra en crisis, y así la vas armando vos, capítulo a capítulo.</p>
-    </div>
-    <div class="llevas-lista reveal d1">
-      <p class="llevas-lista-titulo">Lo que te llevás</p>
-      <div class="llevas-item"><p class="llevas-item-t">Una novela de autoficción en seis actos y 60 capítulos.</p><p class="llevas-item-d">Muchos son breves: se pueden leer de corrido o de a un fragmento.</p></div>
-      <div class="llevas-item"><p class="llevas-item-t">Una banda sonora.</p><p class="llevas-item-d">Cada capítulo tiene su curaduría musical y el libro trae un QR a la playlist oficial: de Javiera Mena y Marilina Bertoldi a Radiohead y Trío Los Panchos.</p></div>
-      <div class="llevas-item"><p class="llevas-item-t">Una voz millennial y rioplatense,</p><p class="llevas-item-d">con humor al borde del dolor. Escrita en lenguaje sin marcas de género.</p></div>
-      <div class="llevas-item"><p class="llevas-item-t">Preguntas en vez de respuestas.</p><p class="llevas-item-d">No hay moraleja. Hay alguien que, al final, elige quedarse.</p></div>
     </div>
   </div>
 </section>

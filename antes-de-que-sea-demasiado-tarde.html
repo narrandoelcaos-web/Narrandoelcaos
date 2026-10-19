@@ -1052,6 +1052,14 @@
   .noche-fotos img { width: 100%; height: 280px; object-fit: cover; display: block; }
   .noche .voz { background: var(--verde); }
   .noche-link { font-weight: 700; color: var(--verde); text-decoration: underline; text-underline-offset: 4px; align-self: flex-start; }
+  .historia { background: var(--crema); padding: 110px 60px; }
+  .historia-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 0.35fr 1fr; gap: 48px; }
+  .historia-lead { font-family: var(--spartan); font-weight: 500; font-size: clamp(22px, 2.3vw, 30px); line-height: 1.35; color: var(--verde-oscuro); margin-bottom: 28px; }
+  .historia-lead em { font-style: normal; font-weight: 800; }
+  .historia .sobre-body { color: var(--verde); max-width: 680px; }
+  .noche-item { font-weight: 700; font-size: 17px; color: var(--crema); padding-left: 18px; position: relative; }
+  .noche-item::before { content: '◆'; position: absolute; left: 0; top: 4px; font-size: 9px; color: var(--rosa); }
+  .sensorial-voz { font-family: var(--spartan); font-weight: 400; font-size: clamp(22px, 2.4vw, 32px); color: var(--rosa); margin: 16px 0 28px; }
   .hibrida { background: var(--terracota); padding: 120px 60px; }
   .hibrida-texto { max-width: 1100px; margin: 0 auto; font-family: var(--spartan); font-weight: 500; font-size: clamp(28px, 3.6vw, 52px); line-height: 1.2; letter-spacing: -0.01em; color: var(--verde-oscuro); }
   .hibrida-texto strong { font-weight: 800; }
@@ -1080,6 +1088,8 @@
   @media (max-width: 768px) {
     .quien { padding: 80px 24px; }
     .hibrida { padding: 80px 24px; }
+    .historia { padding: 80px 24px; }
+    .historia-inner { grid-template-columns: 1fr; gap: 16px; }
     .evento-nuevo { padding: 80px 24px; }
     .evento-nuevo-inner { grid-template-columns: 1fr; gap: 40px; }
     .segunda-ctas a, .evento-nuevo .noche-ctas a { width: 100%; text-align: center; }
@@ -1183,6 +1193,18 @@
   <p class="hibrida-texto reveal">Una novela de <strong>autoficción híbrida</strong> que también se escucha y se recorre: cada capítulo tiene su <a href="un-libro-para-atravesar.html#libro">banda sonora</a>, cada acto su <a href="entre.html">episodio de podcast</a> y cada presentación es una <a href="experiencia-sensorial.html">experiencia sensorial</a>.</p>
 </section>
 
+<!-- SOBRE LA NOVELA (texto de Qué te llevás) -->
+<section class="historia" id="la-historia">
+  <div class="historia-inner">
+    <p class="section-label reveal" style="color:var(--terracota)">Sobre la novela</p>
+    <div class="historia-texto reveal d1">
+      <p class="historia-lead"><em>Antes de que sea demasiado tarde</em> empieza como una historia de amor que se desarma y termina mostrando todo lo que una persona puede abandonar de sí para no sentirse abandonada.</p>
+      <p class="sobre-body">Escrito desde la trinchera de una vivencia no binaria y millennial, el libro recorre los actos de una vida que se rompe y se rearma entre sesiones de terapia, listas de reproducción de Spotify, medicación y diagnósticos, y el aroma a limón de los recuerdos que se niegan a morir.</p>
+      <p class="sobre-body">La escritura es fragmentaria porque nació mientras las cosas pasaban. Escenas sueltas, recuerdos que vuelven, tiempos que se pisan: así se cuenta una vida cuando entra en crisis, y así la vas armando vos, capítulo a capítulo.</p>
+    </div>
+  </div>
+</section>
+
 <!-- SEGUNDA EDICIÓN -->
 <section class="segunda" id="segunda-edicion">
   <div class="segunda-header reveal">
@@ -1265,12 +1287,12 @@
     <p class="noche-fecha">Sábado 12 de diciembre · 19 h<br>Ja Ja, vivero y centro cultural · Chacarita</p>
     <p class="noche-body">Una noche para recorrer la novela, con lecturas en vivo, instalaciones, audios, proyecciones y música.</p>
     <div class="noche-beneficio">
-      <p class="preventa-card-name">Si comprás en preventa</p>
-      <p class="noche-body"><strong>Libro + evento ($38.000):</strong> tu entrada y el libro, que te llevás esa noche.</p>
-      <p class="noche-body"><strong>¿Tenés la primera edición?</strong> Tu lugar en el evento es gratis.</p>
-      <p class="noche-body"><strong>¿Te invitó alguien que la tiene?</strong> El libro a $30.000 con la entrada incluida.</p>
+      <p class="preventa-card-name">En la preventa</p>
+      <p class="noche-item">Libro + evento</p>
+      <p class="noche-item">Si tenés la primera edición</p>
+      <p class="noche-item">Si te invitó alguien que la tiene</p>
     </div>
-    <div class="noche-ctas"><a href="#campana" class="btn-rosa">Acceder a la preventa</a></div>
+    <div class="noche-ctas"><a href="preventa-antes-de-que-sea-demasiado-tarde.html" class="btn-rosa">Conocé más</a></div>
   </div>
 </section>
 
@@ -1317,7 +1339,7 @@
     <p>El dolor no desaparece.</p>
     <p class="final-vida">Y sin embargo hay vida.</p>
   </div>
-  <div class="final-cta reveal"><a href="#campana" class="btn-verde">Elegí por dónde entrar</a></div>
+  <div class="final-cta reveal"><a href="un-libro-para-atravesar.html" class="btn-verde">Sobre la novela</a></div>
 </section>
 
 <!-- FOOTER -->
